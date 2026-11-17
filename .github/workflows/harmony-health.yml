@@ -1,0 +1,48 @@
+name: Harmony site and Kakao image health check
+on:
+  schedule:
+    - cron: '45 23 * * *' # 08:45 KST, after daily image generation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check live site and image responses (read-only)
+        shell: bash
+        run: |
+          python - <<'PY'
+          import urllib.request
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          base = "https://euphonious-babka-a95f32.netlify.app"
+          today = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d")
+          paths = [
+              ("/", "text/html"),
+              (f"/kakao-daily/{today}.jpg", "image/jpeg"),
+              ("/kakao-daily/latest.jpg", "image/jpeg"),
+              (f"/kakao-vertical-daily/{today}.jpg", "image/jpeg"),
+              ("/kakao-vertical-daily/latest.jpg", "image/jpeg"),
+          ]
+          errors = []
+          for path, expected in paths:
+              try:
+                  request = urllib.request.Request(
+                      base + path,
+                      headers={"User-Agent": "Harmony-Rentcar-HealthCheck/1.0"},
+                  )
+                  with urllib.request.urlopen(request, timeout=20) as response:
+                      content_type = response.headers.get("Content-Type", "").lower()
+                      payload = response.read(4096)
+                      if expected not in content_type or len(payload) < 128:
+                          raise ValueError(f"Unexpected content type or short response: {content_type}")
+                  print(f"OK: {path}")
+              except Exception as exc:
+                  errors.append(f"{path}: {exc}")
+                  print(f"::error::{path}: {exc}")
+          if errors:
+              raise SystemExit(f"Health check failed for {len(errors)} endpoint(s)")
+          PY
