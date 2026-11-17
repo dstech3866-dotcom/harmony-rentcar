@@ -9,7 +9,9 @@ now = datetime.now(ZoneInfo("Asia/Seoul"))
 day = now.strftime("%Y-%m-%d")
 weekday = "월화수목금토일"[now.weekday()]
 label = f"{now.year}년 {now.month}월 {now.day}일 {weekday}요일"
-source = ROOT / "카카오_미리보기_대형_기본.jpg"
+source = ROOT / "kakao-preview-large-base.jpg"
+if not source.is_file():
+    raise FileNotFoundError(f"Kakao preview base image not found: {source}")
 im = Image.open(source).convert("RGB").resize((1200,630),Image.Resampling.LANCZOS)
 draw = ImageDraw.Draw(im)
 fonts = [
