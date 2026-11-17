@@ -1,0 +1,145 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>하모니렌트카 중고차 6·12개월 렌트 가격표</title><style>*{box-sizing:border-box}body{margin:0;background:#eef3f7;color:#0d294b;font-family:"Malgun Gothic",Arial,sans-serif}header{background:linear-gradient(100deg,#07345b,#009d9b);color:#fff;padding:20px 16px}header>div,main{max-width:1320px;margin:auto}h1{margin:5px 0;font-size:25px}header p{margin:3px 0;font-size:13px}main{padding:12px}.panel{background:#fff;border:1px solid #d5e0eb;border-radius:12px;padding:12px;margin-bottom:12px}.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}input{padding:11px;border:1px solid #c9d7e5;border-radius:8px;font:inherit;width:100%}button{border:1px solid #b9cbda;border-radius:7px;background:#fff;padding:8px 12px;font-weight:800;color:#13365a;cursor:pointer}button.on{background:#0b527e;color:white}.muted{color:#607184;font-size:12px}.count{font-weight:800;color:#006d75;margin:8px 0}.brand-title{background:#005a57;color:#fff;font-size:20px;font-weight:900;padding:12px 15px;margin:15px 0 0}.model-title{background:linear-gradient(90deg,#00665e,#08a7ad);color:#fff;font-size:19px;font-weight:900;padding:10px 14px;margin:9px 0 0}.fuel-title{background:#dce8f5;color:#163e65;font-weight:900;padding:8px 12px}.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;border:1px solid #9eb4c8;margin-bottom:9px}.price-table{width:100%;min-width:1160px;border-collapse:collapse;table-layout:fixed;font-size:12px}.price-table th{background:#0c2c50;color:#fff;padding:10px 4px;border:1px solid #66819c;white-space:nowrap}.price-table td{padding:9px 5px;border:1px solid #b8c9db;vertical-align:middle;text-align:center;overflow-wrap:anywhere}.price-table tbody tr:nth-child(even){background:#edf5ff}.price-table td.model{text-align:left;font-weight:800}.price-table td.option{text-align:left;line-height:1.5}.price-table .plate{font-weight:900;color:#0b335e}.price-table .months{background:#a12a3e;color:white;border-radius:5px;padding:5px;font-weight:900;white-space:nowrap}.price-table .rent{font-weight:900;color:#0345ad}.price-table .money{font-weight:800}.price-table th:nth-child(1){width:95px}.price-table th:nth-child(2){width:63px}.price-table th:nth-child(3){width:65px}.price-table th:nth-child(4){width:190px}.price-table th:nth-child(5),.price-table th:nth-child(6){width:82px}.price-table th:nth-child(7){width:82px}.price-table th:nth-child(8){width:94px}.price-table th:nth-child(9){width:78px}.price-table th:nth-child(10){width:100px}.price-table th:nth-child(11){width:195px}.price-table th:nth-child(11){width:195px}.empty{text-align:center;padding:32px;color:#526b80}@media(max-width:650px){h1{font-size:21px}.panel{padding:10px}.brand-title{font-size:17px}.model-title{font-size:16px}}
+/* V2.5.33: 중고리스와 동일한 표 레이아웃 및 확대/축소 방식 */
+.table-scroll{max-width:100%;overflow-x:auto}
+.price-table{width:100%;min-width:1160px;table-layout:fixed;font-size:12px}
+.price-table th{padding:10px 4px}
+.price-table td{padding:9px 5px;overflow-wrap:anywhere;word-break:normal}
+.price-table th:nth-child(1){width:95px}
+.price-table th:nth-child(2){width:63px}
+.price-table th:nth-child(3){width:65px}
+.price-table th:nth-child(4){width:190px}
+.price-table th:nth-child(5),.price-table th:nth-child(6){width:82px}
+.price-table th:nth-child(7){width:82px}
+.price-table th:nth-child(8){width:94px}
+.price-table th:nth-child(9){width:78px}
+.price-table th:nth-child(10){width:100px}
+.price-table th:nth-child(11){width:195px}
+.price-table tbody tr:nth-child(odd){background:#fff}
+.price-table tbody tr:nth-child(even){background:#edf5ff}
+.price-table .months{padding:5px;display:inline-block}
+.toolbar-panel{background:#fff;border:1px solid #d5e0eb;border-radius:12px;padding:12px;margin-bottom:12px}
+.back{display:inline-block;background:#0b527e;color:#fff;padding:9px 14px;border-radius:7px;text-decoration:none;font-weight:800;margin:4px 0}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+select{padding:10px;border:1px solid #c9d7e5;border-radius:8px;background:white;color:#0d294b}
+.summary{font-weight:800;color:#006d75;margin:8px 0}
+.filter-block{margin:10px 0}
+.filter-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.filter-buttons button{border:1px solid #b7cce0;background:#fff;color:#0d294b;font-weight:800;border-radius:9px;padding:11px 16px;cursor:pointer;font-size:16px}
+.filter-buttons button.active{background:#095783;color:white;border-color:#095783}
+.size-controls{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:13px 0 6px;font-size:16px}
+.size-controls button{min-width:49px;padding:10px 13px;font-size:18px}
+.size-controls #sizeValue{min-width:65px;text-align:center}
+#list{--table-zoom:1}
+#list .price-table{font-size:calc(12px * var(--table-zoom));width:calc(100% * var(--table-zoom));min-width:calc(1160px * var(--table-zoom))}
+#list .price-table th{padding:calc(10px * var(--table-zoom)) calc(4px * var(--table-zoom))}
+#list .price-table td{padding:calc(9px * var(--table-zoom)) calc(5px * var(--table-zoom))}
+#list .price-table th:nth-child(1){width:calc(95px * var(--table-zoom))}
+#list .price-table th:nth-child(2){width:calc(63px * var(--table-zoom))}
+#list .price-table th:nth-child(3){width:calc(65px * var(--table-zoom))}
+#list .price-table th:nth-child(4){width:calc(190px * var(--table-zoom))}
+#list .price-table th:nth-child(5),#list .price-table th:nth-child(6){width:calc(82px * var(--table-zoom))}
+#list .price-table th:nth-child(7){width:calc(82px * var(--table-zoom))}
+#list .price-table th:nth-child(8){width:calc(94px * var(--table-zoom))}
+#list .price-table th:nth-child(9){width:calc(78px * var(--table-zoom))}
+#list .price-table th:nth-child(10){width:calc(100px * var(--table-zoom))}
+#list .price-table th:nth-child(11){width:calc(195px * var(--table-zoom))}
+@media(max-width:650px){.filter-buttons button{font-size:14px;padding:9px 11px}}
+</style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+
+
+
+
+<style id="v269-final-table-layout">
+/* Single authoritative layout for 13-column vehicle tables. */
+.price-table{min-width:calc(1600px * var(--table-zoom,1))!important;table-layout:fixed!important}
+.price-table th:nth-child(2),.price-table td.harmony-year,
+.price-table th:nth-child(3),.price-table td.harmony-fuel{white-space:nowrap!important;word-break:keep-all!important;overflow-wrap:normal!important}
+.price-table th:nth-child(2){width:calc(96px * var(--table-zoom,1))!important}
+.price-table th:nth-child(3){width:calc(115px * var(--table-zoom,1))!important}
+.price-table th:nth-child(11){width:calc(98px * var(--table-zoom,1))!important}
+.price-table th:nth-child(12){width:calc(115px * var(--table-zoom,1))!important}
+.price-table th:nth-child(13){width:calc(330px * var(--table-zoom,1))!important}
+.price-table thead th:last-child,.price-table tbody td.option{
+ text-align:left!important;padding-left:2px!important;padding-inline-start:2px!important;
+ text-indent:0!important;white-space:normal!important;word-break:keep-all!important;
+}
+.price-table tbody td.option *{text-align:left!important;margin-left:0!important;padding-left:0!important}
+</style>
+<!-- Harmony V2.5.69 clean CSS build -->
+<style id="v270-full-width-options">
+/* Fit all 13 columns into the available width at normal zoom.
+   Keep the existing horizontal scrollbar for smaller windows. */
+.table-scroll{overflow-x:auto!important;max-width:100%!important}
+.price-table:has(thead th:nth-child(13)){
+  width:100%!important;
+  min-width:calc(1250px * var(--table-zoom,1))!important;
+  table-layout:fixed!important;
+}
+/* Sum = 100%; give options the last 18% of the table. */
+.price-table:has(thead th:nth-child(13)) th:nth-child(1){width:6%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(2){width:5.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(3){width:7%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(4){width:14.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(5){width:5.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(6){width:5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(7){width:5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(8){width:7.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(9){width:6.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(10){width:5.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(11){width:6.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(12){width:7.5%!important}
+.price-table:has(thead th:nth-child(13)) th:nth-child(13){width:18%!important;text-align:left!important;padding-left:2px!important}
+.price-table:has(thead th:nth-child(13)) td.option{text-align:left!important;padding-left:2px!important;overflow-wrap:anywhere!important;white-space:normal!important}
+/* Keep years and fuel names on one line, as requested. */
+.price-table td.harmony-year,.price-table td.harmony-fuel{white-space:nowrap!important;word-break:keep-all!important}
+</style>
+<style id="v279-used612-same-layout">.price-table{width:100%!important;min-width:calc(1250px * var(--table-zoom,1))!important;table-layout:fixed!important}.price-table th:nth-child(1){width:6%!important}.price-table th:nth-child(2){width:5.5%!important}.price-table th:nth-child(3){width:7%!important}.price-table th:nth-child(4){width:14.5%!important}.price-table th:nth-child(5){width:5.5%!important}.price-table th:nth-child(6){width:5%!important}.price-table th:nth-child(7){width:5%!important}.price-table th:nth-child(8){width:7.5%!important}.price-table th:nth-child(9){width:6.5%!important}.price-table th:nth-child(10){width:5.5%!important}.price-table th:nth-child(11){width:6.5%!important}.price-table th:nth-child(12){width:7.5%!important}.price-table th:nth-child(13){width:18%!important;text-align:left!important}.price-table td.option{text-align:left!important;padding-left:3px!important;white-space:normal!important;overflow-wrap:anywhere!important}.price-table td.harmony-year,.price-table td.harmony-fuel{white-space:nowrap!important;word-break:keep-all!important}.table-scroll{overflow-x:auto!important}</style></head><body><header><h1>중고차 6·12개월 렌트 가격표</h1><div>하모니렌트카 · 6개월 / 12개월 전용</div></header><main class="wrap"><style>
+.h-common-promo{display:block;text-decoration:none;background:#f0fdf4;border:1px solid #86efac;border-radius:12px;padding:15px 18px;margin:0 0 17px;color:#14532d;box-shadow:0 2px 8px rgba(22,101,52,.06)}
+.h-common-promo:hover{border-color:#16a34a;background:#e9fbed}
+.h-common-promo .h-promo-new{display:inline-block;background:#16a34a;color:#fff;font-weight:900;font-size:12px;padding:5px 9px;border-radius:6px;margin-right:8px;animation:hPromoPulse 1.8s ease-in-out infinite}
+.h-common-promo .h-promo-title{font-weight:850;font-size:17px}
+.h-common-promo .h-promo-benefit{display:block;color:#c62828;font-weight:900;font-size:21px;margin:8px 0 3px}
+.h-common-promo .h-promo-note{display:block;font-size:12px;color:#475569;margin-top:5px}
+@keyframes hPromoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+@media(prefers-reduced-motion:reduce){.h-common-promo .h-promo-new{animation:none}}
+</style>
+<a class="h-common-promo" href="/newcars/?promo=avante2026" aria-label="아반떼 2026년형 프로모션 차량 먼저 보기">
+<span class="h-promo-new">NEW</span><span class="h-promo-title">아반떼 2026년형 특별 프로모션</span>
+<span style="display:block;margin-top:7px;font-size:14px">아반떼 2026년형 · 재고 소진 시까지</span>
+<span class="h-promo-benefit">수수료 90만원 지급</span>
+<span class="h-promo-note">※ 2026년형 아반떼 해당 재고에만 적용 · 클릭하면 신차렌트의 아반떼를 먼저 보여드립니다 ›</span>
+</a><div class="toolbar-panel"><a href="/" class="back">홈페이지로 돌아가기</a><div class="tools"><input id="search" placeholder="차종·차량번호 검색" style="max-width:320px"><select id="term"><option value="">전체 계약기간</option><option value="6">6개월</option><option value="12">12개월</option></select></div><div class="filter-block"><div id="brandFilters" class="filter-buttons" aria-label="제조사별 분류"></div><div id="typeFilters" class="filter-buttons" aria-label="차종별 분류"></div></div><div class="size-controls"><b>가격표 크기</b><button type="button" id="sizeMinus" aria-label="가격표 축소">−</button><strong id="sizeValue">100%</strong><button type="button" id="sizePlus" aria-label="가격표 확대">+</button><button type="button" id="sizeReset">기본 크기</button><span class="muted">표는 좌우로 움직일 수 있습니다</span></div><strong class="summary" id="summary">차량 목록 불러오는 중…</strong><p class="muted">월 렌트료와 보증금은 차량별·계약기간별로 다를 수 있습니다. 상세 조건은 상담 시 확인하세요.</p></div><div id="list"></div></main><script>
+const ROOT='https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/';function harmonyPrice(c){const p=c.vehiclePrice??c.carPrice??c.vehicle_price??c.price??'';return p===0?'':p;}let cars=[];const str=v=>String(v??'').trim(),norm=v=>str(v).replace(/[\s\n\r\t()_·.,:/]/g,'').toLowerCase();
+function parseRows(rows){const hi=rows.findIndex(r=>Array.isArray(r)&&r.some(c=>/차량번호|차종|모델명|차량명/.test(norm(c)))&&r.some(c=>/월렌트료|렌트료|기간|보증금/.test(norm(c))));if(hi<0)throw Error('엑셀 헤더를 찾지 못했습니다.');const head=rows[hi].map(norm);const ix=(...ns)=>{for(const n of ns){const i=head.indexOf(norm(n));if(i>=0)return i}return -1};const val=(r,...ns)=>{for(const n of ns){const i=ix(n);if(i>=0&&str(r[i]))return str(r[i])}return ''};const money=x=>{const s=str(x);if(!s)return '';if(s.includes('원'))return s;const n=Number(s.replace(/,/g,''));return Number.isFinite(n)?n.toLocaleString('ko-KR')+'원':s};const out=[];for(const r of rows.slice(hi+1)){const plate=val(r,'차량번호','차번').replace(/[\s-]/g,'');const detail=[val(r,'시리즈'),val(r,'차종','차명','차량명'),val(r,'모델명','세부모델','트림')].filter(Boolean).join(' ');if(!plate&&!detail)continue;const terms=[];for(let n=1;n<=4;n++){const period=val(r,...(n===1?['기간 1','기간1','계약기간','기간']:['기간 '+n,'기간'+n,'계약기간 '+n]));const rent=val(r,...(n===1?['월렌트료 1','월렌트료1','월렌트료','월대여료']:['월렌트료 '+n,'월렌트료'+n,'월대여료 '+n]));const months=Number((period.match(/\d+/)||[])[0]);if([6,12].includes(months)&&rent&&!terms.some(t=>t.months===months))terms.push({months,deposit:money(val(r,...(n===1?['보증금 1','보증금1','보증금']:['보증금 '+n,'보증금'+n]))),rent:money(rent),buyout:money(val(r,...(n===1?['만기인수가 1','만기인수가1','만기인수가']:['만기인수가 '+n,'만기인수가'+n])))})}for(const months of [6,12]){const rent=val(r,months+'개월월렌트료',months+'개월렌트료',months+'개월월대여료','월렌트료'+months+'개월');if(rent&&!terms.some(t=>t.months===months))terms.push({months,deposit:money(val(r,months+'개월보증금','보증금'+months+'개월')),rent,buyout:''})}if(!terms.length)continue;const model=detail.match(/그랜저|쏘나타|아반떼|캐스퍼|싼타페|투싼|팰리세이드|코나|베뉴|스타리아|포터|봉고|모닝|레이|K[3-9]|셀토스|스포티지|쏘렌토|카니발|니로|모하비|EV[3-9]|아이오닉[0-9]|G[789]0|GV[0-9]+|토레스|티볼리|렉스턴|XM3/)?.[0]||detail.split(' ')[0]||'기타';out.push({plate:plate||'미등록',brand:val(r,'브랜드','제조사')||'기타',model,detail:detail||model,year:val(r,'연식','년식'),fuel:val(r,'유종','연료'),color:val(r,'외장컬러','외장색상','색상'),interior:val(r,'내장컬러','내장색상'),distance:val(r,'주행거리'),vehiclePrice:money(val(r,'차량가격','가격','차량가액','차량금액')),options:val(r,'옵션','옵션내용'),terms})}return out}
+const list=document.getElementById('list');let priceScale=100;function applyPriceScale(){list.style.setProperty('--table-zoom',String(priceScale/100));document.getElementById('sizeValue').textContent=priceScale+'%'}document.getElementById('sizeMinus').addEventListener('click',()=>{priceScale=Math.max(70,priceScale-10);applyPriceScale()});document.getElementById('sizePlus').addEventListener('click',()=>{priceScale=Math.min(150,priceScale+10);applyPriceScale()});document.getElementById('sizeReset').addEventListener('click',()=>{priceScale=100;applyPriceScale()});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const kr=(a,b)=>String(a).localeCompare(String(b),'ko',{numeric:true});
+const cleanMoney=v=>esc(v||'-');
+
+// V2.5.43: display-only ordering. Keep category/model/fuel groups and all original prices.
+function hRentNumber(v){const raw=String(v??'').replace(/,/g,'').trim();if(!raw||raw==='-'||raw==='확인'||raw==='0원')return Infinity;const m=raw.match(/\d+(?:\.\d+)?/);if(!m)return Infinity;const n=Number(m[0]);return Number.isFinite(n)&&n>0?n:Infinity}
+function hMinRent(car){const nums=(car.terms||[]).map(t=>hRentNumber(t.rent));return nums.length?Math.min(...nums):Infinity}
+function hIsPromo(car){const keys=window.__hPromoSortKeys;if(!keys||!keys.size)return false;const name=[car.model,car.detail].join(' ');const year=[car.year,car.model,car.detail].join(' ');return /아반떼/i.test(name)&&/(2026|26년|26MY)/i.test(year)&&keys.has(String(car.assetCode||car.plate||'').trim())}
+function hSortCars(items){return [...items].sort((a,b)=>Number(hIsPromo(b))-Number(hIsPromo(a))||hMinRent(a)-hMinRent(b))}
+function table(items,term){items=hSortCars(items);let rows='';for(const c of items){const terms=(c.terms||[]).filter(t=>!term||String(t.months)===term).sort((a,b)=>b.months-a.months);if(!terms.length)continue;terms.forEach((t,i)=>{rows+=`<tr>${i===0?`<td rowspan="${terms.length}" class="plate">${esc(String(c.plate||'').replace(/번호판\s*등록\s*예정|번호판\s*미등록|차량번호\s*미등록|차량번호 미등록|미등록/g,'등록예정'))}</td><td class="harmony-year" rowspan="${terms.length}">${esc(c.year)}</td><td class="harmony-fuel" rowspan="${terms.length}">${esc(c.fuel)}</td><td rowspan="${terms.length}" class="model">${esc(c.detail||c.model)}</td><td rowspan="${terms.length}">${esc(c.color)}</td><td rowspan="${terms.length}">${esc(c.interior)}</td><td rowspan="${terms.length}">${esc(c.distance)}</td><td rowspan="${terms.length}" class="money">${cleanMoney(harmonyPrice(c))}</td>`:''}<td class="money">${cleanMoney(t.deposit)}</td><td><span class="months">${esc(t.months)}개월</span></td><td class="rent">${cleanMoney(t.rent)}</td><td class="buyout">${cleanMoney(t.buyout)}</td>${i===0?`<td rowspan="${terms.length}" class="option">${esc(c.options||'무옵션')}</td>`:''}</tr>`})}return `<div class="table-scroll" role="region" aria-label="차량 가격표 좌우 스크롤" tabindex="0"><table class="price-table"><thead><tr><th>차량번호</th><th>연식</th><th>연료</th><th>차종 / 세부모델</th><th>외장 색상</th><th>내장 색상</th><th>주행거리</th><th>차량가격</th><th>보증금</th><th>계약기간</th><th>월 렌트료</th><th>만기 인수가</th><th>옵션내용</th></tr></thead><tbody>${rows}</tbody></table></div>`}let selectedBrand='',selectedType='';
+const carType=c=>{const v=[c.model,c.detail].join(' ').toLowerCase();if(/ev[3469]|아이오닉|전기|electric|e-tron|eqe|eqs|테슬라|model [3syx]|폴스타|타이칸|니로 ev|코나 ev/.test(v))return '전기차';if(/카니발|스타리아|스타렉스|쏠라티|투리스모|로디우스|알파드|시에나|v-class/.test(v))return 'RV·승합';if(/suv|gv[678]0|스포티지|쏘렌토|싼타페|투싼|셀토스|코나|베뉴|팰리세이드|모하비|니로|토레스|티볼리|렉스턴|액티언|qm[356]|xm3|아르카나|캡처|트레일블레이저|트랙스|이쿼녹스|콜로라도|익스플로러|x[1-7]|gl[abcse]|q[23578]|xc[469]0|카이엔|마칸|레인지로버|디스커버리|디펜더|랭글러|컴패스|체로키/.test(v))return 'SUV';return '승용'};
+function filterButtons(){const brands=[...new Set(cars.map(c=>c.brand||'기타'))].sort(kr);const types=['승용','전기차','RV·승합','SUV'].filter(t=>cars.some(c=>carType(c)===t));if(selectedBrand&&!brands.includes(selectedBrand))selectedBrand='';if(selectedType&&!types.includes(selectedType))selectedType='';const make=(id,values,current,callback)=>{document.getElementById(id).innerHTML=['',...values].map(v=>`<button type="button" class="${v===current?'active':''}" data-value="${esc(v)}" aria-pressed="${v===current}">${esc(v||'전체')}</button>`).join('');document.getElementById(id).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>callback(b.dataset.value)))};make('brandFilters',brands,selectedBrand,v=>{selectedBrand=v;filterButtons();render()});make('typeFilters',types,selectedType,v=>{selectedType=v;filterButtons();render()})}
+function render(){const q=document.getElementById('search').value.trim().toLowerCase(),term=document.getElementById('term').value;const selected=cars.filter(c=>([c.detail,c.model,c.plate,c.brand,c.fuel].join(' ').toLowerCase().includes(q))&&(!term||(c.terms||[]).some(t=>String(t.months)===term))&&(!selectedBrand||(c.brand||'기타')===selectedBrand)&&(!selectedType||carType(c)===selectedType));const plates=new Set(selected.map(c=>c.plate));document.getElementById('summary').textContent=`중고차 6·12개월 렌트 ${plates.size}대 · 계약조건 ${selected.reduce((n,c)=>n+(c.terms||[]).filter(t=>!term||String(t.months)===term).length,0)}건`;if(!selected.length){list.innerHTML='<div class="panel empty">조건에 맞는 차량이 없습니다.</div>';return}const groups=new Map();for(const c of selected){const brand=c.brand||'기타',model=c.model||'기타';if(!groups.has(brand))groups.set(brand,new Map());const models=groups.get(brand);if(!models.has(model))models.set(model,[]);models.get(model).push(c)}list.innerHTML=[...groups].sort((a,b)=>kr(a[0],b[0])).map(([brand,models])=>`<section><div class="brand-title">${esc(brand)}</div>${[...models].sort((a,b)=>kr(a[0],b[0])).map(([model,items])=>{const count=new Set(items.map(c=>c.plate)).size;const fuelGroups=new Map();for(const c of items){const fuel=c.fuel||'미등록';if(!fuelGroups.has(fuel))fuelGroups.set(fuel,[]);fuelGroups.get(fuel).push(c)}return `<div class="model-title">${esc(model)} · ${count}대</div>${[...fuelGroups].sort((a,b)=>kr(a[0],b[0])).map(([fuel,arr])=>`<div class="fuel-title">연료 · ${esc(fuel)} · ${new Set(arr.map(c=>c.plate)).size}대</div>${table(arr,term)}`).join('')}`}).join('')}</section>`).join('')}
+// 6·12개월 상품은 게시된 JSON만 표시합니다. 예전 inventory.xls로 되돌아가지 않습니다.
+(async()=>{
+  try{
+    const r=await fetch(ROOT+'inventory/used612.json?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw Error('게시된 차량 목록을 읽지 못했습니다 (HTTP '+r.status+')');
+    const d=await r.json();
+    if(!d||!Array.isArray(d.cars))throw Error('게시 파일 형식이 올바르지 않습니다');
+    cars=d.cars;
+    filterButtons();render();
+  }catch(e){
+    cars=[];
+    filterButtons();render();
+    document.getElementById('summary').textContent='6·12개월 게시 목록을 불러오지 못했습니다: '+e.message+' · 관리자에서 엑셀을 다시 게시해 주세요.';
+  }
+})();
+document.getElementById('search').addEventListener('input',render);document.getElementById('term').addEventListener('change',render);
+</script></body></html>

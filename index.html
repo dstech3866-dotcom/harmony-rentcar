@@ -1,0 +1,817 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta property="og:title" content="하모니렌트카 신차 및 중고차 재고현황"><meta property="og:description" content="신차 및 중고차 재고현황을 확인하세요"><meta property="og:type" content="website"><meta property="og:url" content="https://euphonious-babka-a95f32.netlify.app/"><meta property="og:image" content="https://euphonious-babka-a95f32.netlify.app/kakao-simple-20261111.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="하모니렌트카 신차 중고차 재고현황 바로가기"><meta name="twitter:card" content="summary_large_image"><title>하모니렌트카 신차 및 중고차 재고현황</title><style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f6fa;color:#17233b}header{background:#142d52;color:white;padding:30px 18px;text-align:center}header h1{margin:0 0 8px;font-size:26px}header p{margin:0;color:#dce7f5}.wrap{max-width:1080px;margin:auto;padding:24px 16px}.bar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:18px}.btn{background:#195db3;color:white;border:0;border-radius:10px;padding:12px 16px;cursor:pointer;font-weight:700;text-decoration:none}.btn.secondary{background:#e6edf8;color:#14335c}#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}.item{background:white;border-radius:15px;overflow:hidden;box-shadow:0 4px 16px #152b4a12}.item img{width:100%;aspect-ratio:4/5;object-fit:contain;background:#edf0f5;cursor:pointer}.item .name{padding:12px 14px;font-weight:650;overflow-wrap:anywhere}.empty{text-align:center;color:#68768a;padding:65px 15px;grid-column:1/-1}dialog{border:0;border-radius:14px;padding:10px;max-width:95vw;max-height:95vh}dialog img{max-width:90vw;max-height:82vh;object-fit:contain}dialog::backdrop{background:#000b}footer{text-align:center;padding:25px;color:#667}#admin{display:none;background:white;padding:18px;border-radius:14px;margin-bottom:20px}input{padding:11px;border:1px solid #c9d2e1;border-radius:9px;max-width:100%}.adminrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.small{font-size:13px;color:#64748b}button:disabled{opacity:.5}.delete{background:#fce8e8;color:#a11919;border:0;border-radius:7px;padding:7px 10px;margin:0 12px 12px;cursor:pointer}.edit{background:#e7f0ff;color:#154b92;border:0;border-radius:7px;padding:7px 10px;margin:0 0 12px 12px;cursor:pointer}header .today-date{margin:12px 0 0;font-size:16px;font-weight:700;color:#e4efff;letter-spacing:.2px}[hidden]{display:none!important}</style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script><style id="promoStyle">.promo-area{max-width:1080px;margin:18px auto 0;padding:0 16px}.promo-banner{background:#08090d;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 12px 35px #152b4a2a}.promo-banner img{width:100%;display:block;max-height:670px;object-fit:contain}.promo-action{display:flex;gap:10px;justify-content:center;padding:14px;background:#101117}.promo-action a{background:#f02030;color:white;padding:12px 18px;border-radius:9px;text-decoration:none;font-weight:800}.promo-action a:nth-child(2){background:#fff;color:#17233b}.promo-admin{background:#fff;border:1px solid #d6e2ef;border-radius:14px;padding:20px;margin:16px 0;display:none}.promo-admin button{margin:5px 5px 5px 0}.promo-admin input{max-width:100%}@media(max-width:640px){.promo-area{padding:0 10px}.promo-banner{border-radius:10px}.promo-banner img{max-height:none}.promo-action{flex-wrap:wrap}.promo-action a{font-size:13px;padding:10px 12px}}</style><style id="promoCarsStyle">.promo-cars{padding:16px;background:#101117;color:white}.promo-cars h2{font-size:20px;margin:0 0 6px}.promo-cars p{font-size:12px;color:#cbd5e1;margin:0 0 14px}.promo-car-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.promo-car{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;text-decoration:none;color:#fff;border:1px solid #43434a;background:linear-gradient(#25252b,#141418);border-radius:12px;padding:16px 8px;min-height:118px}.promo-car strong{font-size:19px}.promo-car .price{color:#fff;background:#e41e2d;border-radius:24px;padding:6px 12px;font-weight:800}.promo-car .see{color:#d8e7ff;font-size:12px}.promo-car:hover,.promo-car:focus-visible{outline:2px solid #ffdb45;outline-offset:2px}.promo-disclaimer{font-size:11px;color:#b6b6c0;margin:10px 0 0!important}@media(max-width:600px){.promo-car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.promo-car strong{font-size:16px}.promo-car .price{font-size:12px}}</style><style id="blackFridayLayoutFix">/* Keep the complete artwork readable and the six links directly below it. */
+#promoArea .promo-banner{background:#0b0b0e}
+#promoArea #promoHeroImage{width:100%;max-width:760px;max-height:none;height:auto;object-fit:contain;margin:0 auto;display:block}
+#promoArea .promo-cars{max-width:760px;margin:0 auto;box-sizing:border-box}
+#promoArea .promo-car-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:600px){#promoArea .promo-car-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style><style id="avantePromoStyle">.avante-promo{max-width:1080px;margin:18px auto 0;padding:0 16px}.avante-panel{background:#fff8ed;border:1px solid #efcfae;border-radius:18px;overflow:hidden;box-shadow:0 8px 22px #7d3a1719}.avante-head{padding:15px 20px;background:#9b4315;color:white;font-size:22px;font-weight:800}.avante-panel img{display:block;width:100%;max-height:920px;object-fit:contain;background:#fff3df}.avante-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:18px}.avante-card{display:block;text-decoration:none;background:#fff;border:2px solid #f0c8aa;border-radius:13px;padding:16px;color:#322015}.avante-card strong{display:block;font-size:20px}.avante-card .avante-price{font-weight:800;color:#c4490d;margin:8px 0}.avante-card .avante-go{display:inline-block;background:#bc4b14;color:white;padding:8px 13px;border-radius:9px;font-weight:800}.avante-card:hover,.avante-card:focus-visible{outline:3px solid #d97706}.avante-note{font-size:12px;color:#6c584a;padding:0 18px 17px;line-height:1.6}@media(max-width:600px){.avante-cards{grid-template-columns:1fr}.avante-head{font-size:18px}.avante-card strong{font-size:17px}}</style><script>
+// All admin modules use one Supabase client and the same persisted session.
+window.__harmonySharedClient = function(mod,url,key){
+  if (!window.__harmonyClient) window.__harmonyClient=mod.createClient(url,key);
+  return window.__harmonyClient;
+};
+window.__harmonySyncLogin = function(isLoggedIn){
+  if(!new URLSearchParams(location.search).has('admin')) return;
+  const labels={promoStatus:'홈페이지 프로모션',avanteStatus:'아반떼 프로모션',shortStatus:'6·12개월 엑셀'};
+  Object.entries(labels).forEach(([id,name])=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    if(!isLoggedIn)el.textContent='관리자 로그인이 필요합니다. 위의 관리자 이미지 관리에서 로그인하세요.';
+    else if(/관리자 로그인 후|관리자 로그인이 필요|로그인 후 이용|로그인 후 사용/.test(el.textContent||''))el.textContent='관리자 로그인 확인 완료 · '+name+' 관리 가능';
+  });
+};
+</script>
+<style id="campaignCarLinksStyle">.campaign-car-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:12px 0}.campaign-car-box{border:1px solid #e7c5aa;background:#fff;border-radius:12px;padding:16px}.campaign-car-box strong{display:block;font-size:17px;color:#1c314b;margin-bottom:7px}.campaign-car-box .campaign-car-note{color:#c34b0b;font-weight:700;margin:0 0 12px}.campaign-car-box a{display:inline-block;background:#bf4a0b;color:white;text-decoration:none;border-radius:8px;padding:10px 14px;font-weight:700}.campaign-car-box a:hover{background:#923806}</style></head><body><header><h1>하모니렌트카 신차 및 중고차 재고현황</h1><p>신차 · 중고차 · 재고현황</p><p class="today-date" id="todayDate" aria-live="off">오늘 날짜 확인 중...</p></header><style>
+.harmony-price-hero{max-width:1080px;margin:20px auto 24px;padding:0 16px;box-sizing:border-box}
+.harmony-price-panel{background:linear-gradient(120deg,#eaf3ff 0%,#fff 100%);border:2px solid #b7d4f4;border-radius:22px;padding:26px 28px;box-shadow:0 12px 28px rgba(19,64,116,.12)}
+.harmony-price-kicker{color:#34639a;font-size:15px;font-weight:800;letter-spacing:.03em}
+.harmony-price-title{font-size:clamp(25px,3.3vw,39px);color:#123663;margin:12px 0;font-weight:900;line-height:1.35}
+.harmony-price-desc{color:#506986;font-size:16px;line-height:1.65;margin:0 0 18px}
+.harmony-price-primary{display:block;background:#1766ab;color:#fff!important;text-align:center;text-decoration:none;font-size:19px;font-weight:800;padding:17px 12px;border-radius:12px;box-shadow:0 4px 0 #0d4679}
+.harmony-price-primary:hover,.harmony-price-primary:focus-visible{background:#0e4d87;outline:3px solid #7fb6f4;outline-offset:2px}
+.harmony-price-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:16px}
+.harmony-price-links a{background:#194a7c;color:#fff!important;text-decoration:none;text-align:center;font-weight:800;border-radius:10px;padding:14px 7px}
+.harmony-price-links a:hover,.harmony-price-links a:focus-visible{background:#0e365e;outline:2px solid #7fb6f4}
+.harmony-price-short{display:block;margin-top:11px;text-align:center;background:#e0eaf5;border-radius:10px;color:#365879!important;text-decoration:none;font-weight:700;padding:12px}
+@media(max-width:650px){.harmony-price-panel{padding:20px 15px}.harmony-price-links{grid-template-columns:repeat(2,minmax(0,1fr))}.harmony-price-primary{font-size:17px}}
+</style>
+<section class="harmony-price-hero" aria-label="하모니렌트카 렌트 리스 최저가 안내"><div class="harmony-price-panel">
+<div class="harmony-price-kicker">01 · 하모니렌트카 차량 가격표</div>
+<h2 class="harmony-price-title">하모니렌트카에서 드릴 수 있는<br>렌트·리스 최저가!</h2>
+<p class="harmony-price-desc">신차·중고차, 렌트·리스를 한눈에 비교하세요. 하모니렌트카에서 제공 가능한 차량을 월 납입금이 낮은 순서로 확인하실 수 있습니다.</p>
+<a class="harmony-price-primary" href="lowest/index.html">렌트·리스 통합 최저가 확인하기 →</a>
+<nav class="harmony-price-links" aria-label="차량별 가격표"><a href="newcars/index.html">신차렌트</a><a href="cars/index.html">중고렌트</a><a href="newlease/index.html">신차리스</a><a href="usedlease/index.html">중고리스</a></nav>
+<a class="harmony-price-short" href="used612/index.html">6·12개월 렌트 별도 확인 →</a>
+</div></section><section id="campaignDisplay" aria-label="현재 진행 중인 특별 프로모션" hidden></section><section class="promo-area" id="promoArea" aria-label="블랙프라이데이 특별 프로모션"><div class="promo-banner"><img id="promoHeroImage" src="black-friday-promo.png" alt="11월 계약 한정 블랙프라이데이 중고렌트 월 대여료 최대 10만원 인하 프로모션"><div class="promo-cars"><h2>프로모션 대상 차량 선택</h2><p>차량을 누르면 해당 차종의 중고렌트 가격표만 표시됩니다.</p><div class="promo-car-grid"><a class="promo-car" href="cars/index.html?promo=%EC%95%84%EB%B0%98%EB%96%BC" aria-label="아반떼 중고렌트 가격표만 보기"><strong>아반떼</strong><span class="price">월 48만원~</span><span class="see">해당 차종만 보기 →</span></a><a class="promo-car" href="cars/index.html?promo=%EC%8F%98%EB%82%98%ED%83%80" aria-label="쏘나타 중고렌트 가격표만 보기"><strong>쏘나타</strong><span class="price">월 54만원~</span><span class="see">해당 차종만 보기 →</span></a><a class="promo-car" href="cars/index.html?promo=%EA%B7%B8%EB%9E%9C%EC%A0%80" aria-label="그랜저 중고렌트 가격표만 보기"><strong>그랜저</strong><span class="price">월 63만원~</span><span class="see">해당 차종만 보기 →</span></a><a class="promo-car" href="cars/index.html?promo=%ED%8C%B0%EB%A6%AC%EC%84%B8%EC%9D%B4%EB%93%9C" aria-label="팰리세이드 중고렌트 가격표만 보기"><strong>팰리세이드</strong><span class="price">월 65만원~</span><span class="see">해당 차종만 보기 →</span></a><a class="promo-car" href="cars/index.html?promo=GV70" aria-label="GV70 중고렌트 가격표만 보기"><strong>GV70</strong><span class="price">월 92만원~</span><span class="see">해당 차종만 보기 →</span></a><a class="promo-car" href="cars/index.html?promo=GV80" aria-label="GV80 중고렌트 가격표만 보기"><strong>GV80</strong><span class="price">월 100만원~</span><span class="see">해당 차종만 보기 →</span></a></div><p class="promo-disclaimer">※ 홍보 가격은 행사 조건에 따른 예시입니다. 실제 재고·계약 조건과 할인 적용 여부는 상담 시 확인하세요.</p></div><div class="promo-action"><a href="cars/index.html">중고렌트 가격표 보기</a><a href="tel:01045383866">전화 상담 010-4538-3866</a></div></div><p style="font-size:12px;color:#66758a;text-align:center;margin:9px 0">11월 계약 한정 · 차량 및 계약 조건에 따라 혜택이 다를 수 있습니다. 상세 조건은 상담 시 확인해 주세요.</p></section><section class="avante-promo" id="avantePromo" aria-label="2026년형 2027년형 아반떼 프로모션"><div class="avante-panel"><div class="avante-head">2026 vs 2027 아반떼 · 11월 특별 프로모션</div><img src="avante-2026-2027-promo.png" alt="2026년형과 2027년형 아반떼 보증금, 월 렌트료, 수수료 비교 프로모션" loading="lazy"><div class="avante-cards"><a class="avante-card" href="newcars/index.html?promo=%EC%95%84%EB%B0%98%EB%96%BC&amp;year=2026" data-avante-year="2026" target="_self"><strong>2026년형 아반떼 CN7</strong><div class="avante-price">보증금 50만원 · 월 57.1만원~ (홍보 기준)</div><span class="avante-go">2026년형 차량 보기 →</span></a><a class="avante-card" href="newcars/index.html?promo=%EC%95%84%EB%B0%98%EB%96%BC&amp;year=2027" data-avante-year="2027" target="_self"><strong>2027년형 아반떼 CN8</strong><div class="avante-price">보증금 130만원 · 월 57만원 (홍보 기준)</div><span class="avante-go">2027년형 차량 보기 →</span></a></div><div class="avante-note">※ 버튼을 누르면 해당 연식의 신차렌트 차량을 검색합니다. 실시간 재고 및 행사 적용 여부는 상담 시 확인하세요. 11월 계약 한정 홍보 자료이며, 종료 후 게시를 중단해야 합니다. <a href="tel:01045383866">상담 전화 010-4538-3866</a></div></div></section><main class="wrap"><div class="bar"><strong id="count">전체 재고현황</strong><div><button class="btn secondary" id="share">링크 복사</button> <a class="btn" href="tel:01045383866">전화 문의</a></div></div><section aria-label="중고렌트 차량 가격표" style="background:#fff;border:2px solid #d7e5f7;border-radius:16px;padding:18px;margin-bottom:22px;box-shadow:0 3px 12px #142d5210"><div style="font-size:20px;font-weight:800;color:#142d52;margin-bottom:7px">중고렌트 차량 가격표</div><p style="color:#53657d;margin:0 0 14px;line-height:1.6">제조사·차종별 차량번호, 옵션, 계약기간, 보증금과 월 렌트료를 한눈에 확인하세요.</p><a class="btn" style="display:inline-block" href="cars/index.html">차량 가격표 보기 →</a></section><section aria-label="신차렌트 차량 가격표" style="background:#fff;border:2px solid #d7e5f7;border-radius:16px;padding:18px;margin-bottom:22px"><div style="font-size:20px;font-weight:800;color:#142d52;margin-bottom:7px">신차렌트 차량 가격표</div><p style="color:#53657d;margin:0 0 14px;line-height:1.6">신차 차량번호·옵션·보증금·월 렌트료를 확인하세요.</p><a class="btn" style="display:inline-block" href="newcars/index.html">신차 가격표 보기 →</a></section><section aria-label="신차리스 가격표" style="background:#fff;border:2px solid #d7e5f7;border-radius:16px;padding:18px;margin-bottom:22px"><div style="font-size:20px;font-weight:800;color:#142d52;margin-bottom:7px">신차리스 가격표</div><p style="color:#53657d;margin:0 0 14px;line-height:1.6">차종·옵션·계약기간·보증금·월 납입료를 확인하세요. 실제 등록 자료 기준입니다.</p><a class="btn" style="display:inline-block" href="newlease/index.html">신차리스 가격표 보기 →</a></section><section aria-label="중고리스 가격표" style="background:#fff;border:2px solid #d7e5f7;border-radius:16px;padding:18px;margin-bottom:22px"><div style="font-size:20px;font-weight:800;color:#142d52;margin-bottom:7px">중고리스 가격표</div><p style="color:#53657d;margin:0 0 14px;line-height:1.6">차종·옵션·계약기간·보증금·월 납입료를 확인하세요. 실제 등록 자료 기준입니다.</p><a class="btn" style="display:inline-block" href="usedlease/index.html">중고리스 가격표 보기 →</a></section><section aria-label="6·12개월 렌트 가격표" style="background:#fff;border:2px solid #d7e5f7;border-radius:16px;padding:18px;margin-bottom:22px"><div style="font-size:20px;font-weight:800;color:#142d52;margin-bottom:7px">6·12개월 렌트 가격표</div><p style="color:#53657d;margin:0 0 14px;line-height:1.6">중고차 6개월·12개월 단기렌트 차량의 계약기간, 보증금과 월 렌트료를 확인하세요.</p><a class="btn" style="display:inline-block" href="used612/index.html">6·12개월 가격표 보기 →</a></section><section id="avantePromoAdmin" style="display:none;background:#fff;border:1px solid #d6e2ef;border-radius:14px;padding:18px;margin:16px 0"><h2>아반떼 2026·2027 프로모션 관리</h2><p class="small">기존 블랙프라이데이와 별도로 이 프로모션을 표시하거나 숨깁니다.</p><button class="btn secondary" type="button" id="avanteHide">아반떼 프로모션 숨기기</button> <button class="btn" type="button" id="avanteShow">아반떼 프로모션 다시 표시</button><p class="small" id="avanteStatus">관리자 로그인 후 이용하세요.</p></section><section id="campaignManager" class="panel" style="display:none;background:white;border:1px solid #d6e2ef;border-radius:14px;padding:20px;margin:16px auto;max-width:1100px"><h2>프로모션 이미지 자동 등록</h2><p class="small"><b>홍보 이미지 한 장만 선택하면 홈페이지 최상단에 아반떼형 홍보 카드와 차량별 클릭 버튼을 자동 생성합니다.</b> 블랙프라이데이 이미지에는 6개 차량 버튼이 자동 설정됩니다. 다른 이미지도 파일명에 있는 차종을 인식하여 버튼을 만듭니다. 인식되지 않은 차종은 기본 상품별 가격표 버튼으로 연결됩니다.</p><div class="adminrow"><input type="file" id="campaignQuickImage" accept="image/png,image/jpeg,image/webp"><button class="btn" id="campaignQuickSave" type="button">이미지만 올려 자동 게시</button></div><p id="campaignQuickStatus" class="small" role="status"></p><details><summary style="cursor:pointer;font-weight:700;margin:14px 0">상세 설정 · 차량 버튼 직접 수정 (선택)</summary><h2>여러 프로모션 등록·관리</h2><p class="small">한 번 등록하면 별도 배포 없이 수정·표시·숨기기·삭제할 수 있습니다. 이미지 아래에 아반떼 프로모션처럼 여러 차종별 클릭 버튼을 만들 수 있습니다. 버튼 설정은 한 줄에 하나씩 입력하세요.</p><div class="adminrow"><input id="campaignTitle" placeholder="프로모션 제목" maxlength="100"><select id="campaignKind"><option value="used">중고렌트</option><option value="new">신차렌트</option><option value="newlease">신차리스</option><option value="usedlease">중고리스</option></select><input id="campaignModel" placeholder="연결 차종 (선택, 예: 아반떼)" maxlength="60"><input id="campaignYear" placeholder="연식 (선택, 예: 2027)" maxlength="4"></div><div class="adminrow"><label>시작일 <input id="campaignStart" type="date"></label><label>종료일 <input id="campaignEnd" type="date"></label><input id="campaignImage" type="file" accept="image/png,image/jpeg,image/webp"></div><div class="adminrow" style="display:block;margin:12px 0"><label for="campaignButtons"><strong>차종별 클릭 버튼 (아반떼 프로모션 방식)</strong></label><p class="small">한 줄에 <b>버튼명 | 상품 | 차종 | 연식 | 안내 문구</b> 순서로 입력하세요. 상품은 신차렌트, 중고렌트, 신차리스, 중고리스, 6·12개월 중 하나입니다. 연식과 안내 문구는 생략 가능합니다.</p><textarea id="campaignButtons" rows="5" style="width:100%;box-sizing:border-box;min-height:110px" placeholder="아반떼 2026년형 차량 보기 | 신차렌트 | 아반떼 | 2026 | 보증금 50만원 · 월 57.1만원~&#10;아반떼 2027년형 차량 보기 | 신차렌트 | 아반떼 | 2027 | 보증금 130만원 · 월 57만원~&#10;쏘나타 차량 보기 | 중고렌트 | 쏘나타"></textarea></div><div class="adminrow"><textarea id="campaignDescription" rows="2" placeholder="행사 안내문 (선택)" style="flex:1;min-width:240px"></textarea><button id="campaignSave" type="button" class="btn">새 프로모션 등록</button><button id="campaignCancelEdit" type="button" class="btn secondary">수정 취소</button></div><p class="small" id="campaignStatus" role="status">프로모션 목록 확인 중…</p><p class="small">차종 버튼은 해당 상품의 검색 페이지로 연결됩니다. 가격·재고는 자동 변경되지 않습니다. 행사 조건을 확인한 뒤 게시하세요.</p></details><h3>등록된 프로모션 · 수정 / 숨기기 / 삭제</h3><div id="campaignAdminList"></div></section>
+<section class="promo-admin" id="promoAdmin"><h2>블랙프라이데이 프로모션 관리</h2><p class="small">아반떼 프로모션과 동일하게 블랙프라이데이 홍보물 전체(이미지·차량별 클릭 버튼)를 표시하거나 숨깁니다. 이미지 변경도 가능합니다.</p><div class="adminrow"><input id="promoFile" type="file" accept="image/jpeg,image/png,image/webp"><button class="btn" id="promoUpload" type="button">새 프로모션 이미지 게시</button><button class="btn secondary" id="promoHide" type="button">블랙프라이데이 프로모션 숨기기</button><button class="btn secondary" id="promoRestore" type="button">블랙프라이데이 프로모션 다시 표시</button><button class="delete" id="promoDeleteImage" type="button">블랙프라이데이 이미지 삭제 및 숨기기</button></div><p id="promoStatus" class="small" role="status">관리자 로그인 후 사용 가능합니다.</p></section><section id="admin"><h2>관리자 이미지 관리</h2><p class="small">관리자 로그인 후 이미지를 업로드하거나 삭제할 수 있습니다.</p><p id="loginFeedback" class="small" role="status" aria-live="polite">로그인 상태 확인 중...</p><div class="adminrow" id="loginrow"><input type="email" id="email" placeholder="관리자 이메일"><input type="password" id="password" placeholder="비밀번호"><button class="btn" id="login">로그인</button></div><section id="hColorPanel" style="display:none;background:#fff;border:2px solid #c7d9ef;border-radius:14px;padding:16px;margin:16px 0;max-width:1050px"><h3 style="margin:0 0 8px">홍보 이미지 색상 변경 · 업로드 공통 설정</h3><p class="small">원본 이미지는 보존됩니다. 파란색·하늘색 계열만 선택한 색상으로 변환합니다. 검정 글씨와 흰색 배경은 최대한 유지하지만 JPG의 색상 특성에 따라 일부 글씨에도 영향을 줄 수 있으므로 미리보기를 확인하세요.</p><div class="adminrow"><label>색상 방식 <select id="hColorMode"><option value="original">원본 색상 유지</option><option value="manual">지정 색상 선택</option><option value="auto">업로드할 때마다 자동 변경</option></select></label><label>변경 색상 <select id="hColorPreset"><option value="green">에메랄드 그린</option><option value="purple">퍼플</option><option value="red">레드</option><option value="gold">골드</option><option value="navy">네이비 블루</option><option value="teal">청록</option><option value="mint">민트</option><option value="lime">라임</option><option value="orange">오렌지</option><option value="coral">코랄</option><option value="pink">핑크</option><option value="magenta">마젠타</option><option value="indigo">인디고</option><option value="sky">스카이블루</option><option value="bronze">브론즈</option><option value="burgundy">버건디</option></select></label><label>미리보기 이미지 <input type="file" id="hColorPreviewFile" accept="image/jpeg,image/png,image/webp"></label><button type="button" class="btn secondary" id="hColorPreviewBtn">색상 미리보기</button></div><div id="hColorPreviewWrap" style="display:none;margin-top:12px"><img id="hColorPreviewImage" alt="색상 변경 결과 미리보기" style="max-width:100%;max-height:380px;object-fit:contain;border-radius:8px"><p id="hColorPreviewStatus" class="small"></p></div><div id="hKakaoColor" style="margin:18px 0 0;padding:15px;border:2px solid #b5cbe6;border-radius:12px;background:#f5f9ff"><h3 style="margin:0 0 8px">카카오톡 링크 미리보기 대표 이미지 색상 변경</h3><p class="small">카카오톡 공유 시 나타나는 ‘신차·중고차 리스트 현황’ 이미지만 변경합니다. 기존 홍보 문구와 로고, 홈페이지 기능은 유지합니다.</p><div class="adminrow"><label>대표 이미지 <input type="file" id="hKakaoSource" accept="image/jpeg,image/png,image/webp"></label><button class="btn secondary" type="button" id="hKakaoPreviewBtn">대표 이미지 색상 미리보기</button><button class="btn" type="button" id="hKakaoPublishBtn" disabled style="background:#087e56">카카오톡 대표 이미지 게시</button><button class="btn secondary" type="button" id="hKakaoDownloadBtn" disabled>JPG 별도 저장</button></div><p class="small">이미지를 선택하지 않으면 현재 홈페이지의 카카오톡 대표 이미지를 사용합니다. 위쪽의 ‘색상 방식’에서 원본 유지 / 지정 색상 / 자동 변경을 선택하세요.</p><img id="hKakaoPreview" alt="카카오톡 대표 이미지 색상 변경 미리보기" style="display:none;width:100%;max-width:620px;border:1px solid #d6e2ef;border-radius:8px"><p id="hKakaoMsg" class="small">대표 이미지를 선택하지 않아도 현재 기본 이미지를 불러옵니다. 색상을 고르고 미리보기 후 「카카오톡 대표 이미지 게시」를 누르면 Supabase에 자동 저장됩니다. 첫 설치 시 Netlify 배포 및 Supabase 권한 설정이 필요합니다.</p></div><p id="hColorStatus" class="small">선택한 색상 방식은 일반 이미지, 블랙프라이데이, 통합 프로모션 이미지 업로드에 적용됩니다. 자동 변경은 업로드마다 색상을 무작위로 선택합니다.</p></section><div id="uploader" hidden><div class="adminrow"><input type="file" id="files" accept="image/*" multiple><input type="text" id="photoTitle" placeholder="사진 제목 (예: 아반떼 신차 재고현황)" maxlength="55" style="min-width:260px;flex:1"><button class="btn" id="upload">사진 업로드</button><button class="btn secondary" id="logout">로그아웃</button></div><p id="status" class="small"></p></div></section><section class="panel" id="inventoryAdmin" style="display:none;background:#fff;border:1px solid #d6e2ef;border-radius:14px;padding:20px;margin:16px 0"><h2>신차렌트 · 중고렌트 · 신차리스 · 중고리스 차량 리스트 관리</h2><p class="small">네 가지 상품은 각각 별도로 등록합니다. 엑셀 미리보기 후에만 게시할 수 있습니다.</p><div class="adminrow" style="margin:12px 0"><label for="inventoryKind">관리할 목록</label><select id="inventoryKind" style="padding:12px;border:1px solid #c9d2e1;border-radius:9px"><option value="used">중고렌트</option><option value="new">신차렌트</option><option value="newlease">신차리스 (48·60개월 개별 갱신)</option><option value="usedlease">중고리스</option></select><label id="leaseDurationWrap" style="display:none">신차리스 계약기간 <select id="leaseDuration" style="padding:11px;border:1px solid #c9d2e1;border-radius:9px"><option value="48">48개월만 갱신</option><option value="60">60개월만 갱신</option></select></label><input id="inventoryExcel" type="file" accept=".xls,.xlsx,.xlsm"/><button class="btn" id="inventoryPreview">엑셀 미리보기</button><button class="btn" id="inventoryPublish" disabled>선택한 목록 게시</button></div><p class="small" id="inventoryStatus" aria-live="polite">관리자 로그인이 필요합니다.</p><div id="inventorySample" style="max-height:360px;overflow:auto;font-size:13px"></div><p class="small">※ 렌트 상품은 30개월 계약·리스 상품·비렌트 번호판을 제외합니다. 리스는 별도 분석하며 계약조건을 확인해 주세요. 미리보기 0대일 때는 게시할 수 없습니다. 게시한 목록은 다른 목록을 변경하지 않습니다.</p></section><style>.h-new-pulse{display:inline-block;background:#16803c;color:#fff;border-radius:7px;padding:5px 9px;margin-right:10px;font-weight:800;animation:h-new-pulse 1.5s ease-in-out infinite;transform-origin:center}.h-new-preview{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#ecfdf5;border:1px solid #86efac;border-radius:10px;padding:12px;color:#166534}@keyframes h-new-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}@media(prefers-reduced-motion:reduce){.h-new-pulse{animation:none}}</style><section id="contentAdmin" style="display:none;background:#fff;border:1px solid #d6e2ef;border-radius:14px;padding:20px;margin:16px 0"><h2>차량 리스트 이미지 · 안내문 관리</h2><p class="small">4가지 상품별로 전체 상단·차종별 가격표 위·차량번호별 행에 이미지와 글을 각각 등록합니다. 엑셀 차량 정보는 변경되지 않습니다.</p><div class="adminrow" style="margin:12px 0"><label for="contentKind">상품 선택</label><select id="contentKind" style="padding:12px;border:1px solid #c9d2e1;border-radius:9px"><option value="used">중고렌트</option><option value="new">신차렌트</option><option value="newlease">신차리스</option><option value="usedlease">중고리스</option></select><button type="button" class="btn secondary" id="contentReload">현재 게시 내용 불러오기</button></div><div class="adminrow" style="margin:12px 0;align-items:center"><label for="contentScope">게시 위치</label><select id="contentScope" style="padding:11px;border:1px solid #c9d2e1;border-radius:9px"><option value="global">상품 가격표 맨 위</option><option value="model">차종 가격표 바로 위</option><option value="vehicle">차량번호별 해당 행</option></select><label for="contentTarget">차종 또는 차량번호</label><select id="contentTarget" style="padding:11px;border:1px solid #c9d2e1;border-radius:9px;min-width:210px" disabled><option value="">전체 상품</option></select><input id="contentManualTarget" type="text" placeholder="목록에 없으면 차종·차량번호 직접 입력" style="padding:11px;border:1px solid #c9d2e1;border-radius:9px;min-width:260px;display:none"></div><p class="small" id="contentTargetHelp">차종 또는 차량번호를 선택하거나 직접 입력하면 해당 위치에만 게시됩니다. 직접 입력 시 고객 가격표의 차종·차량번호와 정확히 일치해야 합니다.</p><div style="display:grid;gap:10px;max-width:850px"><label>제목 <input id="contentTitle" type="text" maxlength="90" placeholder="예: 이번 주 중고렌트 특별 안내" style="display:block;width:100%"></label><label>안내 문구 <textarea id="contentText" rows="5" maxlength="3000" placeholder="고객에게 보여줄 내용을 입력하세요." style="display:block;width:100%;padding:12px;border:1px solid #c9d2e1;border-radius:9px;font:inherit"></textarea></label><label>안내문 강조 효과 <select id="contentEffect" style="display:block;width:100%;max-width:420px;padding:12px;border:1px solid #c9d2e1;border-radius:9px"><option value="none">일반 안내문 (효과 없음)</option><option value="new-pulse">NEW 표시 확대 효과 (4번)</option></select></label><label>홍보 이미지 (선택, JPG/PNG/WebP, 최대 5MB) <input id="contentImage" type="file" accept="image/jpeg,image/png,image/webp" style="display:block;width:100%"></label><label><input id="contentRemoveImage" type="checkbox"> 기존 게시 이미지 제거</label><div id="contentImagePreview"></div><div class="adminrow"><button class="btn secondary" id="contentPreview" type="button">미리보기</button><button class="btn" id="contentPublish" type="button">이미지 · 글 게시</button><button class="btn secondary" id="contentDeleteAll" type="button" style="border:1px solid #b42318;color:#b42318;background:#fff">게시 내용 전체 삭제</button></div><p id="contentStatus" class="small" aria-live="polite">로그인 후 이용하세요.</p><div id="contentPreviewArea" style="border:1px solid #d5e0eb;border-radius:10px;padding:14px;display:none"></div></div></section><section id="shortAdmin" style="display:none;background:#fff;border:1px solid #d6e2ef;border-radius:14px;padding:20px;margin:16px 0"><h2>중고차 6·12개월 렌트 엑셀 관리</h2><p class="small">기존 중고렌트 227대와 별도로 관리합니다. 엑셀을 선택하고 미리보기에서 차량 수와 금액을 확인한 후 게시하세요.</p><div class="adminrow"><input id="shortExcel" type="file" accept=".xls,.xlsx,.xlsm"><button class="btn" id="shortPreview">6·12개월 미리보기</button><button class="btn" id="shortPublish" disabled>6·12개월 목록 게시</button></div><p id="shortStatus" class="small" aria-live="polite">관리자 로그인 후 이용하세요.</p><div id="shortSample" style="max-height:350px;overflow:auto"></div><p class="small">※ 0대 미리보기는 게시할 수 없습니다. 6·12개월 가격표만 갱신하며 다른 네 상품의 가격표는 변경하지 않습니다.</p></section><div id="grid" style="display:none"></div></main><footer>© 하모니렌트카</footer><dialog id="viewer"><button class="btn secondary" id="close">닫기 ×</button><div><img id="large" alt="확대 이미지"></div></dialog><script type="module">
+const SUPABASE_URL='https://gaygechqnvehajmsnvfb.supabase.co';
+const SUPABASE_ANON_KEY='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO';
+const BUCKET='gallery';
+const grid=document.querySelector('#grid'),admin=document.querySelector('#admin'),uploader=document.querySelector('#uploader'),loginrow=document.querySelector('#loginrow'),status=document.querySelector('#status');
+const adminMode=new URLSearchParams(location.search).has('admin');if(adminMode){admin.style.display='block';document.getElementById('campaignManager').style.display='block';}
+let signedIn=false,supabase=null;
+function message(msg){grid.style.display='';grid.innerHTML='';const div=document.createElement('div');div.className='empty';div.textContent=msg;grid.append(div)}
+// 사진 제목은 안전한 영문 파일명에 UTF-8 16진수로 보관합니다. 별도 DB 설정이 필요 없습니다.
+function titleToHex(title){return Array.from(new TextEncoder().encode(title),b=>b.toString(16).padStart(2,'0')).join('')}
+function hexToTitle(hex){try{const bytes=hex.match(/.{2}/g).map(h=>parseInt(h,16));return new TextDecoder('utf-8',{fatal:true}).decode(new Uint8Array(bytes))}catch{return ''}}
+function displayTitle(path){
+ const filename=path.split('/').pop();
+ const match=filename.match(/--t([0-9a-f]+)\.[a-z0-9]+$/i);
+ if(match){const decoded=hexToTitle(match[1]);if(decoded)return decoded}
+ return filename.replace(/\.[^.]+$/,'').replace(/^\d+-[0-9a-f-]{36}-/i,'').replace(/^\d+-/,'').replace(/^[0-9a-f]{8}-[0-9a-f-]{27,}-/i,'').replace(/_+/g,' ').trim()||'재고 이미지';
+}
+function renamedPath(oldPath,title){
+ const ext=(oldPath.match(/\.([a-z0-9]+)$/i)||[])[1]||'png';
+ const hex=titleToHex(title);
+ if(hex.length>150)throw Error('제목이 너무 깁니다. 20~25자 이내로 줄여주세요.');
+ return `${Date.now()}-${crypto.randomUUID()}--t${hex}.${ext.toLowerCase()}`;
+}
+const configured=SUPABASE_URL.startsWith('https://')&&!SUPABASE_ANON_KEY.startsWith('YOUR_');
+async function refresh(){if(!configured){message('Supabase 공개 API 키를 입력해 주세요.');return;}try{const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),12000);let response;try{response=await fetch(`${SUPABASE_URL}/storage/v1/object/list/${BUCKET}`,{method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':`Bearer ${SUPABASE_ANON_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({prefix:'',limit:1000,offset:0,sortBy:{column:'created_at',order:'desc'}}),signal:controller.signal})}finally{clearTimeout(timer)}const payload=await response.json();if(!response.ok){message('사진 목록 오류: '+(payload.message||payload.error||response.status));return}// Keep campaign metadata, campaign images and Black Friday visibility markers
+// out of the ordinary photo gallery. These objects remain untouched in Storage.
+const isGalleryPhoto=name=>{
+ if(!name||name.startsWith('.')||!/\.(png|jpg|jpeg|webp|gif|avif)$/i.test(name))return false;
+ if(/^harmony-(?:promo|campaign|blackfriday|avante)(?:-|_)/i.test(name))return false;
+ if(/^(?:black[-_ ]?friday|avante[-_ ]?2026[-_ ]?2027)[-_ ]?promo/i.test(name))return false;
+ return true;
+};
+const imgs=(Array.isArray(payload)?payload:[]).filter(x=>isGalleryPhoto(x.name));document.querySelector('#count').textContent=`전체 재고현황 ${imgs.length}건`;grid.replaceChildren();if(!imgs.length){grid.style.display='none';return;}grid.style.display='';for(const f of imgs){const url=`${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${encodeURIComponent(f.name)}`;const card=document.createElement('article');card.className='item';const img=document.createElement('img');img.src=url;img.loading='lazy';img.alt=f.name;img.onclick=()=>{document.querySelector('#large').src=url;document.querySelector('#viewer').showModal()};const name=document.createElement('div');name.className='name';name.textContent=displayTitle(f.name);card.append(img,name);if(signedIn){const edit=document.createElement('button');edit.className='edit';edit.textContent='이름 수정';edit.onclick=async()=>{
+ const current=displayTitle(f.name);const answer=prompt('새로운 사진 제목을 입력하세요.',current);
+ if(answer===null)return;const title=answer.trim();
+ if(!title)return alert('제목을 입력해 주세요.');if(title===current)return;
+ try{const next=renamedPath(f.name,title);edit.disabled=true;edit.textContent='변경 중...';
+ const {error:copyError}=await supabase.storage.from(BUCKET).copy(f.name,next);
+ if(copyError)throw Error('사진 복사 실패: '+copyError.message);
+ const {error:deleteError}=await supabase.storage.from(BUCKET).remove([f.name]);
+ if(deleteError){alert('새 제목의 사진은 만들어졌지만 기존 사진 삭제에 실패했습니다. 관리자 화면에서 중복 사진을 확인해 주세요. '+deleteError.message)}
+ await refresh();
+ }catch(e){alert('이름 변경 실패: '+e.message);edit.disabled=false;edit.textContent='이름 수정'}
+ };card.append(edit);const del=document.createElement('button');del.className='delete';del.textContent='삭제';del.onclick=async()=>{if(!confirm('이 이미지를 삭제할까요?'))return;try{const {error}=await supabase.storage.from(BUCKET).remove([f.name]);if(error)alert(error.message);else await refresh()}catch(e){alert(e.message)}};card.append(del)}grid.append(card)}}catch(e){message('사진 연결 실패: '+(e.name==='AbortError'?'연결 시간이 초과되었습니다.':e.message))}}
+async function authState(){if(!configured||!adminMode)return;try{if(!supabase){const mod=await import('https://esm.sh/@supabase/supabase-js@2');supabase=window.__harmonySharedClient(mod,SUPABASE_URL,SUPABASE_ANON_KEY)}const {data,error}=await supabase.auth.getSession();if(error)throw error;signedIn=!!data.session;loginrow.hidden=signedIn;uploader.hidden=!signedIn;document.querySelector('#loginFeedback').textContent=signedIn?'관리자 로그인 성공 · 사진·엑셀·게시 내용 관리 가능':'로그아웃 상태 · 관리자 이메일과 비밀번호로 로그인하세요.';syncAdminLoginUI();window.__harmonySyncLogin(signedIn);await refresh()}catch(e){status.textContent='관리자 로그인 상태 확인 오류: '+e.message;document.querySelector('#loginFeedback').textContent=status.textContent}}
+document.querySelector('#login').onclick=async()=>{if(!configured)return alert('Supabase 공개 API 키를 입력하세요.');try{if(!supabase){const mod=await import('https://esm.sh/@supabase/supabase-js@2');supabase=window.__harmonySharedClient(mod,SUPABASE_URL,SUPABASE_ANON_KEY)}const {error}=await supabase.auth.signInWithPassword({email:document.querySelector('#email').value,password:document.querySelector('#password').value});if(error){document.querySelector('#loginFeedback').textContent='로그인 실패: '+error.message;alert(error.message)}else await authState()}catch(e){alert(e.message)}};
+document.querySelector('#logout').onclick=async()=>{await supabase.auth.signOut();await authState()};
+document.querySelector('#upload').onclick=async()=>{
+ const files=[...document.querySelector('#files').files];if(!files.length)return alert('이미지를 선택해 주세요.');
+ const titleInput=document.querySelector('#photoTitle');const title=titleInput.value.trim();
+ if(files.length>1&&title&&!confirm('선택한 모든 사진에 같은 제목을 적용할까요?'))return;
+ status.textContent='업로드 중...';let done=0;
+ for(const file of files){if(!file.type.startsWith('image/'))continue;
+ const fallback=file.name.replace(/\.[^.]+$/,'').replace(/_+/g,' ').trim()||'재고 이미지';
+ let path;try{path=renamedPath(file.name,title||fallback)}catch(e){status.textContent=e.message;return}
+ const uploadFile=await window.harmonyColorize(file);
+ const {error}=await supabase.storage.from(BUCKET).upload(path,uploadFile,{contentType:uploadFile.type,upsert:false});
+ if(error){status.textContent=`업로드 실패: ${error.message}`;return}done++;
+ }
+ status.textContent=`${done}장 업로드 완료`;document.querySelector('#files').value='';titleInput.value='';await refresh();
+};
+document.querySelector('#share').onclick=async()=>{const url=new URL(location.href);url.search='';try{await navigator.clipboard.writeText(url.toString());alert('고객용 링크가 복사되었습니다.')}catch{prompt('아래 주소를 복사하세요.',url.toString())}};
+document.querySelector('#close').onclick=()=>document.querySelector('#viewer').close();
+refresh();if(adminMode)authState();
+
+const inventoryPanel=document.querySelector('#inventoryAdmin');
+const inventoryStatus=document.querySelector('#inventoryStatus');
+const kindEl=document.querySelector('#inventoryKind');
+const excelEl=document.querySelector('#inventoryExcel');
+const publishBtn=document.querySelector('#inventoryPublish');
+let inventoryCars=null,previewKind=null,previewFile=null;
+const cleanCell=x=>String(x??'').trim();
+const normCell=x=>cleanCell(x).replace(/[\s\n\r\t()_·.,:/]/g,'').toLowerCase();
+const fmtMoney=x=>{const s=cleanCell(x);if(!s)return '';if(s.includes('원'))return s;const n=Number(s.replace(/,/g,''));return Number.isFinite(n)?n.toLocaleString('ko-KR')+'원':s};
+const knownModels=['그랜저','쏘나타','아반떼','캐스퍼','싼타페','투싼','팰리세이드','코나','베뉴','스타리아','포터','봉고','모닝','레이','K3','K5','K7','K8','K9','셀토스','스포티지','쏘렌토','카니발','니로','모하비','EV3','EV4','EV5','EV6','EV9','아이오닉5','아이오닉6','아이오닉9','G70','G80','G90','GV60','GV70','GV80','토레스','티볼리','렉스턴','아르카나','XM3'];
+function fuelOf(v){v=cleanCell(v);if(/하이브리드/i.test(v))return '하이브리드';if(/lpg|가스/i.test(v))return 'LPG';if(/전기|electric/i.test(v))return '전기';if(/경유|디젤/i.test(v))return '경유';if(/휘발유|가솔린/i.test(v))return '휘발유';return v||'연료 미확인'}
+function modelOf(v){return knownModels.find(k=>v.includes(k))||v.split(' ')[0]||'기타'}
+function brandOf(v,detail){if(['현대','기아','제네시스','르노코리아','쉐보레','KG모빌리티'].includes(v))return v;if(/G80|GV\d|G70|G90/.test(detail))return '제네시스';if(/레이|모닝|셀토스|K8|K5|쏘렌토|스포티지|카니발/.test(detail))return '기아';return v||'기타'}
+function typeOf(detail,fuel){if(/포터|봉고|화물|트럭/.test(detail))return '화물';if(/스타리아|카니발/.test(detail))return 'RV·승합';if(/SUV|싼타페|쏘렌토|투싼|스포티지|팰리세이드|셀토스|코나|베뉴|GV|토레스|니로|모하비|렉스턴|캐스퍼|XM3/.test(detail))return 'SUV';return fuel==='전기'?'전기차':'승용'}
+function parseLeaseSheet(raw,kind){
+ const h=raw.findIndex(row=>Array.isArray(row)&&row.some(x=>/차량번호|차종|모델명|차량명|차명|세부모델|월리스료|월납입료|리스료/.test(normCell(x))));
+ if(h<0)throw Error('리스 차량 정보 열을 찾지 못했습니다.');
+ const head=raw[h].map(normCell);
+ const ix=(...names)=>{for(const name of names){let i=head.indexOf(normCell(name));if(i>=0)return i;}return -1};
+ const val=(row,...names)=>{for(const name of names){const i=ix(name);if(i>=0&&cleanCell(row[i]))return cleanCell(row[i]);}return ''};
+ const out=[];
+ for(const row of raw.slice(h+1)){
+  const detail=[val(row,'시리즈'),val(row,'차종','차명','차량명','모델명','모델'),val(row,'세부모델','트림','등급','라인업')].filter(Boolean).join(' ').trim();
+  const plate=val(row,'차량번호','차번').replace(/[\s-]/g,'');
+  if(!detail&&!plate)continue;
+  const terms=[];
+  for(let n=1;n<=4;n++){
+   const suffix=n===1?'':String(n);
+   const period=val(row,...(n===1?['계약기간','리스기간','기간','기간 1','기간1']:['기간 '+n,'기간'+n,'계약기간 '+n,'리스기간 '+n]));
+   const rent=val(row,...(n===1?['월리스료','월납입료','월리스료 1','월리스료1','월납입료 1','월납입료1','월렌트료']:['월리스료 '+n,'월리스료'+n,'월납입료 '+n,'월납입료'+n,'월렌트료 '+n]));
+   if(!rent)continue;
+   const mm=period.match(/\d+/);
+   const deposit=val(row,...(n===1?['보증금','보증금 1','보증금1']:['보증금 '+n,'보증금'+n]));
+   const buyout=val(row,...(n===1?['만기인수가','잔존가치','인수가','만기인수가 1']:['만기인수가 '+n,'잔존가치 '+n]));
+   terms.push({months:mm?Number(mm[0]):null,deposit:fmtMoney(deposit),rent:fmtMoney(rent),buyout:fmtMoney(buyout)});
+  }
+  if(!terms.length)continue;
+  const fuel=fuelOf(val(row,'유종','연료'));
+  out.push({plate:plate||'차량번호 미등록',brand:brandOf(val(row,'브랜드','제조사','메이커'),detail),type:typeOf(detail,fuel),model:modelOf(detail),detail:detail||'차량 정보 확인',year:val(row,'연식','년식','연형'),fuel,color:val(row,'외장컬러','외장색상','외장색','색상'),interior:val(row,'내장컬러','내장색상','내장색'),distance:val(row,'주행거리','주행거리km')||(kind==='newlease'?'신차':''),options:val(row,'옵션','옵션내용','주요옵션'),vehiclePrice:fmtMoney(val(row,'가격','차량가격','차량가액')),terms,stock:val(row,'잔여대수','재고')});
+ }
+ return out;
+}
+function parseSheet(raw,kind){
+ if(kind==='newlease'||kind==='usedlease')return parseLeaseSheet(raw,kind);
+ const h=raw.findIndex(r=>Array.isArray(r)&&r.some(x=>normCell(x)==='차량번호'));
+ if(h<0)throw Error('차량번호 열을 찾지 못했습니다.');
+ const head=raw[h].map(normCell);
+ const idx=(...names)=>{for(const name of names){const i=head.indexOf(normCell(name));if(i>=0)return i;}return -1};
+ const get=(r,...names)=>{for(const name of names){const i=idx(name);if(i>=0&&cleanCell(r[i]))return cleanCell(r[i]);}return ''};
+ const out=[];
+ for(const r of raw.slice(h+1)){
+  const plate=get(r,'차량번호','차번').replace(/[\s-]/g,'');
+  // 중고렌트는 기존 렌터카 번호판 검사를 유지하고, 신차렌트는 미등록 차량도 허용합니다.
+  if(kind==='used'&&!/^\d{2,3}[하허호]\d{4}$/.test(plate))continue;
+  if(kind==='new'&&plate&&!/^\d{2,3}[하허호]\d{4}$/.test(plate)&&plate!=='번호판등록예정')continue;
+  if(/리스/.test(get(r,'상품','상품구분','계약유형')))continue;
+  let detail,terms=[],year,distance;
+  if(kind==='used'){
+   detail=[get(r,'시리즈'),get(r,'차종'),get(r,'모델명')].filter(Boolean).join(' ');
+   for(let n=1;n<=3;n++){
+    const period=get(r,'기간 '+n,'기간'+n);const m=period.match(/\d+/);const months=m?Number(m[0]):null;
+    if(!months||months===30)continue;
+    const rent=get(r,'월렌트료 '+n,'월렌트료'+n),deposit=get(r,'보증금 '+n,'보증금'+n),buyout=get(r,'만기인수가 '+n,'만기인수가'+n);
+    if(rent)terms.push({months,deposit:fmtMoney(deposit),rent:fmtMoney(rent),buyout:fmtMoney(buyout)});
+   }
+   year=get(r,'연식');distance=get(r,'주행거리');
+  }else{
+   detail=[get(r,'시리즈'),get(r,'모델'),get(r,'라인업'),get(r,'트림')].filter(Boolean).join(' ');
+   const period=get(r,'기간');const m=period.match(/\d+/);const months=m?Number(m[0]):null;
+   const rent=get(r,'월납입료','월렌트료');
+   if(!months||months===30||!rent)continue;
+   terms=[{months,deposit:fmtMoney(get(r,'보증금')),rent:fmtMoney(rent),buyout:fmtMoney(get(r,'만기인수가'))}];
+   year=(detail.match(/20\d{2}년형/)||[])[0]||'';distance='신차';
+  }
+  if(!terms.length||!detail.trim())continue;
+  const displayPlate=kind==='new'&&!plate?'등록예정':(plate==='번호판등록예정'?'등록예정':plate);
+  const fuel=fuelOf(get(r,'유종','연료'));
+  out.push({plate:displayPlate,brand:brandOf(get(r,'브랜드'),detail),type:typeOf(detail,fuel),model:modelOf(detail),detail,year,fuel,color:get(r,'외장컬러'),interior:get(r,'내장컬러'),distance,options:get(r,'옵션'),vehiclePrice:fmtMoney(get(r,'차량가격','가격','차량가액')),terms,stock:kind==='new'?get(r,'잔여대수'):''});
+ }
+ return out;
+}
+
+function leaseKey(c){
+ const plate=String(c.plate||'').trim();
+ // 미등록 차량은 번호판 문자열이 동일하므로 모델·색상·세부모델로 구분한다.
+ const unregistered=!plate||/미등록|등록예정|입고예정/.test(plate);
+ if(!unregistered)return plate;
+ const code=String(c.assetCode||'').trim();if(code)return 'asset:'+code;
+ return 'pending:'+['brand','model','detail','year','fuel','color','interior','options'].map(k=>String(c[k]||'').trim()).join('|');
+}
+function mergeLeaseCars(existing,incoming,months){
+ const byKey=new Map();
+ for(const c of existing){const terms=(c.terms||[]).filter(t=>Number(t.months)!==months);if(terms.length)byKey.set(leaseKey(c),{...c,terms});}
+ for(const c of incoming){const terms=(c.terms||[]).filter(t=>Number(t.months)===months);if(!terms.length)continue;const key=leaseKey(c),prev=byKey.get(key);byKey.set(key,{...(prev||{}),...c,terms:[...(prev?.terms||[]),...terms]});}
+ return [...byKey.values()];
+}
+// 차량번호가 없는 차량 및 중복 번호판도 배열의 전체 가격 데이터로 검증한다.
+function vehiclePriceSignature(cars){
+ return (cars||[]).map(c=>[leaseKey(c),String(c.vehiclePrice||''),
+  (c.terms||[]).map(t=>[Number(t.months),String(t.rent||'')].join(':')).sort().join(',')].join('::')).sort();
+}
+function comparePublishedPrices(expected,actual){
+ const a=vehiclePriceSignature(expected),b=vehiclePriceSignature(actual);
+ if(a.length!==b.length)return `차량 수 ${a.length}대 / 저장 확인 ${b.length}대`;
+ let mismatch=0;for(let i=0;i<a.length;i++)if(a[i]!==b[i])mismatch++;
+ return mismatch?`차량 정보·가격 ${mismatch}건 불일치`:'';
+}
+
+function inventoryState(){inventoryPanel.style.display=adminMode?'block':'none';publishBtn.disabled=!signedIn||!inventoryCars?.length||previewKind!==kindEl.value||previewFile!==excelEl.files[0];}
+function syncAdminLoginUI(){
+ if(!adminMode)return;
+ inventoryState();
+ if(!signedIn){inventoryStatus.textContent='관리자 로그인이 필요합니다.';contentStatus.textContent='관리자 로그인 후 이용하세요.';return;}
+ if(!inventoryCars?.length)inventoryStatus.textContent='관리자 로그인 확인 완료 · 상품을 선택하고 엑셀 파일을 올려 미리보기를 진행하세요.';
+ if(typeof populateContentTargets==='function'&&typeof loadContentAdmin==='function')populateContentTargets().then(loadContentAdmin).catch(e=>{contentStatus.textContent='게시 내용 확인 오류: '+e.message});
+}
+function invalidate(){inventoryCars=null;previewKind=null;previewFile=null;inventoryState();inventoryStatus.textContent='엑셀을 선택한 다음 미리보기를 눌러 주세요.';document.querySelector('#inventorySample').replaceChildren();}
+kindEl.addEventListener('change',()=>{document.querySelector('#leaseDurationWrap').style.display=kindEl.value==='newlease'?'inline-block':'none';invalidate()});document.querySelector('#leaseDuration').addEventListener('change',invalidate);excelEl.addEventListener('change',invalidate);
+document.querySelector('#inventoryPreview').onclick=async()=>{
+ if(!signedIn)return alert('먼저 관리자 로그인을 해 주세요.');
+ const f=excelEl.files[0];if(!f)return alert('엑셀을 선택해 주세요.');
+ const kind=kindEl.value;
+ try{
+  if(!window.XLSX)throw Error('엑셀 분석 라이브러리 연결 실패');
+  const book=XLSX.read(await f.arrayBuffer(),{type:'array'});
+  let best=[],notes=[];
+  for(const name of book.SheetNames){try{const list=parseSheet(XLSX.utils.sheet_to_json(book.Sheets[name],{header:1,defval:'',raw:false}),kind);notes.push(name+': '+list.length+'대');if(list.length>best.length)best=list;}catch(e){notes.push(name+': '+e.message)}}
+  if(kind==='newlease'){
+    const duration=Number(document.querySelector('#leaseDuration').value);
+    best=best.map(c=>({...c,terms:(c.terms||[]).filter(t=>Number(t.months)===duration)})).filter(c=>c.terms.length);
+    notes.push(duration+'개월 조건 '+best.length+'대');
+   }
+  inventoryCars=best.length?best:null;previewKind=kind;previewFile=f;inventoryState();
+  inventoryStatus.textContent=({used:'중고렌트',new:'신차렌트',newlease:'신차리스',usedlease:'중고리스'}[kind]||kind)+' — '+notes.join(' / ')+(best.length?' · 차량가격 입력 '+best.filter(c=>c.vehiclePrice).length+'/'+best.length+'대 · 게시 전 가격과 차량 수를 확인하세요.':' · 인식된 차량이 없어 게시할 수 없습니다.');
+  const sample=document.querySelector('#inventorySample');sample.replaceChildren();
+  if(best.length){const table=document.createElement('table');table.style.cssText='border-collapse:collapse;width:100%;min-width:660px';
+   const tr=document.createElement('tr');for(const h of ['차량번호','제조사','차종','연료','차량가격','계약기간·월렌트료']){const th=document.createElement('th');th.textContent=h;th.style.padding='8px';tr.append(th)}table.append(tr);
+   for(const c of best.slice(0,20)){const row=document.createElement('tr');for(const v of [c.plate,c.brand,c.model,c.fuel,c.vehiclePrice||'가격 없음',c.terms.map(t=>t.months+'개월 '+t.rent).join(' / ')]){const td=document.createElement('td');td.textContent=v;td.style.cssText='border-bottom:1px solid #ddd;padding:8px';row.append(td)}table.append(row)}sample.append(table);}
+ }catch(e){invalidate();inventoryStatus.textContent='엑셀 미리보기 실패: '+e.message;}
+};
+publishBtn.onclick=async()=>{
+ if(!signedIn||!supabase||!inventoryCars?.length||previewKind!==kindEl.value||previewFile!==excelEl.files[0])return alert('먼저 정상 미리보기를 완료하세요.');
+ const kind=previewKind,amount=inventoryCars.length;
+ if(!confirm((kind==='newlease'?'신차리스 '+document.querySelector('#leaseDuration').value+'개월':({used:'중고렌트',new:'신차렌트',usedlease:'중고리스'}[kind]||kind))+' '+amount+'대를 게시할까요? 신차리스의 다른 계약기간은 유지됩니다.'))return;
+ publishBtn.disabled=true;inventoryStatus.textContent='게시 중…';
+ try{
+ let finalCars=inventoryCars;
+ if(kind==='newlease'){
+  const duration=Number(document.querySelector('#leaseDuration').value);
+  const path='inventory/newlease.json';
+  let existing=[];
+  const {data:existingBlob,error:readError}=await supabase.storage.from('gallery').download(path);
+  if(readError){if(!/not found|not exist|404/i.test(readError.message||''))throw Error('기존 신차리스 목록 조회 실패: '+readError.message)}
+  else {const obj=JSON.parse(await existingBlob.text());if(!Array.isArray(obj.cars))throw Error('기존 목록 형식 오류');existing=obj.cars;}
+  // 최초 60개월 갱신 이전에는 V2.4.9에 포함된 60개월 자료도 보존한다.
+  const bundled60=JSON.parse(document.getElementById('initialLease60').textContent);
+  if(!existing.some(c=>(c.terms||[]).some(t=>Number(t.months)===60)))existing=mergeLeaseCars(existing,bundled60,60);
+  finalCars=mergeLeaseCars(existing,inventoryCars,duration);
+ }
+ const payload={version:2,category:kind,updatedAt:new Date().toISOString(),cars:finalCars};const blob=new Blob([JSON.stringify(payload)],{type:'application/json'});
+ const path=({new:'inventory/new.json',used:'inventory/used.json',newlease:'inventory/newlease.json',usedlease:'inventory/usedlease.json'})[kind];
+ const {error}=await supabase.storage.from('gallery').upload(path,blob,{contentType:'application/json',upsert:true,cacheControl:'0'});
+ if(error)throw Error(error.message);
+ // 업로드 성공과 사후 검증을 구분합니다. CDN/Storage 캐시가 오래된 데이터를 반환할 수 있습니다.
+ let verifyProblem='';
+ for(let attempt=0;attempt<3;attempt++){
+  const check=await supabase.storage.from('gallery').download(path);
+  if(check.error){verifyProblem='저장 데이터 재조회 오류: '+check.error.message;continue;}
+  try{const saved=JSON.parse(await check.data.text());verifyProblem=comparePublishedPrices(finalCars,saved.cars);}
+  catch(e){verifyProblem='저장 데이터 확인 오류: '+e.message;}
+  if(!verifyProblem)break;
+  await new Promise(resolve=>setTimeout(resolve,500*(attempt+1)));
+ }
+ if(verifyProblem){inventoryStatus.textContent=amount+'대 업로드 요청은 성공했지만 저장 데이터 재확인이 일치하지 않습니다 ('+verifyProblem+'). 기존 48·60개월 목록을 확인한 뒤 다시 시도하세요. 이 메시지는 게시 실패를 의미하지 않습니다.';return;}
+ inventoryStatus.replaceChildren(document.createTextNode(amount+'대 게시 성공 · 차량가격 '+finalCars.filter(c=>c.vehiclePrice).length+'대 저장 확인. '));const a=document.createElement('a');a.href=({new:'/newcars/',used:'/cars/',newlease:'/newlease/',usedlease:'/usedlease/'})[kind];a.target='_blank';a.rel='noopener';a.textContent='고객 화면 확인';inventoryStatus.append(a);
+ }catch(e){inventoryStatus.textContent='게시 실패: '+e.message+' (Supabase Storage 권한 설정 확인 필요)';}
+ finally{inventoryState();}
+};
+
+inventoryState();
+
+
+/* V2.1: 상품별 이미지·글 관리 — 관리자 모듈과 동일한 변수 범위에서 실행 */
+
+(function(){
+  const dateElement = document.getElementById('todayDate');
+  const formatter = new Intl.DateTimeFormat('ko-KR', {timeZone:'Asia/Seoul', year:'numeric', month:'long', day:'numeric', weekday:'long'});
+  function updateKoreanDate(){
+    if (!dateElement) return;
+    const parts = Object.fromEntries(formatter.formatToParts(new Date()).filter(p => p.type !== 'literal').map(p => [p.type,p.value]));
+    dateElement.textContent = `${parts.year}년 ${parts.month} ${parts.day} (${parts.weekday})`;
+  }
+  updateKoreanDate();
+  setInterval(updateKoreanDate, 60000);
+  document.addEventListener('visibilitychange', function(){if(!document.hidden) updateKoreanDate();});
+})();
+
+// 상품별 고객 가격표의 홍보 이미지와 안내 문구를 별도 관리합니다.
+const contentPanel=document.getElementById('contentAdmin');
+const contentKind=document.getElementById('contentKind');
+const contentStatus=document.getElementById('contentStatus');
+const contentScope=document.getElementById('contentScope');
+const contentTarget=document.getElementById('contentTarget');
+let contentDocument={};let contentTargets=[];let contentLoadSeq=0;
+function contentKey(){return contentScope.value==='global'?'':(document.getElementById('contentManualTarget').value.trim()||contentTarget.value)}
+function contentEntry(doc=contentDocument){const scope=contentScope.value,key=contentKey();return scope==='global'?doc:(doc[scope==='model'?'models':'vehicles']||{})[key]||{}}
+function contentWrite(doc,entry){const scope=contentScope.value,key=contentKey();if(scope==='global'){Object.assign(doc,entry);return}const field=scope==='model'?'models':'vehicles';doc[field]=doc[field]||{};doc[field][key]=entry}
+const inventoryPages={used:'/cars/inventory.json',new:'/newcars/inventory.json',newlease:'/newlease/inventory.json',usedlease:'/usedlease/inventory.json'};
+async function getContentInventory(kind){
+ const remote=contentBase+'inventory/'+kind+'.json';
+ const sources=[remote,inventoryPages[kind]];
+ let errors=[];
+ for(const url of sources){
+  try{
+   const r=await fetch(url+(url.includes('?')?'&':'?')+'v='+Date.now(),{cache:'no-store'});
+   if(!r.ok)throw Error('HTTP '+r.status);
+   const d=await r.json();
+   if(!Array.isArray(d.cars))throw Error('차량 데이터 형식 오류');
+   if(d.cars.length)return {cars:d.cars,source:url===remote?'Supabase':'홈페이지 기본 가격표'};
+   errors.push('등록 차량 0대');
+  }catch(e){errors.push(e.message)}
+ }
+ throw Error('게시된 차량 목록을 찾을 수 없습니다 ('+errors.join(' / ')+')');
+}
+async function populateContentTargets(){
+ const scope=contentScope.value;contentTarget.replaceChildren();contentTarget.disabled=scope==='global';const manual=document.getElementById('contentManualTarget');manual.style.display=scope==='global'?'none':'inline-block';manual.value='';
+ if(scope==='global'){contentTarget.add(new Option('전체 상품',''));return}
+ const kind=contentKind.value;
+ try{
+  const d=await getContentInventory(kind);
+  const values=[...new Set(d.cars.map(c=>scope==='model'?c.model:c.plate).filter(Boolean).map(String))].sort((a,b)=>a.localeCompare(b,'ko',{numeric:true}));
+  contentTarget.add(new Option('선택하세요',''));
+  values.forEach(v=>contentTarget.add(new Option(v,v)));
+  document.getElementById('contentTargetHelp').textContent=d.source+'에서 '+d.cars.length+'대 확인 · '+values.length+'개 '+(scope==='model'?'차종':'차량번호')+' 중 선택하세요.';
+ }catch(e){contentTarget.add(new Option('직접 입력하세요',''));document.getElementById('contentTargetHelp').textContent='차량 목록을 불러오지 못했습니다: '+e.message+' · 오른쪽 입력칸에 정확한 차종 또는 차량번호를 직접 입력할 수 있습니다.'}
+}
+
+const contentBase=SUPABASE_URL+'/storage/v1/object/public/'+BUCKET+'/';
+let contentExistingImage='';
+const contentLabels={used:'중고렌트',new:'신차렌트',newlease:'신차리스',usedlease:'중고리스'};
+function contentPath(){return 'inventory/content/'+contentKind.value+'.json'}
+function safeImagePath(path){return typeof path==='string'&&/^inventory\/content\/(used|new|newlease|usedlease)\/[a-zA-Z0-9_.-]+\.(png|jpg|jpeg|webp)$/.test(path)?path:''}
+function setContentMessage(v){contentStatus.textContent=v}
+function renderContentPreview(title,body,image){const box=document.getElementById('contentPreviewArea');box.replaceChildren();box.style.display='block';const h=document.createElement('h3');h.textContent=title||'제목 없음';box.append(h);if(document.getElementById('contentEffect').value==='new-pulse'){box.classList.add('h-new-preview');const tag=document.createElement('span');tag.className='h-new-pulse';tag.textContent='NEW';box.prepend(tag)}if(body){const t=document.createElement('p');t.style.whiteSpace='pre-wrap';t.textContent=body;box.append(t)}if(image){const im=document.createElement('img');im.src=image;im.alt='홍보 이미지 미리보기';im.style.cssText='max-width:100%;max-height:360px;object-fit:contain;border-radius:10px';box.append(im)}}
+async function loadContentAdmin(){const loadSeq=++contentLoadSeq;if(!signedIn||!supabase){setContentMessage('관리자 로그인 후 이용하세요.');return}setContentMessage('현재 게시 내용을 불러오는 중…');contentExistingImage='';document.getElementById('contentTitle').value='';document.getElementById('contentText').value='';document.getElementById('contentEffect').value='none';document.getElementById('contentImage').value='';document.getElementById('contentRemoveImage').checked=false;document.getElementById('contentImagePreview').replaceChildren();document.getElementById('contentPreviewArea').style.display='none';try{const r=await fetch(contentBase+contentPath()+'?v='+Date.now(),{cache:'no-store'});if(!r.ok){const message=await r.text();if(r.status===404||(r.status===400&&/not.found|not_found|does not exist|no such object|Object not found|statusCode[^0-9]*404/i.test(message))){contentDocument={};setContentMessage('아직 등록된 이미지·안내문이 없습니다. 새로 입력하세요.');return}throw Error('HTTP '+r.status+' '+message.slice(0,120))}const loaded=await r.json();if(loadSeq!==contentLoadSeq)return;contentDocument=loaded;const data=contentEntry();document.getElementById('contentTitle').value=String(data.title||'').slice(0,90);document.getElementById('contentText').value=String(data.text||'').slice(0,3000);document.getElementById('contentEffect').value=data.effect==='new-pulse'?'new-pulse':'none';contentExistingImage=safeImagePath(data.image);if(contentExistingImage){const img=document.createElement('img');img.src=contentBase+contentExistingImage;img.alt='현재 게시 이미지';img.style.cssText='max-width:300px;max-height:170px;object-fit:contain';document.getElementById('contentImagePreview').append(img)}setContentMessage('현재 게시 내용 불러오기 완료. 변경 후 게시하세요.')}catch(e){setContentMessage('기존 내용 불러오기 실패: '+e.message)}}
+contentKind.addEventListener('change',async()=>{await populateContentTargets();await loadContentAdmin()});contentScope.addEventListener('change',async()=>{await populateContentTargets();await loadContentAdmin()});contentTarget.addEventListener('change',()=>{document.getElementById('contentManualTarget').value='';loadContentAdmin()});document.getElementById('contentManualTarget').addEventListener('change',loadContentAdmin);
+document.getElementById('contentReload').onclick=loadContentAdmin;
+document.getElementById('contentPreview').onclick=()=>{const file=document.getElementById('contentImage').files[0];const existing=contentExistingImage&&!document.getElementById('contentRemoveImage').checked?contentBase+contentExistingImage:'';renderContentPreview(document.getElementById('contentTitle').value,document.getElementById('contentText').value,file?URL.createObjectURL(file):existing)};
+document.getElementById('contentPublish').onclick=async()=>{
+ if(!signedIn||!supabase)return alert('관리자 로그인 후 게시할 수 있습니다.');
+ const kind=contentKind.value,title=document.getElementById('contentTitle').value.trim(),body=document.getElementById('contentText').value.trim(),file=document.getElementById('contentImage').files[0];
+ if(file&&(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>5*1024*1024))return alert('5MB 이하 JPG, PNG, WebP 이미지만 등록할 수 있습니다.');
+ if(contentScope.value!=='global'&&!contentKey())return alert('차종 또는 차량번호를 먼저 선택하세요.');
+ if(!title&&!body&&!file&&!contentExistingImage)return alert('제목, 안내문 또는 이미지를 입력하세요.');
+ if(!confirm(contentLabels[kind]+' 고객용 가격표에 이미지와 글을 게시할까요?'))return;
+ const btn=document.getElementById('contentPublish');btn.disabled=true;setContentMessage('게시 중…');
+ try{let image=document.getElementById('contentRemoveImage').checked?'':contentExistingImage;
+  if(file){const ext=({'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[file.type];image='inventory/content/'+kind+'/'+Date.now()+'-'+Math.random().toString(36).slice(2,10)+'.'+ext;const uploadFile=await window.harmonyColorize(file);const {error}=await supabase.storage.from(BUCKET).upload(image,uploadFile,{contentType:uploadFile.type,upsert:false});if(error)throw Error('이미지 업로드: '+error.message)}
+  const next=structuredClone(contentDocument);contentWrite(next,{title,text:body,image,effect:document.getElementById('contentEffect').value,updatedAt:new Date().toISOString()});next.version=2;const payload=new Blob([JSON.stringify(next)],{type:'application/json'});
+  const {error}=await supabase.storage.from(BUCKET).upload('inventory/content/'+kind+'.json',payload,{contentType:'application/json',upsert:true,cacheControl:'0'});
+  if(error)throw Error('안내문 게시: '+error.message);
+  contentDocument=next;setContentMessage('게시 완료. 고객 화면에서 확인하세요.');contentExistingImage=image;
+ }catch(e){setContentMessage('게시 실패: '+e.message+' — Supabase Storage 권한을 확인하세요.')}finally{btn.disabled=false}
+};
+
+// Delete only the selected product's editorial content; inventory spreadsheets are untouched.
+document.getElementById('contentDeleteAll').onclick=async()=>{
+ if(!signedIn||!supabase)return alert('관리자 로그인 후 삭제할 수 있습니다.');
+ const kind=contentKind.value, label=contentLabels[kind]+' / '+(contentScope.value==='global'?'전체 상단':contentKey());
+ if(contentScope.value!=='global'&&!contentKey())return alert('삭제할 차종 또는 차량번호를 선택하세요.');
+ if(!confirm(label+'의 제목, 안내 문구, 홍보 이미지를 모두 삭제하시겠습니까?\n차량 엑셀 가격표는 삭제되지 않습니다.'))return;
+ const btn=document.getElementById('contentDeleteAll');btn.disabled=true;
+ setContentMessage(label+'의 게시 내용을 삭제하는 중…');
+ try{
+  // Read the latest saved image path, not a potentially stale form selection.
+  let previousImage='';
+  const {data:existing,error:downloadError}=await supabase.storage.from(BUCKET).download('inventory/content/'+kind+'.json');
+  if(!downloadError&&existing){try{const parsed=JSON.parse(await existing.text());contentDocument=parsed;previousImage=safeImagePath(contentEntry(parsed).image)}catch(_){}}
+  else if(downloadError&&!/not found|not exist|404/i.test(downloadError.message||''))throw Error('기존 내용 확인: '+downloadError.message);
+  // Write an empty payload rather than deleting the JSON object. This uses the scoped UPDATE policy
+  // and keeps the customer-side fetch safe; other product pages and inventory remain untouched.
+  const next=structuredClone(contentDocument);contentWrite(next,{title:'',text:'',image:'',effect:'none',updatedAt:new Date().toISOString()});next.version=2;const empty=new Blob([JSON.stringify(next)],{type:'application/json'});
+  const {error}=await supabase.storage.from(BUCKET).upload('inventory/content/'+kind+'.json',empty,{contentType:'application/json',upsert:true,cacheControl:'0'});
+  if(error)throw Error('안내문 삭제 저장: '+error.message);
+  contentDocument=next;contentExistingImage='';
+  document.getElementById('contentTitle').value='';
+  document.getElementById('contentText').value='';
+  document.getElementById('contentImage').value='';
+  document.getElementById('contentRemoveImage').checked=false;
+  document.getElementById('contentImagePreview').replaceChildren();
+  document.getElementById('contentPreviewArea').replaceChildren();
+  document.getElementById('contentPreviewArea').style.display='none';
+  // Remove old uploaded image too, if allowed. Content is already unlinked even if cleanup fails.
+  if(previousImage){const {error:removeError}=await supabase.storage.from(BUCKET).remove([previousImage]);
+    setContentMessage(removeError?'게시 내용 삭제 완료. 다만 저장소의 이전 이미지 파일 정리는 실패했습니다: '+removeError.message:'게시 내용 전체 삭제 완료. 고객 화면을 새로고침해 확인하세요.');
+  }else setContentMessage('게시 내용 전체 삭제 완료. 고객 화면을 새로고침해 확인하세요.');
+ }catch(e){setContentMessage('삭제 실패: '+e.message)}finally{btn.disabled=false}
+};
+contentPanel.style.display=adminMode?'block':'none';
+
+
+</script>
+<style>
+#viewer { width:95vw; max-width:95vw; height:95vh; max-height:95vh; overflow:hidden; }
+#viewer .zoom-area { width:100%; height:calc(100% - 55px); overflow:auto; text-align:center; background:#edf0f5; }
+#viewer .zoom-area img { max-width:none; max-height:none; width:auto; height:auto; display:block; margin:auto; cursor:grab; }
+#viewer .zoom-area img:active { cursor:grabbing; }
+</style>
+<script>
+(function(){
+  const viewer=document.querySelector('#viewer');
+  const img=document.querySelector('#large');
+  const area=img.parentElement;
+  area.classList.add('zoom-area');
+  let scale=1;
+  let baseWidth=0;
+  let dragging=false, startX=0, startY=0, left=0, top=0;
+
+  function reset(){
+    scale=1;
+    const w=img.naturalWidth, h=img.naturalHeight;
+    if(!w||!h)return;
+    const fit=Math.min(area.clientWidth/w,area.clientHeight/h,1);
+    baseWidth=w*fit;
+    img.style.width=baseWidth+'px';
+    img.style.height='auto';
+    area.scrollTop=0;area.scrollLeft=0;
+  }
+  img.addEventListener('load',()=>setTimeout(reset,50));
+  area.addEventListener('wheel',function(e){
+    if(!viewer.open)return;
+    e.preventDefault();
+    const old=scale;
+    scale=Math.max(1,Math.min(5,scale*(e.deltaY<0?1.2:1/1.2)));
+    img.style.width=(baseWidth*scale)+'px';
+    area.scrollLeft+=(area.clientWidth/2)*(scale/old-1);
+    area.scrollTop+=(area.clientHeight/2)*(scale/old-1);
+  },{passive:false});
+  img.addEventListener('mousedown',e=>{
+    dragging=true;startX=e.clientX;startY=e.clientY;
+    left=area.scrollLeft;top=area.scrollTop;e.preventDefault();
+  });
+  window.addEventListener('mousemove',e=>{
+    if(!dragging)return;
+    area.scrollLeft=left-(e.clientX-startX);
+    area.scrollTop=top-(e.clientY-startY);
+  });
+  window.addEventListener('mouseup',()=>dragging=false);
+  img.addEventListener('dblclick',reset);
+  viewer.addEventListener('close',()=>{scale=1;});
+})();
+</script><script type="module">
+const SB='https://gaygechqnvehajmsnvfb.supabase.co',KEY='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO';
+const panel=document.getElementById('shortAdmin'),status=document.getElementById('shortStatus'),file=document.getElementById('shortExcel'),publish=document.getElementById('shortPublish');
+const admin=new URLSearchParams(location.search).has('admin');if(admin)panel.style.display='block';
+let client=null,cars=[],fileRef=null;
+const norm=v=>String(v??'').replace(/[\s\n\r\t()_·.,:/]/g,'').toLowerCase();
+const str=v=>String(v??'').trim();
+function parseRows(rows){
+ const hi=rows.findIndex(r=>Array.isArray(r)&&r.some(c=>/차량번호|차종|모델명|차량명/.test(norm(c)))&&r.some(c=>/월렌트료|렌트료|기간|보증금/.test(norm(c))));
+ if(hi<0)throw Error('차량번호·차종·렌트료 헤더를 찾지 못했습니다. 원본 엑셀의 열 구성을 확인해 주세요.');
+ const head=rows[hi].map(norm), idx=(...names)=>{for(const n of names){const i=head.indexOf(norm(n));if(i>=0)return i;}return -1;};
+ const val=(r,...names)=>{for(const n of names){const i=idx(n);if(i>=0&&str(r[i]))return str(r[i]);}return '';};
+ const money=x=>{const s=str(x);if(!s)return '';if(s.includes('원'))return s;const n=Number(s.replace(/,/g,''));return Number.isFinite(n)?n.toLocaleString('ko-KR')+'원':s};
+ const out=[];
+ for(const r of rows.slice(hi+1)){
+  const plate=val(r,'차량번호','차번').replace(/[\s-]/g,'');
+  const detail=[val(r,'시리즈'),val(r,'차종','차명','차량명'),val(r,'모델명','세부모델','트림')].filter(Boolean).join(' ');
+  if(!plate&&!detail)continue;
+  const terms=[];
+  for(let n=1;n<=4;n++){
+   const period=val(r,...(n===1?['기간 1','기간1','계약기간','기간']:['기간 '+n,'기간'+n,'계약기간 '+n]));
+   const rent=val(r,...(n===1?['월렌트료 1','월렌트료1','월렌트료','월대여료']:['월렌트료 '+n,'월렌트료'+n,'월대여료 '+n]));
+   const dep=val(r,...(n===1?['보증금 1','보증금1','보증금']:['보증금 '+n,'보증금'+n]));
+   const buy=val(r,...(n===1?['만기인수가 1','만기인수가1','만기인수가']:['만기인수가 '+n,'만기인수가'+n]));
+   const months=Number((period.match(/\d+/)||[])[0]);
+   if([6,12].includes(months)&&rent&&!terms.some(t=>t.months===months))terms.push({months,deposit:money(dep),rent:money(rent),buyout:money(buy)});
+  }
+  // Some short-term sheets have dedicated six/twelve-month columns.
+  for(const months of [6,12]){
+   const rent=val(r,months+'개월월렌트료',months+'개월렌트료',months+'개월월대여료','월렌트료'+months+'개월');
+   if(rent&&!terms.some(t=>t.months===months))terms.push({months,deposit:money(val(r,months+'개월보증금','보증금'+months+'개월')),rent:money(rent),buyout:''});
+  }
+  if(!terms.length)continue;
+  const model=detail.match(/그랜저|쏘나타|아반떼|캐스퍼|싼타페|투싼|팰리세이드|코나|베뉴|스타리아|포터|봉고|모닝|레이|K[3-9]|셀토스|스포티지|쏘렌토|카니발|니로|모하비|EV[3-9]|아이오닉[0-9]|G[789]0|GV[0-9]+|토레스|티볼리|렉스턴|XM3/)?.[0]||detail.split(' ')[0]||'기타';
+  out.push({plate:plate||'미등록',brand:val(r,'브랜드','제조사')||'기타',model,detail:detail||model,year:val(r,'연식','년식'),fuel:val(r,'유종','연료'),color:val(r,'외장컬러','외장색상','색상'),interior:val(r,'내장컬러','내장색상'),distance:val(r,'주행거리'),vehiclePrice:money(val(r,'차량가격','가격','차량가액','차량금액')),options:val(r,'옵션','옵션내용'),terms});
+ }
+ return out;
+}
+function drawSample(){const area=document.getElementById('shortSample');area.replaceChildren();const table=document.createElement('table');table.style.cssText='border-collapse:collapse;width:100%;min-width:580px';const header=document.createElement('tr');for(const h of ['차량번호','차종','차량가격','6개월·12개월 조건']){const th=document.createElement('th');th.textContent=h;th.style.padding='8px';header.append(th)}table.append(header);for(const c of cars.slice(0,20)){const tr=document.createElement('tr');for(const v of [c.plate,c.detail,c.vehiclePrice||'-',c.terms.map(t=>t.months+'개월 / 보증금 '+(t.deposit||'-')+' / 월 '+t.rent).join(' | ')]){const td=document.createElement('td');td.textContent=v;td.style.cssText='padding:8px;border-bottom:1px solid #ddd';tr.append(td)}table.append(tr)}area.append(table)}
+file.addEventListener('change',()=>{cars=[];fileRef=null;publish.disabled=true;status.textContent='파일 선택 완료. 미리보기를 눌러주세요.';document.getElementById('shortSample').replaceChildren()});
+document.getElementById('shortPreview').onclick=async()=>{cars=[];publish.disabled=true;fileRef=null;if(!file.files[0])return alert('엑셀 파일을 선택해 주세요.');try{if(!window.XLSX)throw Error('엑셀 분석 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.');const wb=XLSX.read(await file.files[0].arrayBuffer(),{type:'array'});let notes=[],best=[];for(const name of wb.SheetNames){try{const parsed=parseRows(XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:'',raw:false}));notes.push(name+': '+parsed.length+'대');if(parsed.length>best.length)best=parsed}catch(e){notes.push(name+': '+e.message)}}cars=best;fileRef=file.files[0];publish.disabled=!cars.length;status.textContent='미리보기: '+notes.join(' / ')+(cars.length?' · '+cars.length+'대 인식 · 차량가격 '+cars.filter(c=>c.vehiclePrice).length+'/'+cars.length+'대. 가격을 확인한 후 게시하세요.':' · 0대이므로 게시 불가');if(cars.length)drawSample()}catch(e){status.textContent='미리보기 실패: '+e.message}};
+publish.onclick=async()=>{if(!cars.length||fileRef!==file.files[0])return alert('정상 미리보기를 먼저 완료하세요.');if(!confirm('중고차 6·12개월 '+cars.length+'대를 게시하시겠습니까? 기존 4가지 상품은 변경되지 않습니다.'))return;publish.disabled=true;status.textContent='게시 중…';try{const mod=await import('https://esm.sh/@supabase/supabase-js@2');client=client||window.__harmonySharedClient(mod,SB,KEY);const {data:{session}}=await client.auth.getSession();if(!session)throw Error('관리자 로그인이 필요합니다. 위쪽 관리자 이미지 관리에서 로그인 후 다시 시도하세요.');const blob=new Blob([JSON.stringify({version:2,category:'used612',updatedAt:new Date().toISOString(),cars})],{type:'application/json'});const {error}=await client.storage.from('gallery').upload('inventory/used612.json',blob,{contentType:'application/json',upsert:true,cacheControl:'0'});if(error)throw error;status.textContent=cars.length+'대 게시 완료 · 차량가격 '+cars.filter(c=>c.vehiclePrice).length+'대 포함. 중고차 6·12개월 고객 화면을 확인하세요.'}catch(e){status.textContent='게시 실패: '+e.message+' (신규 파일 INSERT 또는 덮어쓰기 UPDATE 권한 확인 필요)'}finally{publish.disabled=!cars.length}};
+</script><script id="initialLease60" type="application/json">[{"plate": "847누5714", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 슈퍼캡 초장축 Smart (스마트)", "color": "오닉스 블루", "interior": "그레이", "distance": "신차", "options": "중량짐용 후륜 현가장치", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "514,000", "buyout": "12,940,000"}], "assetCode": "AST2026100061"}, {"plate": "847누5742", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 더블캡 초장축 Smart (스마트)", "color": "크리미 화이트", "interior": "그레이", "distance": "신차", "options": "내비게이션 패키지Ⅰ", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "574,000", "buyout": "14,580,000"}], "assetCode": "AST2026100037"}, {"plate": "847누5748", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 슈퍼캡 초장축 Smart (스마트)", "color": "크리미 화이트", "interior": "그레이", "distance": "신차", "options": "중량짐용 후륜 현가장치, 내비게이션 패키지Ⅰ", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "546,000", "buyout": "13,790,000"}], "assetCode": "AST2026100055"}, {"plate": "847누5709", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 슈퍼캡 초장축 Smart (스마트)", "color": "오닉스 블루", "interior": "그레이", "distance": "신차", "options": "중량짐용 후륜 현가장치, 내비게이션 패키지Ⅰ", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "546,000", "buyout": "13,790,000"}], "assetCode": "AST2026100057"}, {"plate": "입고예정 AST2026100505", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 더블캡 초장축 Smart (스마트)", "color": "오닉스 블루", "interior": "그레이", "distance": "신차", "options": "", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "543,000", "buyout": "13,720,000"}], "assetCode": "AST2026100505"}, {"plate": "입고예정 AST2026100536", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 더블캡 초장축 Smart (스마트)", "color": "오닉스 블루", "interior": "그레이", "distance": "신차", "options": "내비게이션 패키지Ⅰ", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "574,000", "buyout": "14,580,000"}], "assetCode": "AST2026100536"}, {"plate": "입고예정 AST2026100495", "year": "2026", "brand": "현대", "model": "포터2", "type": "화물", "fuel": "LPG", "detail": "LPG 2.5 2WD 2026년형 더블캡 초장축 Smart (스마트)", "color": "크리미 화이트", "interior": "그레이", "distance": "신차", "options": "", "terms": [{"months": 60, "deposit": "1,000,000", "rent": "543,000", "buyout": "13,720,000"}], "assetCode": "AST2026100495"}, {"plate": "892도5195", "year": "2026", "brand": "현대", "model": "스타리아", "type": "화물", "fuel": "LPG", "detail": "카고 LPG 3.5 5인승 2026년형 모던", "color": "크리미 화이트", "interior": "블랙 원톤", "distance": "신차", "options": "컴포트", "terms": [{"months": 60, "deposit": "2,000,000", "rent": "783,000", "buyout": "20,490,000"}], "assetCode": "AST2026080283"}, {"plate": "892도5194", "year": "2026", "brand": "현대", "model": "스타리아", "type": "화물", "fuel": "LPG", "detail": "카고 LPG 3.5 5인승 2026년형 모던", "color": "어비스 블랙 펄", "interior": "블랙 원톤", "distance": "신차", "options": "컴포트", "terms": [{"months": 60, "deposit": "2,000,000", "rent": "783,000", "buyout": "20,490,000"}], "assetCode": "AST2026080257"}, {"plate": "847누5769", "year": "2026", "brand": "현대", "model": "스타리아", "type": "화물", "fuel": "LPG", "detail": "카고 LPG 3.5 3인승 2026년형 모던", "color": "크리미 화이트", "interior": "블랙 원톤", "distance": "신차", "options": "컴포트", "terms": [{"months": 60, "deposit": "2,000,000", "rent": "761,000", "buyout": "19,900,000"}], "assetCode": "AST2026080310"}, {"plate": "847누5784", "year": "2026", "brand": "현대", "model": "스타리아", "type": "화물", "fuel": "LPG", "detail": "카고 LPG 3.5 5인승 2026년형 스마트", "color": "쉬머링 실버 메탈릭", "interior": "블랙 원톤", "distance": "신차", "options": "멀티미디어 내비플러스Ⅰ", "terms": [{"months": 60, "deposit": "2,000,000", "rent": "770,000", "buyout": "20,120,000"}], "assetCode": "AST2026080333"}, {"plate": "입고예정 AST2026100261", "year": "2026", "brand": "현대", "model": "스타리아", "type": "화물", "fuel": "LPG", "detail": "카고 LPG 3.5 3인승 2026년형 모던", "color": "쉬머링 실버 메탈릭", "interior": "블랙 원톤", "distance": "신차", "options": "컴포트", "terms": [{"months": 60, "deposit": "2,000,000", "rent": "761,000", "buyout": "19,900,000"}], "assetCode": "AST2026100261"}]</script><script type="module" id="promoScript">
+// Black Friday V2.5.26: independent state namespace. Old campaign/visibility
+// artifacts remain in Supabase, but must not override the dedicated banner.
+const P_URL='https://gaygechqnvehajmsnvfb.supabase.co', P_KEY='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO', P_BUCKET='gallery';
+const PREFIX='harmony-blackfriday-v2526-';
+const area=document.getElementById('promoArea'),hero=document.getElementById('promoHeroImage'),admin=document.getElementById('promoAdmin'),status=document.getElementById('promoStatus');
+const adminMode=new URLSearchParams(location.search).has('admin');
+let client=null;
+async function getClient(){if(!client){const mod=await import('https://esm.sh/@supabase/supabase-js@2');client=window.__harmonySharedClient(mod,P_URL,P_KEY)}return client}
+async function listFiles(){const c=await getClient(),all=[];for(let offset=0;offset<10000;offset+=1000){const {data,error}=await c.storage.from(P_BUCKET).list('',{limit:1000,offset,sortBy:{column:'name',order:'desc'}});if(error)throw Error('목록 조회 실패: '+error.message);const page=data||[];all.push(...page);if(page.length<1000)break}return all}
+function fileTime(f){const m=f.name.match(/^harmony-blackfriday-v2526-(?:off|show|image|deleted)-(\d{17})-/);return m?m[1]:''}
+async function updatePromo(){
+ // The latest visibility action wins; deleting the image must never revive
+ // the bundled default artwork on a later page refresh.
+ let visible=false;
+ try{
+  const files=await listFiles();
+  const actions=files.filter(f=>(f.name.startsWith(PREFIX+'off-')||f.name.startsWith(PREFIX+'show-')||f.name.startsWith(PREFIX+'deleted-'))&&!!fileTime(f)).sort((a,b)=>fileTime(b).localeCompare(fileTime(a))||b.name.localeCompare(a.name));
+  const latest=actions[0];
+  const deleted=actions.find(f=>f.name.startsWith(PREFIX+'deleted-'));
+  const images=files.filter(f=>f.name.startsWith(PREFIX+'image-')).sort((a,b)=>fileTime(b).localeCompare(fileTime(a)));
+  const hasNewImage=images.length && (!deleted || fileTime(images[0])>fileTime(deleted));
+  const imageDeleted=!!deleted && !hasNewImage;
+  visible=!imageDeleted && (!latest || latest.name.startsWith(PREFIX+'show-'));
+  const fallback='/black-friday-promo.png';
+  hero.onerror=function(){this.onerror=null;area.hidden=true;area.style.display='none';if(adminMode)status.textContent='프로모션 이미지 로드 실패 · 고객에게 숨김 처리됨'};
+  if(hasNewImage)hero.src=P_URL+'/storage/v1/object/public/'+P_BUCKET+'/'+encodeURIComponent(images[0].name)+'?v='+encodeURIComponent(fileTime(images[0]));
+  else if(!imageDeleted)hero.src=fallback;
+  else hero.removeAttribute('src');
+  if(adminMode)status.textContent=imageDeleted?'블랙프라이데이 이미지 삭제됨 · 새 이미지 게시 전까지 숨김':visible?'블랙프라이데이 표시 중':'블랙프라이데이 숨김 상태';
+ }catch(e){visible=false;if(adminMode)status.textContent='저장 상태 조회 실패 · 안전하게 숨김 처리: '+e.message;}
+ area.hidden=!visible;area.style.display=visible?'':'none';return visible;
+}
+async function authorized(){const c=await getClient();const {data,error}=await c.auth.getSession();if(error)throw error;if(!data.session)throw Error('먼저 관리자 로그인을 해주세요.');return c}
+function filename(kind,ext){return PREFIX+kind+'-'+new Date().toISOString().replace(/[-:.TZ]/g,'').padEnd(17,'0')+'-'+Math.random().toString(36).slice(2,7)+'.'+ext}
+async function upload(kind,file){const c=await authorized();const ext=(kind==='off'||kind==='show')?'png':file.type==='image/png'?'png':file.type==='image/webp'?'webp':'jpg';const name=filename(kind,ext);const uploadFile=kind==='image'?await window.harmonyColorize(file):file;const {error}=await c.storage.from(P_BUCKET).upload(name,uploadFile,{upsert:false,contentType:uploadFile.type});if(error)throw error;return name}
+document.getElementById('promoUpload').onclick=async()=>{try{const f=document.getElementById('promoFile').files[0];if(!f||!['image/png','image/jpeg','image/webp'].includes(f.type))throw Error('JPG, PNG, WebP 이미지를 선택하세요.');if(f.size>5*1024*1024)throw Error('5MB 이하 이미지만 가능합니다.');status.textContent='게시 중…';await upload('image',f);await updatePromo();status.textContent='새 이미지 게시 완료'}catch(e){status.textContent='게시 실패: '+e.message}};
+async function setBlackFridayVisible(visible){const hide=document.getElementById('promoHide'),show=document.getElementById('promoRestore');hide.disabled=show.disabled=true;try{status.textContent='상태 저장 중…';const bytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg=='),c=>c.charCodeAt(0));await upload(visible?'show':'off',new File([bytes],'state.png',{type:'image/png'}));const actual=await updatePromo();if(actual!==visible)throw Error('저장 후 상태가 일치하지 않습니다. 이미지가 삭제된 경우 새 이미지를 먼저 게시하세요.');status.textContent=visible?'블랙프라이데이 다시 표시 완료':'블랙프라이데이 숨기기 완료'}catch(e){status.textContent='변경 실패: '+e.message}finally{hide.disabled=show.disabled=false}}
+document.getElementById('promoHide').onclick=()=>setBlackFridayVisible(false);
+document.getElementById('promoRestore').onclick=()=>setBlackFridayVisible(true);
+document.getElementById('promoDeleteImage').onclick=async()=>{
+ if(!confirm('블랙프라이데이 이미지를 삭제하고 프로모션을 숨기시겠습니까? 다른 프로모션은 유지됩니다.'))return;
+ const button=document.getElementById('promoDeleteImage');button.disabled=true;
+ try{
+  const c=await authorized();status.textContent='이미지 삭제 및 숨김 저장 중…';
+  const files=await listFiles();
+  // Persist the deletion before removing images, so refreshing never restores
+  // the bundled fallback even if Storage removal fails.
+  const bytes=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg=='),c=>c.charCodeAt(0));
+  await upload('deleted',new File([bytes],'deleted.png',{type:'image/png'}));
+  const paths=files.filter(f=>f.name.startsWith(PREFIX+'image-')).map(f=>f.name);
+  if(paths.length){const {error}=await c.storage.from(P_BUCKET).remove(paths);if(error)throw error;}
+  await updatePromo();status.textContent='블랙프라이데이 이미지 삭제 및 숨김 완료';
+ }catch(e){status.textContent='삭제 실패: '+e.message+' · 저장 상태를 확인해 주세요';await updatePromo().catch(()=>{});}finally{button.disabled=false;}
+};
+if(adminMode){admin.style.display='block';status.textContent='관리자 로그인 후 프로모션을 관리할 수 있습니다.'}
+updatePromo();
+</script><script type="module" id="avantePromoScript">
+const area=document.getElementById('avantePromo'),admin=document.getElementById('avantePromoAdmin'),status=document.getElementById('avanteStatus');
+const U='https://gaygechqnvehajmsnvfb.supabase.co',K='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO',B='gallery';
+if(new URLSearchParams(location.search).has('admin'))admin.style.display='block';
+// 공개 목록의 최신 상태를 확인합니다. 파일 이름으로 정렬해 게시 순서를 보존합니다.
+async function refresh(){
+ // Supabase Storage list prefix is a directory path, not a filename prefix.
+ // List root objects, then filter the promotion marker filenames client-side.
+ let markers=[];
+ const pageSize=1000;
+ for(let offset=0;offset<10000;offset+=pageSize){
+  const r=await fetch(U+'/storage/v1/object/list/'+B+'?t='+Date.now(),{
+   method:'POST',cache:'no-store',headers:{apikey:K,Authorization:'Bearer '+K,'Content-Type':'application/json','Cache-Control':'no-cache'},
+   body:JSON.stringify({prefix:'',limit:pageSize,offset,sortBy:{column:'name',order:'desc'}})
+  });
+  if(!r.ok)throw Error('상태 조회 HTTP '+r.status);
+  const files=await r.json();
+  if(!Array.isArray(files))throw Error('상태 목록 형식 오류');
+  markers.push(...files.filter(x=>/^harmony-avante-promo-(on|off)-\d{14,17}-/.test(x.name)));
+  if(files.length<pageSize)break;
+ }
+ // Compare timestamp segments, not the on/off prefix, so the newest action wins.
+ const stampOf=x=>{const m=x.name.match(/^harmony-avante-promo-(?:on|off)-(\d{14,17})-/);return m?m[1].padEnd(17,'0'):''};
+ const last=markers.sort((a,b)=>stampOf(b).localeCompare(stampOf(a)) || b.name.localeCompare(a.name))[0];
+ const visible=!(last&&last.name.startsWith('harmony-avante-promo-off-'));
+ area.hidden=!visible;
+ area.style.display=visible?'':'none';
+ return visible;
+}
+async function setVisible(visible){
+ const hide=document.getElementById('avanteHide'),show=document.getElementById('avanteShow');
+ hide.disabled=show.disabled=true;
+ try{
+  status.textContent='프로모션 '+(visible?'표시':'숨김')+' 저장 중...';
+  const mod=await import('https://esm.sh/@supabase/supabase-js@2');
+  const client=window.__harmonySharedClient(mod,U,K);
+  const {data,error:authError}=await client.auth.getSession();
+  if(authError)throw authError;
+  if(!data.session)throw Error('관리자 로그인이 필요합니다.');
+  const stamp=new Date().toISOString().replace(/[-:.TZ]/g,'');
+  const prefix='harmony-avante-promo-'+(visible?'on':'off')+'-'+stamp+'-'+Math.random().toString(36).slice(2,7);
+  // 기존 텍스트 마커 업로드를 먼저 시도하고, 저장소가 이미지 형식만 허용하는 경우 PNG 마커로 재시도합니다.
+  let name=prefix+'.txt';
+  let result=await client.storage.from(B).upload(name,new Blob([visible?'on':'off'],{type:'text/plain'}),{upsert:false,contentType:'text/plain'});
+  if(result.error){
+   const png=Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4z8DwHwAFgAI/ScL/nwAAAABJRU5ErkJggg=='),c=>c.charCodeAt(0));
+   name=prefix+'.png';
+   const retry=await client.storage.from(B).upload(name,new Blob([png],{type:'image/png'}),{upsert:false,contentType:'image/png'});
+   if(retry.error)throw Error('저장소 업로드 실패: '+retry.error.message+' (텍스트 업로드: '+result.error.message+')');
+  }
+  const actual=await refresh();
+  if(actual!==visible)throw Error('저장했지만 공개 상태 확인에 실패했습니다. 새로고침 후 다시 확인하세요.');
+  status.textContent=visible?'아반떼 프로모션 표시 완료 · 고객 화면에도 적용됩니다.':'아반떼 프로모션 숨김 완료 · 고객 화면에도 적용됩니다.';
+ }catch(e){status.textContent='변경 실패: '+e.message+' · 저장소 권한 또는 네트워크를 확인하세요.'}
+ finally{hide.disabled=show.disabled=false}
+}
+document.getElementById('avanteHide').onclick=()=>setVisible(false);document.getElementById('avanteShow').onclick=()=>setVisible(true);refresh();
+</script><script>
+if(new URLSearchParams(location.search).has('admin')){
+  const observer=new MutationObserver(()=>{
+    const feedback=document.getElementById('loginFeedback');
+    if(!feedback)return;
+    const t=feedback.textContent||'';
+    if(t.includes('관리자 로그인 성공'))window.__harmonySyncLogin(true);
+    else if(t.includes('로그아웃 상태'))window.__harmonySyncLogin(false);
+  });
+  const feedback=document.getElementById('loginFeedback');
+  if(feedback)observer.observe(feedback,{childList:true,characterData:true,subtree:true});
+}
+</script><style>
+#campaignDisplay{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;padding:0 12px}.campaign-card{background:white;border:1px solid #d4e0ed;border-radius:14px;overflow:hidden}.campaign-card img{display:block;width:100%;height:auto;max-height:480px;object-fit:contain;background:#fafafa}.campaign-info{padding:15px}.campaign-info h3{margin:0 0 8px}.campaign-info p{color:#50617a}.campaign-admin-item{display:flex;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid #e1e7ee;padding:10px 0}#campaignManager input,#campaignManager select,#campaignManager textarea{max-width:100%;padding:10px;border:1px solid #ccd8e7;border-radius:8px}#campaignManager .adminrow{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+</style>
+
+
+<style>
+#campaignDisplay{max-width:1150px;margin:18px auto 24px;padding:0 12px;box-sizing:border-box}
+#campaignDisplay[hidden]{display:none!important}
+#campaignDisplay .campaign-card{border:1px solid #f0cfa8;background:#fff9f1;border-radius:16px;overflow:hidden;margin:0 0 22px;box-shadow:0 5px 16px #102c4b10}
+#campaignDisplay .campaign-card>img{display:block;width:100%;height:auto;object-fit:contain}
+#campaignDisplay .campaign-info{padding:18px}
+#campaignDisplay .campaign-info h3{font-size:23px;margin:0 0 12px;color:#173457}
+#campaignDisplay .campaign-car-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:14px}
+#campaignDisplay .campaign-car-box{border:1px solid #efc59f;border-radius:12px;padding:14px;background:white;display:flex;flex-direction:column;gap:9px}
+#campaignDisplay .campaign-car-box a{display:inline-block;align-self:start;padding:10px 13px;border-radius:8px;background:#bd4b10;color:white;text-decoration:none;font-weight:700}
+#campaignDisplay .campaign-car-box strong{font-size:17px}
+#campaignDisplay .campaign-car-note{font-size:13px;margin:0;color:#b44b14}
+</style><script type="module" src="campaign-manager.js"></script>
+<script id="avanteClickFix">(function(){document.querySelectorAll('a[data-avante-year]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();e.stopImmediatePropagation();var year=a.getAttribute('data-avante-year');window.location.assign('newcars/index.html?promo='+encodeURIComponent('아반떼')+'&year='+encodeURIComponent(year));},true);});})();</script>
+<section id="hPromoSelector" style="display:none;max-width:1100px;margin:24px auto;padding:20px;background:#fff;border:1px solid #cbd5e1;border-radius:14px;color:#173457">
+<h2>프로모션 대상 차량 선택 관리</h2><p>현재 게시된 신차렌트의 모든 차종에서 프로모션을 만들고 수정할 수 있습니다. 기존 아반떼·셀토스 프로모션도 유지됩니다.</p>
+<div style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;align-items:end">
+<label>기존 프로모션 / 새로 만들기<br><select id="hPromoCampaign" style="padding:10px;min-width:220px"><option value="avante2026">아반떼 2026년형 · 수수료 90만원 지급</option><option value="seltos2027">셀토스 2027년형 · 수수료 60만원 지급</option><option value="__new">+ 새 프로모션</option></select></label>
+<label>차종<br><select id="hPromoModel" style="padding:10px;min-width:140px"></select></label>
+<label>연식<br><select id="hPromoYear" style="padding:10px;min-width:110px"></select></label>
+<label>혜택 문구 (수정 가능)<br><input id="hPromoBenefit" style="padding:10px;min-width:250px" maxlength="100" value="수수료 90만원 지급" placeholder="예: 수수료 60만원 지급"></label>
+</div><p style="font-size:13px;color:#64748b">차종·연식은 현재 게시된 신차렌트 목록에서 가져옵니다. 새 프로모션은 차종·연식별로 추가됩니다. 기존 프로모션을 선택하면 혜택 문구도 수정할 수 있습니다.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0"><button type="button" id="hPromoLoad" style="padding:11px 16px">선택한 차종 조회</button><button type="button" id="hPromoSave" style="padding:11px 16px;background:#166534;color:#fff">선택한 차량 게시</button></div>
+<div id="hPromoState" aria-live="polite" style="margin:10px 0;color:#475569">관리자 로그인 후 차량 조회를 눌러주세요.</div><div id="hPromoChoices" style="max-height:420px;overflow:auto"></div>
+</section>
+<script type="module" id="hPromoSelectorScript">
+(()=>{
+const U='https://gaygechqnvehajmsnvfb.supabase.co',K='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO',B='gallery',PATH='inventory/promo-selected.json';
+const $=id=>document.getElementById(id),state=$('hPromoState');if(!new URLSearchParams(location.search).has('admin'))return;$('hPromoSelector').style.display='block';
+let options=[],selected=new Set(),client,savedData=null,inventoryCache=[];
+const key=c=>String(c.assetCode||c.plate||'').trim();
+const campaign=()=>$('hPromoCampaign').value;
+const model=()=>$('hPromoModel').value, year=()=>$('hPromoYear').value;
+const matches=c=>[c.model,c.detail].join(' ').includes(model())&&[c.year,c.model,c.detail].join(' ').includes(year());
+const defaultCampaigns={avante2026:{model:'아반떼',year:'2026',benefit:'수수료 90만원 지급',keys:[]},seltos2027:{model:'셀토스',year:'2027',benefit:'수수료 60만원 지급',keys:[]}};
+const campaignMap=()=>({...defaultCampaigns,...(savedData?.campaigns||{})});
+function updateFields(){const item=campaignMap()[campaign()];if(item){$('hPromoModel').value=item.model;$('hPromoYear').value=item.year;$('hPromoBenefit').value=item.benefit||'';} $('hPromoModel').disabled=!!item;$('hPromoYear').disabled=!!item;options=[];selected.clear();$('hPromoChoices').replaceChildren();state.textContent='조건을 확인하고 조회 버튼을 눌러주세요.'}
+function populate(){const models=[...new Set(inventoryCache.map(c=>String(c.model||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));const years=[...new Set(inventoryCache.map(c=>String(c.year||'').match(/20\d{2}/)?.[0]).filter(Boolean))].sort().reverse();for(const [id,items] of [['hPromoModel',models],['hPromoYear',years]]){const sel=$(id),old=sel.value;sel.replaceChildren();for(const value of items){const opt=document.createElement('option');opt.value=value;opt.textContent=value+(id==='hPromoYear'?'년형':'');sel.append(opt)}if(items.includes(old))sel.value=old;}}
+function populateCampaigns(){const select=$('hPromoCampaign'),old=select.value;select.replaceChildren();for(const [id,c] of Object.entries(campaignMap())){const opt=document.createElement('option');opt.value=id;opt.textContent=c.model+' '+c.year+'년형 · '+(c.benefit||'프로모션');select.append(opt)}const n=document.createElement('option');n.value='__new';n.textContent='+ 새 프로모션';select.append(n);select.value=[...select.options].some(o=>o.value===old)?old:'avante2026';updateFields()}
+$('hPromoCampaign').onchange=updateFields;
+// Load the live inventory as soon as the admin promo panel opens, rather than
+// leaving the model dropdown hard-coded until the first lookup click.
+for(const [id,values] of [['hPromoModel',['아반떼','셀토스']],['hPromoYear',['2026','2027']]]){for(const value of values){const opt=document.createElement('option');opt.value=value;opt.textContent=value;$(id).append(opt)}}updateFields();
+(async()=>{
+ try{
+  state.textContent='현재 신차렌트 차종 목록 불러오는 중…';
+  inventoryCache=await loadPublishedNewCars();
+  const keepCampaign=campaign(),keepBenefit=$('hPromoBenefit').value;
+  populate();
+  $('hPromoCampaign').value=keepCampaign;
+  updateFields();
+  if(keepCampaign==='__new')$('hPromoBenefit').value=keepBenefit;
+  state.textContent='전체 차종 '+new Set(inventoryCache.map(c=>c.model).filter(Boolean)).size+'종 불러오기 완료 · 차종과 연식을 선택하고 조회하세요.';
+ }catch(e){state.textContent='차종 목록 자동 불러오기 실패: '+e.message+' · 선택한 차종 조회를 눌러 다시 시도하세요.'}
+})();
+async function auth(){if(!client){const mod=await import('https://esm.sh/@supabase/supabase-js@2');client=window.__harmonySharedClient(mod,U,K)}const {data,error}=await client.auth.getSession();if(error)throw error;if(!data.session)throw Error('관리자 로그인이 필요합니다.');return client}
+async function getJSON(path){const r=await fetch(U+'/storage/v1/object/public/'+B+'/'+path+'?v='+Date.now(),{cache:'no-store'});if(r.status===404)return null;if(!r.ok)throw Error('자료 조회 HTTP '+r.status);return r.json()}
+// Read exactly the same live inventory as the public newcars page.
+// The public Storage URL may return HTTP 400 on some deployments; do not
+// substitute the bundled inventory because its vehicle plates may be outdated.
+async function loadPublishedNewCars(){
+ const frame=document.createElement('iframe');frame.hidden=true;frame.setAttribute('aria-hidden','true');frame.src='newcars/?promoLookup='+Date.now();document.body.append(frame);
+ try{
+  return await new Promise((resolve,reject)=>{
+   let finished=false;let tries=0;
+   const timer=setInterval(()=>{
+    if(finished)return;
+    tries++;
+    try{
+     const w=frame.contentWindow;
+     const data=w&&w.__hPromoCars;
+     if(Array.isArray(data)&&data.length){finished=true;clearInterval(timer);resolve(data);return;}
+     const status=w&&w.document&&w.document.getElementById('count')?.textContent||'';
+     if(status.includes('자료를 불러오지 못했습니다')){finished=true;clearInterval(timer);reject(Error('신차렌트 가격표 자료 연결 오류'));return;}
+    }catch(e){}
+    if(tries>=120){finished=true;clearInterval(timer);reject(Error('신차렌트 가격표 조회 시간 초과'));}
+   },150);
+  });
+ }finally{frame.remove()}
+}
+function draw(){const holder=$('hPromoChoices');holder.replaceChildren();for(const c of options){const id=key(c);if(!id)continue;const label=document.createElement('label');label.style.cssText='display:flex;align-items:center;gap:12px;padding:11px;border-bottom:1px solid #e2e8f0;cursor:pointer';const cb=document.createElement('input');cb.type='checkbox';cb.checked=selected.has(id);cb.onchange=()=>{if(cb.checked)selected.add(id);else selected.delete(id);state.textContent='선택 '+selected.size+'대 · 게시 전까지 고객 화면은 변경되지 않습니다.'};const desc=document.createElement('span');desc.textContent=[c.plate||'등록예정',c.model,c.year,c.detail].filter(Boolean).join(' · ');label.append(cb,desc);holder.append(label)}if(!options.length)holder.textContent='현재 게시 목록에서 해당 차종·연식을 찾지 못했습니다.'}
+$('hPromoLoad').onclick=async()=>{state.textContent='현재 게시된 차량 조회 중…';try{await auth();inventoryCache=await loadPublishedNewCars();let saved=null;try{saved=await getJSON(PATH)}catch(e){if(!/자료 조회 HTTP 400|자료 조회 HTTP 404/.test(e.message))throw e;}savedData=saved||{};if(!savedData.campaigns?.avante2026&&Array.isArray(savedData.keys))defaultCampaigns.avante2026.keys=savedData.keys;const oldCampaign=campaign(),oldModel=model(),oldYear=year(),oldBenefit=$('hPromoBenefit').value;populate();populateCampaigns();$('hPromoCampaign').value=oldCampaign;updateFields();if(campaign()==='__new'){if([...$('hPromoModel').options].some(o=>o.value===oldModel))$('hPromoModel').value=oldModel;if([...$('hPromoYear').options].some(o=>o.value===oldYear))$('hPromoYear').value=oldYear;$('hPromoBenefit').value=oldBenefit;}options=inventoryCache.filter(matches);const current=campaignMap()[campaign()]?.keys||[];selected=new Set(current.map(String));draw();state.textContent=options.length+'대 조회 · 기존 선택 '+options.filter(c=>selected.has(key(c))).length+'대 · 대상 차량을 체크하고 게시하세요.'}catch(e){state.textContent='조회 실패: '+e.message}};
+$('hPromoSave').onclick=async()=>{if(!options.length)return alert('먼저 선택한 차종 조회를 눌러주세요.');const benefit=$('hPromoBenefit').value.trim();if(!benefit)return alert('혜택 문구를 입력하세요.');const keys=options.filter(c=>selected.has(key(c))).map(key);const id=campaign()==='__new'?'custom_'+Date.now():campaign();if(!confirm(model()+' '+year()+'년형 · '+benefit+' / '+keys.length+'대를 게시하시겠습니까?'))return;state.textContent='게시 중…';try{const c=await auth();const previous=savedData||{};const campaigns={...campaignMap()};campaigns[id]={model:model(),year:year(),benefit,keys};const body=JSON.stringify({version:2,updatedAt:new Date().toISOString(),category:'new',keys:campaigns.avante2026?.keys||[],campaigns});const {error}=await c.storage.from(B).upload(PATH,new Blob([body],{type:'application/json'}),{upsert:true,contentType:'application/json',cacheControl:'0'});if(error)throw error;savedData=JSON.parse(body);populateCampaigns();$('hPromoCampaign').value=id;updateFields();state.textContent=keys.length+'대 프로모션 게시 완료 · 고객 신차렌트 화면에서 확인하세요.'}catch(e){state.textContent='게시 실패: '+e.message+' · Supabase Storage 권한을 확인하세요.'}};
+
+})();
+</script>
+<script>/* V2.5.82 - Optional image color conversion, isolated from inventory and promotion metadata. */
+(()=>{
+ const $=id=>document.getElementById(id), panel=$('hColorPanel');
+ if(!panel)return;
+ if(new URLSearchParams(location.search).has('admin'))panel.style.display='block';
+ const hues={green:145,purple:275,red:3,gold:43,navy:220,teal:175,mint:160,lime:95,orange:27,coral:12,pink:330,magenta:305,indigo:250,sky:200,bronze:33,burgundy:345};
+ const mode=$('hColorMode'),preset=$('hColorPreset');
+ try{const old=JSON.parse(localStorage.getItem('harmony-image-colors-v1')||'{}');if(['original','manual','auto'].includes(old.mode))mode.value=old.mode;if(hues[old.preset]!=null)preset.value=old.preset}catch{}
+ const save=()=>{try{localStorage.setItem('harmony-image-colors-v1',JSON.stringify({mode:mode.value,preset:preset.value}))}catch{}};
+ mode.onchange=save;preset.onchange=save;
+ function hsv(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min;let h=0;if(d){if(max===r)h=((g-b)/d)%6;else if(max===g)h=(b-r)/d+2;else h=(r-g)/d+4;h=(h*60+360)%360}return [h,max?d/max:0,max]}
+ function rgb(h,s,v){const c=v*s,x=c*(1-Math.abs((h/60)%2-1)),m=v-c;let a,b,d;if(h<60)[a,b,d]=[c,x,0];else if(h<120)[a,b,d]=[x,c,0];else if(h<180)[a,b,d]=[0,c,x];else if(h<240)[a,b,d]=[0,x,c];else if(h<300)[a,b,d]=[x,0,c];else [a,b,d]=[c,0,x];return [Math.round((a+m)*255),Math.round((b+m)*255),Math.round((d+m)*255)]}
+ async function transform(file,chosen){
+  if(!['image/jpeg','image/png','image/webp'].includes(file.type))return file;
+  const bitmap=await createImageBitmap(file);try{
+   if(bitmap.width*bitmap.height>18000000)throw Error('이미지가 너무 큽니다(최대 1,800만 픽셀).');
+   const canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.drawImage(bitmap,0,0);
+   const data=ctx.getImageData(0,0,canvas.width,canvas.height),a=data.data,target=hues[chosen];
+   for(let i=0;i<a.length;i+=4){const [h,s,v]=hsv(a[i],a[i+1],a[i+2]);
+    // Recolor saturated blue/cyan areas. Preserve white, gray, near-black and warm yellow accents.
+    if(h>=175&&h<=255&&s>=0.13&&v>=0.22){const sat=Math.max(s,0.25);const [r,g,b]=rgb(target,sat,v);a[i]=r;a[i+1]=g;a[i+2]=b;}
+   }
+   ctx.putImageData(data,0,0);
+   const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('이미지 변환 실패')),file.type,0.94));
+   return new File([blob],file.name,{type:blob.type,lastModified:Date.now()});
+  }finally{bitmap.close()}
+ }
+ function choice(){if(mode.value==='original')return null;if(mode.value==='manual')return preset.value;const keys=Object.keys(hues);const arr=new Uint32Array(1);crypto.getRandomValues(arr);return keys[arr[0]%keys.length]}
+ window.harmonyColorize=async(file)=>{const c=choice();if(!c)return file;const result=await transform(file,c);$('hColorStatus').textContent='업로드 색상 적용: '+({green:'그린',purple:'퍼플',red:'레드',gold:'골드',navy:'네이비',teal:'청록'}[c])+' · 원본 파일은 변경되지 않았습니다.';return result};
+ let lastUrl='';$('hColorPreviewBtn').onclick=async()=>{const file=$('hColorPreviewFile').files[0]||$('campaignQuickImage')?.files?.[0]||$('promoFile')?.files?.[0]||$('files')?.files?.[0];if(!file)return alert('미리보기 이미지를 먼저 선택하세요.');try{const c=choice();const result=c?await transform(file,c):file;if(lastUrl)URL.revokeObjectURL(lastUrl);lastUrl=URL.createObjectURL(result);$('hColorPreviewImage').src=lastUrl;$('hColorPreviewWrap').style.display='block';$('hColorPreviewStatus').textContent=c?'적용 색상: '+c+' · 실제 업로드 시 자동 모드라면 다른 색상이 선택될 수 있습니다.':'원본 색상 미리보기';}catch(e){alert('미리보기 실패: '+e.message)}};
+
+ // Kakao OG preview uses a static JPEG referenced by og:image, not a Supabase gallery upload.
+ let kakaoBlob=null;
+ const kakaoPreview=$('hKakaoPreview'), kakaoDownload=$('hKakaoDownloadBtn'), kakaoPublish=$('hKakaoPublishBtn');
+ $('hKakaoPreviewBtn').onclick=async()=>{
+  try{
+   const uploaded=$('hKakaoSource').files[0];
+   const file=uploaded||await (async()=>{const r=await fetch('kakao-simple-20261111.jpg',{cache:'no-store'});if(!r.ok)throw Error('기본 대표 이미지를 읽을 수 없습니다.');return new File([await r.blob()],'kakao-simple-20261111.jpg',{type:'image/jpeg'})})();
+   const c=choice(),converted=c?await transform(file,c):file;
+   const bmp=await createImageBitmap(converted);
+   const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=630;
+   const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,1200,630);
+   const scale=Math.min(1200/bmp.width,630/bmp.height);const w=bmp.width*scale,h=bmp.height*scale;
+   ctx.drawImage(bmp,(1200-w)/2,(630-h)/2,w,h);bmp.close();
+   kakaoBlob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('이미지 저장 실패')),'image/jpeg',0.94));
+   if(kakaoPreview.dataset.url)URL.revokeObjectURL(kakaoPreview.dataset.url);
+   const url=URL.createObjectURL(kakaoBlob);kakaoPreview.dataset.url=url;kakaoPreview.src=url;kakaoPreview.style.display='block';kakaoDownload.disabled=false;kakaoPublish.disabled=false;
+   $('hKakaoMsg').textContent='미리보기 완료 ('+(c||'원본')+'). 「카카오톡 대표 이미지 게시」를 누르면 자동 반영됩니다. 카카오톡에 저장된 기존 링크 미리보기는 캐시 때문에 늦게 바뀔 수 있습니다.';
+  }catch(e){$('hKakaoMsg').textContent='미리보기 실패: '+e.message}
+ };
+ kakaoPublish.onclick=async()=>{
+  if(!kakaoBlob)return alert('먼저 색상 미리보기를 완료하세요.');
+  if(!confirm('선택한 이미지로 카카오톡 링크 대표 이미지를 변경하시겠습니까?'))return;
+  kakaoPublish.disabled=true;$('hKakaoMsg').textContent='대표 이미지 업로드 및 게시 중…';
+  try{
+   const mod=await import('https://esm.sh/@supabase/supabase-js@2');
+   const client=window.__harmonySharedClient(mod,'https://gaygechqnvehajmsnvfb.supabase.co','sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO');
+   const {data:{session},error:authError}=await client.auth.getSession();
+   if(authError)throw authError;if(!session)throw Error('관리자 로그인이 필요합니다.');
+   const stamp=Date.now();const imagePath='inventory/kakao-preview/'+stamp+'.jpg';
+   const {error:imageError}=await client.storage.from('gallery').upload(imagePath,kakaoBlob,{contentType:'image/jpeg',upsert:false,cacheControl:'31536000'});
+   if(imageError)throw imageError;
+   const payload=new Blob([JSON.stringify({version:1,image:imagePath,updatedAt:new Date().toISOString()})],{type:'application/json'});
+   const {error:metaError}=await client.storage.from('gallery').upload('inventory/kakao-preview.json',payload,{contentType:'application/json',upsert:true,cacheControl:'0'});
+   if(metaError)throw metaError;
+   // Confirm that the public metadata now points to the newly uploaded file.
+   const checkUrl=client.storage.from('gallery').getPublicUrl('inventory/kakao-preview.json').data.publicUrl+'?verify='+Date.now();
+   const checkResponse=await fetch(checkUrl,{cache:'no-store'});
+   if(!checkResponse.ok)throw Error('이미지는 저장됐지만 대표 이미지 설정 확인에 실패했습니다.');
+   const confirmed=await checkResponse.json();
+   if(confirmed.image!==imagePath)throw Error('이미지는 저장됐지만 공개된 대표 이미지 설정이 아직 이전 버전입니다. 잠시 후 다시 확인하세요.');
+   // Verify the HTML that a link-preview crawler receives, not just the Supabase JSON.
+   // A successful storage write does not guarantee that Netlify's OG edge function is active.
+   const expectedOg=client.storage.from('gallery').getPublicUrl(imagePath).data.publicUrl;
+   let actualOg='', ogVerified=false, verifyIssue='';
+   for(let attempt=0;attempt<3;attempt++){
+    try{
+     const ogResponse=await fetch('/?harmony_og_check='+stamp+'_'+attempt,{cache:'no-store',headers:{'cache-control':'no-cache'}});
+     if(!ogResponse.ok)throw Error('홈페이지 응답 '+ogResponse.status);
+     const ogHtml=await ogResponse.text();
+     const ogMatch=ogHtml.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i);
+     actualOg=ogMatch?ogMatch[1]:'';
+     if(actualOg===expectedOg){ogVerified=true;break;}
+     verifyIssue=actualOg?'홈페이지가 이전 이미지 주소를 제공하고 있습니다.':'홈페이지에서 og:image 태그를 찾지 못했습니다.';
+    }catch(verifyError){verifyIssue=verifyError.message||String(verifyError)}
+    if(attempt<2)await new Promise(resolve=>setTimeout(resolve,900));
+   }
+   if(ogVerified){
+    $('hKakaoMsg').textContent='게시 완료 · Supabase 설정 및 홈페이지 OG 주소 확인 성공! 현재 게시 이미지: '+imagePath+' · 카카오톡에 이전 이미지가 보이면 카카오톡 캐시 때문일 수 있습니다.';
+   }else{
+    $('hKakaoMsg').textContent='이미지와 Supabase 설정은 저장됐지만 홈페이지 OG 주소 확인 실패! '+verifyIssue+' 현재 홈페이지 OG: '+(actualOg||'확인 불가')+' · 새 이미지: '+imagePath+' · 카카오톡 캐시 초기화 전에 Netlify Edge Function 배포 상태를 확인하세요.';
+   }
+  }catch(e){$('hKakaoMsg').textContent='게시 실패: '+e.message+' · 관리자 로그인 및 Supabase Storage INSERT/UPDATE 권한을 확인하세요.'}
+  finally{kakaoPublish.disabled=false}
+ };
+ kakaoDownload.onclick=()=>{if(!kakaoBlob)return;const url=URL.createObjectURL(kakaoBlob);const a=document.createElement('a');a.href=url;a.download='kakao-simple-20261111.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)};
+})();</script></body></html>
