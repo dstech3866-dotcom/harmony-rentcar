@@ -11,7 +11,9 @@ weekday = "월화수목금토일"[now.weekday()]
 label = f"{now.year}년 {now.month}월 {now.day}일 {weekday}요일"
 
 # Preserve the professionally designed original artwork (logo, icons, CTA).
-source = ROOT / "kakao-preview-large-base.jpg"
+source = ROOT / "harmony_kakao_selected_design.jpg"
+if not source.is_file():
+    source = ROOT / "kakao-preview-large-base.jpg"
 if not source.is_file():
     raise FileNotFoundError(f"Original Kakao artwork missing: {source}")
 im = Image.open(source).convert("RGB").resize((1200, 630), Image.Resampling.LANCZOS)
@@ -29,8 +31,8 @@ if not font_path:
 font = ImageFont.truetype(font_path, 43)
 
 # Change the date in its original bottom position; leave all other art intact.
-draw.rounded_rectangle((298, 542, 902, 620), radius=38, fill="#0a1a38")
-draw.text((600, 581), label, font=font, anchor="mm", fill="white")
+draw.rounded_rectangle((288, 539, 902, 606), radius=32, fill="#0a1a38")
+draw.text((600, 573), label, font=font, anchor="mm", fill="white")
 
 out = ROOT / "kakao-daily" / f"{day}.jpg"
 out.parent.mkdir(parents=True, exist_ok=True)
