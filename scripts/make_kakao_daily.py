@@ -9,6 +9,7 @@ now = datetime.now(ZoneInfo("Asia/Seoul"))
 day = now.strftime("%Y-%m-%d")
 weekday = "월화수목금토일"[now.weekday()]
 label = f"{now.year}년 {now.month}월 {now.day}일 {weekday}요일"
+# Use the verified base artwork stored at the repository root.
 source = ROOT / "kakao-preview-large-base.jpg"
 if not source.is_file():
     raise FileNotFoundError(f"Kakao preview base image not found: {source}")
