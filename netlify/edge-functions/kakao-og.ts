@@ -30,7 +30,7 @@ export default async (_request: Request, context: any) => {
   // GitHub Actions runs at 00:15 KST. Before publication, use yesterday's image.
   for (const day of [kstDate(), kstDate(-1)]) {
     const candidate = `${SITE}/kakao-daily/${day}.jpg`;
-    if (await imageExists(candidate)) { imageUrl = candidate; break; }
+    if (await imageExists(candidate)) { imageUrl = `${candidate}?design=large-date-v2`; break; }
   }
 
   // If the daily workflow fails, retain the admin-selected promotional image.
