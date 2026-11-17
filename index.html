@@ -104,7 +104,7 @@ document.querySelector('#upload').onclick=async()=>{
  }
  status.textContent=`${done}장 업로드 완료`;document.querySelector('#files').value='';titleInput.value='';await refresh();
 };
-document.querySelector('#share').onclick=async()=>{const url=new URL(location.href);url.search='';try{await navigator.clipboard.writeText(url.toString());alert('고객용 링크가 복사되었습니다.')}catch{prompt('아래 주소를 복사하세요.',url.toString())}};
+document.querySelector('#share').onclick=async()=>{const url=new URL(location.origin+'/');const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const date=type=>parts.find(p=>p.type===type)?.value||'';url.searchParams.set('kakao',`${date('year')}${date('month')}${date('day')}-large-date-v2`);try{await navigator.clipboard.writeText(url.toString());alert('최신 카카오톡 미리보기 고객용 링크가 복사되었습니다.')}catch{prompt('아래 주소를 복사하세요.',url.toString())}};
 document.querySelector('#close').onclick=()=>document.querySelector('#viewer').close();
 refresh();if(adminMode)authState();
 
