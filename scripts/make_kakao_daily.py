@@ -37,4 +37,6 @@ draw.text((600, 573), label, font=font, anchor="mm", fill="white")
 out = ROOT / "kakao-daily" / f"{day}.jpg"
 out.parent.mkdir(parents=True, exist_ok=True)
 im.save(out, quality=95, optimize=True)
+# Stable Open Graph image URL; overwritten with the newest date each day.
+im.save(out.parent / "latest.jpg", quality=95, optimize=True)
 print(f"Created {out} from original design: {label}")
