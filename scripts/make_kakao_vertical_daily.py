@@ -1,4 +1,4 @@
-"""Generate the vertical Kakao promotion with today's Korean date.
+"""Generate the vertical Kakao promotion with today's Korean date (KST).
 
 The uploaded original remains untouched; only the date bar is redrawn.
 """
