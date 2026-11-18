@@ -130,7 +130,17 @@ function parseLeaseSheet(raw,kind){
  const val=(row,...names)=>{for(const name of names){const i=ix(name);if(i>=0&&cleanCell(row[i]))return cleanCell(row[i]);}return ''};
  const out=[];
  for(const row of raw.slice(h+1)){
-  const detail=[val(row,'모델','모델명','시리즈'),val(row,'라인업','세부모델'),val(row,'트림','등급')].filter(Boolean).join(' ').trim();
+  // Full '모델명' in used-lease sheets contains cab type, trim and model year.
+  // Never replace it with the shorter '차종' field; append lineup/trim only
+  // when they are not already present in the complete model description.
+  const fullModel=val(row,'모델명','세부모델');
+  const shortModel=val(row,'모델','시리즈','차종','차명','차량명');
+  const lineup=val(row,'라인업');
+  const trim=val(row,'트림','등급');
+  let detail=fullModel||shortModel;
+  if(!fullModel&&lineup&&!detail.includes(lineup))detail=[detail,lineup].filter(Boolean).join(' ');
+  if(trim&&!detail.includes(trim))detail=[detail,trim].filter(Boolean).join(' ');
+  detail=detail.trim();
   const plate=val(row,'차량번호','차번').replace(/[\s-]/g,'');
   if(!detail&&!plate)continue;
   const terms=[];
