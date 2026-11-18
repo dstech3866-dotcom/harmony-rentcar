@@ -147,8 +147,10 @@ function parseLeaseSheet(raw,kind){
   for(let n=1;n<=4;n++){
    const suffix=n===1?'':String(n);
    const period=val(row,...(n===1?['계약기간','리스기간','기간','기간 1','기간1']:['기간 '+n,'기간'+n,'계약기간 '+n,'리스기간 '+n]));
-   const rent=val(row,...(n===1?['월리스료','월납입료','월리스료 1','월리스료1','월납입료 1','월납입료1','월렌트료']:['월리스료 '+n,'월리스료'+n,'월납입료 '+n,'월납입료'+n,'월렌트료 '+n]));
-   if(!rent)continue;
+   const rent=val(row,...(n===1?['월리스료','월납입료','월리스료 1','월리스료1','월납입료 1','월납입료1','월렌트료 1','월렌트료1','월렌트료']:['월리스료 '+n,'월리스료'+n,'월납입료 '+n,'월납입료'+n,'월렌트료 '+n]));
+   // A zero or blank monthly payment is not an available lease term.
+   const rentAmount=Number(String(rent).replace(/[,\s원]/g,''));
+   if(!Number.isFinite(rentAmount)||rentAmount<=0)continue;
    const mm=period.match(/\d+/);
    const deposit=val(row,...(n===1?['보증금','보증금 1','보증금1']:['보증금 '+n,'보증금'+n]));
    const buyout=val(row,...(n===1?['만기인수가','잔존가치','인수가','만기인수가 1']:['만기인수가 '+n,'잔존가치 '+n]));
