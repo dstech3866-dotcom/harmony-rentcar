@@ -162,7 +162,29 @@ let sourceData={},all=[],mode='server',promoKeys=new Set(['154하3816','154하39
 const esc=x=>String(x??'').replace(/[&<>"']/g,a=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[a]));
 const amt=x=>{let s=String(x??'').replace(/,/g,'').replace(/원/g,'').trim();let n=Number(s);return n>0&&Number.isFinite(n)?n:Infinity};
 const fmt=x=>Number.isFinite(x)?x.toLocaleString('ko-KR')+'원':'가격 확인';
-function recalc(){all=[];for(const cat of categories){for(const c of sourceData[cat.key]||[]){const terms=(c.terms||[]).filter(t=>amt(t.rent)<Infinity&&![6,12].includes(Number(t.months)));if(!terms.length)continue;const best=terms.reduce((a,b)=>amt(a.rent)<=amt(b.rent)?a:b);const identifiers=[c.assetCode,c.plate,c.id,c.stockCode].filter(Boolean).map(String);const promoText=[c.detail,c.model,c.options,c.promoName,c.promotionName].filter(Boolean).join(' ');const promo=Boolean(c.promo===true||c.isPromo===true||c.promotion===true||identifiers.some(k=>promoKeys.has(k))||/PROMO|프로모션|특가|블랙프라이데이/i.test(promoText));if(promo)continue;all.push({...c,cat,best,price:amt(best.rent),promo:false,ord:all.length});}}all.sort((a,b)=>a.price-b.price||categories.indexOf(a.cat)-categories.indexOf(b.cat)||a.ord-b.ord);draw()}
+function recalc(){
+ all=[];
+ for(const cat of categories){
+  for(const c of sourceData[cat.key]||[]){
+   const terms=(c.terms||[]).filter(t=>amt(t.rent)<Infinity&&![6,12].includes(Number(t.months)));
+   if(!terms.length)continue;
+   const identifiers=[c.assetCode,c.plate,c.id,c.stockCode].filter(Boolean).map(String);
+   const promoText=[c.detail,c.model,c.options,c.promoName,c.promotionName].filter(Boolean).join(' ');
+   const promo=Boolean(c.promo===true||c.isPromo===true||c.promotion===true||identifiers.some(k=>promoKeys.has(k))||/PROMO|프로모션|특가|블랙프라이데이/i.test(promoText));
+   if(promo)continue;
+   // Used leases: show each valid 48- and 60-month price as a separate row.
+   // Other categories retain their original single-cheapest-term behavior.
+   const shown=cat.key==='usedlease'
+     ?[...new Map(terms.filter(t=>[48,60].includes(Number(t.months))).map(t=>[Number(t.months),t])).values()]
+     :[terms.reduce((x,y)=>amt(x.rent)<=amt(y.rent)?x:y)];
+   for(const best of shown){
+    all.push({...c,cat,best,price:amt(best.rent),promo:false,ord:all.length});
+   }
+  }
+ }
+ all.sort((a,b)=>a.price-b.price||categories.indexOf(a.cat)-categories.indexOf(b.cat)||a.ord-b.ord);
+ draw();
+}
 function draw(){
  const q=document.querySelector('#q').value.trim().toLowerCase(),f=document.querySelector('#filter').value,product=document.querySelector('#productFilter').value,condition=document.querySelector('#vehicleCondition').value;
  const list=all.filter(c=>(product==='all'||(product==='rent'&&[1,2].includes(c.cat.rank))||(product==='lease'&&[3,4].includes(c.cat.rank)))&&(condition==='all'||(condition==='new'&&[2,3].includes(c.cat.rank))||(condition==='used'&&[1,4].includes(c.cat.rank)))&&(!f||String(c.cat.rank)===f)&&(!q||[c.model,c.detail,c.plate,c.year,c.options,c.brand,c.fuel].join(' ').toLowerCase().includes(q)));
