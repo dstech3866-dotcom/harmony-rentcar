@@ -225,11 +225,42 @@ function draw(){
  html+='</tbody></table></div>';
  document.querySelector('#list').innerHTML=html;
 }
-async function fetchOne(cat){for(const url of [endpoint+cat.key+'.json?t='+Date.now(),'/'+cat.path+'/inventory.json']){try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)continue;const data=await r.json();if(Array.isArray(data.cars))return data.cars}catch(e){}}return []}
-async function load(){mode='server';try{const r=await fetch('https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/promo-selected.json?t='+Date.now(),{cache:'no-store'});const d=r.ok?await r.json():{};promoKeys=new Set(['154하3816','154하3946',...(Array.isArray(d.keys)?d.keys.map(String):[])])}catch(e){promoKeys=new Set(['154하3816','154하3946'])} document.querySelector('#status').textContent='게시된 최신 가격표 확인 중…';const results=await Promise.all(categories.map(fetchOne));categories.forEach((cat,i)=>sourceData[cat.key]=results[i]);
-// Do not override live Supabase inventory with bundled historical spreadsheets.
-// Excel uploads remain available only through the explicit preview button.
-recalc()}
+// Bound network waits so the page never remains stuck on the loading message.
+async function fetchWithTimeout(url,ms=7000){
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),ms);
+ try{return await fetch(url,{cache:'no-store',signal:controller.signal})}
+ finally{clearTimeout(timer)}
+}
+async function fetchOne(cat){
+ for(const url of [endpoint+cat.key+'.json?t='+Date.now(),'/'+cat.path+'/inventory.json']){
+  try{
+   const r=await fetchWithTimeout(url);
+   if(!r.ok)continue;
+   const data=await r.json();
+   if(Array.isArray(data.cars))return data.cars;
+  }catch(e){}
+ }
+ return [];
+}
+async function load(){
+ mode='server';
+ document.querySelector('#status').textContent='게시된 최신 가격표 확인 중…';
+ try{
+  const r=await fetchWithTimeout(endpoint+'promo-selected.json?t='+Date.now(),5000);
+  const d=r.ok?await r.json():{};
+  promoKeys=new Set(['154하3816','154하3946',...(Array.isArray(d.keys)?d.keys.map(String):[])]);
+ }catch(e){promoKeys=new Set(['154하3816','154하3946'])}
+ try{
+  const results=await Promise.all(categories.map(fetchOne));
+  categories.forEach((cat,i)=>sourceData[cat.key]=results[i]);
+  recalc();
+ }catch(e){
+  document.querySelector('#status').textContent='차량 목록 표시 오류 · 서버 새로고침을 눌러 재시도해 주세요.';
+  console.error('Inventory rendering failed',e);
+ }
+}
+
 document.querySelector('#q').oninput=draw;document.querySelector('#filter').onchange=draw;document.querySelector('#productFilter').onchange=()=>{document.querySelector('#filter').value='';draw()};document.querySelector('#vehicleCondition').onchange=()=>{document.querySelector('#filter').value='';draw()};document.querySelector('#refresh').onclick=load;
 document.querySelector('#manage').onclick=()=>{const el=document.querySelector('#upload');el.style.display=el.style.display==='block'?'none':'block'};
 document.querySelector('#reset').onclick=()=>{document.querySelectorAll('input[type=file]').forEach(x=>x.value='');load()};
