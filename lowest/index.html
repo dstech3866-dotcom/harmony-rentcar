@@ -210,13 +210,6 @@ function matchesVehicleSearch(c,q){
  return [c.model,c.detail,c.plate,c.year,c.options,c.brand,c.fuel].join(' ').toLowerCase().includes(query);
 }
 function draw(){
- const q=');
-  const modelToken=new RegExp('(^|[^\\p{L}\\p{N}])'+escaped+'(?=$|[^\\p{L}\\p{N}])','u');
-  return modelToken.test(detail);
- }
- return [c.model,c.detail,c.plate,c.year,c.options,c.brand,c.fuel].join(' ').toLowerCase().includes(query);
-}
-function draw(){
  const q=document.querySelector('#q').value.trim().toLowerCase(),f=document.querySelector('#filter').value,product=document.querySelector('#productFilter').value,condition=document.querySelector('#vehicleCondition').value;
  const list=all.filter(c=>(product==='all'||(product==='rent'&&[1,2].includes(c.cat.rank))||(product==='lease'&&[3,4].includes(c.cat.rank)))&&(condition==='all'||(condition==='new'&&[2,3].includes(c.cat.rank))||(condition==='used'&&[1,4].includes(c.cat.rank)))&&(!f||String(c.cat.rank)===f)&&matchesVehicleSearch(c,q));
  document.querySelector('#status').textContent=(mode==='server'?'등록 자료':'업로드 미리보기')+' · 총 '+all.length.toLocaleString()+'대 / 표시 '+list.length.toLocaleString()+'대';
