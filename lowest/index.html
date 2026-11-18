@@ -179,11 +179,9 @@ function draw(){
 }
 async function fetchOne(cat){for(const url of [endpoint+cat.key+'.json?t='+Date.now(),'/'+cat.path+'/inventory.json']){try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)continue;const data=await r.json();if(Array.isArray(data.cars))return data.cars}catch(e){}}return []}
 async function load(){mode='server';try{const r=await fetch('https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/promo-selected.json?t='+Date.now(),{cache:'no-store'});const d=r.ok?await r.json():{};promoKeys=new Set(['154하3816','154하3946',...(Array.isArray(d.keys)?d.keys.map(String):[])])}catch(e){promoKeys=new Set(['154하3816','154하3946'])} document.querySelector('#status').textContent='게시된 최신 가격표 확인 중…';const results=await Promise.all(categories.map(fetchOne));categories.forEach((cat,i)=>sourceData[cat.key]=results[i]);
-if(window.HARMONY_EMBEDDED&&window.XLSX){
- const notes=[];
- for(const cat of categories){try{const encoded=window.HARMONY_EMBEDDED[cat.key];if(!encoded)continue;const binary=atob(encoded);const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));const wb=XLSX.read(bytes,{type:'array'});let best=[];for(const name of wb.SheetNames){try{const raw=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:'',raw:false});const parsed=parseSheet(raw,cat.key);if(parsed.length>best.length)best=parsed}catch(e){}}if(best.length){sourceData[cat.key]=best;notes.push(cat.label+' '+best.length+'대')}else notes.push(cat.label+' 인식 실패')}catch(e){notes.push(cat.label+' 오류: '+e.message)}}
- mode='upload';document.querySelector('#fileStatus').textContent='포함된 엑셀: '+notes.join(' / ');
-}recalc()}
+// Do not override live Supabase inventory with bundled historical spreadsheets.
+// Excel uploads remain available only through the explicit preview button.
+recalc()}
 document.querySelector('#q').oninput=draw;document.querySelector('#filter').onchange=draw;document.querySelector('#productFilter').onchange=()=>{document.querySelector('#filter').value='';draw()};document.querySelector('#vehicleCondition').onchange=()=>{document.querySelector('#filter').value='';draw()};document.querySelector('#refresh').onclick=load;
 document.querySelector('#manage').onclick=()=>{const el=document.querySelector('#upload');el.style.display=el.style.display==='block'?'none':'block'};
 document.querySelector('#reset').onclick=()=>{document.querySelectorAll('input[type=file]').forEach(x=>x.value='');load()};
