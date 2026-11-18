@@ -201,11 +201,33 @@ function recalc(){
 function matchesVehicleSearch(c,q){
  if(!q)return true;
  const query=q.trim().toLowerCase();
+ const compact=x=>String(x||'').toLowerCase().replace(/[^가-힣a-z0-9]/g,'');
  const modelQuery=knownModels.find(m=>m.toLowerCase()===query);
  if(modelQuery){
+  // Only inspect vehicle model/description, never options (e.g. '디스플레이').
   const detail=String(c.detail||'').toLowerCase();
-  const words=detail.split(/[^가-힣a-z0-9]+/u).filter(Boolean);
-  return words.includes(query);
+  const model=String(c.model||'').toLowerCase();
+  const tokens=detail.split(/[^가-힣a-z0-9]+/u).filter(Boolean);
+  const normalizedQuery=compact(query);
+  const matchesToken=token=>{
+   const normalized=compact(token);
+   if(normalized===normalizedQuery)return true;
+   // Numeric model suffixes: 포터2, 봉고3, 아이오닉5, etc.
+   if(/^(포터|봉고|아이오닉)[0-9]+$/.test(normalized)&&normalized.startsWith(normalizedQuery))return true;
+   // Common Korean model-name prefixes, but not unrelated option words.
+   if(/^(더뉴|올뉴|디올뉴|뉴)/.test(normalized)){
+    const withoutPrefix=normalized.replace(/^(더뉴|디올뉴|올뉴|뉴)/,'');
+    if(withoutPrefix===normalizedQuery)return true;
+   }
+   return false;
+  };
+  if(tokens.some(matchesToken))return true;
+  if(compact(model)===normalizedQuery)return true;
+  // Spaced numeric models such as '아이오닉 5'.
+  if(/^(아이오닉[0-9]+)$/.test(normalizedQuery)){
+   return new RegExp('아이오닉\\s*'+normalizedQuery.slice(4)+'(?![0-9])','i').test(detail);
+  }
+  return false;
  }
  return [c.model,c.detail,c.plate,c.year,c.options,c.brand,c.fuel].join(' ').toLowerCase().includes(query);
 }
