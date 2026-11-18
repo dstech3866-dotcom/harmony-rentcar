@@ -164,6 +164,16 @@ const amt=x=>{let s=String(x??'').replace(/,/g,'').replace(/원/g,'').trim();let
 const fmt=x=>Number.isFinite(x)?x.toLocaleString('ko-KR')+'원':'가격 확인';
 function recalc(){
  all=[];
+ // For the same used-lease plate, prefer the most complete published model
+ // description across 48/60-month records. Keep every term's price unchanged.
+ const usedLeaseDetails=new Map();
+ for(const c of sourceData.usedlease||[]){
+  const plate=String(c.plate||'').replace(/[\\s-]/g,'');
+  const detail=String(c.detail||'').trim();
+  if(!plate||/미등록|등록예정/.test(plate)||!detail)continue;
+  const previous=usedLeaseDetails.get(plate)||'';
+  if(detail.length>previous.length)usedLeaseDetails.set(plate,detail);
+ }
  for(const cat of categories){
   for(const c of sourceData[cat.key]||[]){
    const terms=(c.terms||[]).filter(t=>amt(t.rent)<Infinity&&![6,12].includes(Number(t.months)));
@@ -178,7 +188,9 @@ function recalc(){
      ?[...new Map(terms.filter(t=>[48,60].includes(Number(t.months))).map(t=>[Number(t.months),t])).values()]
      :[terms.reduce((x,y)=>amt(x.rent)<=amt(y.rent)?x:y)];
    for(const best of shown){
-    all.push({...c,cat,best,price:amt(best.rent),promo:false,ord:all.length});
+    const plate=String(c.plate||'').replace(/[\\s-]/g,'');
+    const unifiedDetail=cat.key==='usedlease'?usedLeaseDetails.get(plate):'';
+    all.push({...c,detail:unifiedDetail||c.detail,cat,best,price:amt(best.rent),promo:false,ord:all.length});
    }
   }
  }
