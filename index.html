@@ -130,7 +130,7 @@ function parseLeaseSheet(raw,kind){
  const val=(row,...names)=>{for(const name of names){const i=ix(name);if(i>=0&&cleanCell(row[i]))return cleanCell(row[i]);}return ''};
  const out=[];
  for(const row of raw.slice(h+1)){
-  const detail=[val(row,'시리즈'),val(row,'차종','차명','차량명','모델명','모델'),val(row,'세부모델','트림','등급','라인업')].filter(Boolean).join(' ').trim();
+  const detail=[val(row,'모델','모델명','시리즈'),val(row,'라인업','세부모델'),val(row,'트림','등급')].filter(Boolean).join(' ').trim();
   const plate=val(row,'차량번호','차번').replace(/[\s-]/g,'');
   if(!detail&&!plate)continue;
   const terms=[];
@@ -146,7 +146,7 @@ function parseLeaseSheet(raw,kind){
   }
   if(!terms.length)continue;
   const fuel=fuelOf(val(row,'유종','연료'));
-  out.push({plate:plate||'차량번호 미등록',brand:brandOf(val(row,'브랜드','제조사','메이커'),detail),type:typeOf(detail,fuel),model:modelOf(detail),detail:detail||'차량 정보 확인',year:val(row,'연식','년식','연형'),fuel,color:val(row,'외장컬러','외장색상','외장색','색상'),interior:val(row,'내장컬러','내장색상','내장색'),distance:val(row,'주행거리','주행거리km')||(kind==='newlease'?'신차':''),options:val(row,'옵션','옵션내용','주요옵션'),vehiclePrice:fmtMoney(val(row,'가격','차량가격','차량가액')),terms,stock:val(row,'잔여대수','재고')});
+  out.push({plate:plate||'차량번호 미등록',brand:brandOf(val(row,'브랜드','제조사','메이커'),detail),type:typeOf(detail,fuel),model:modelOf(detail),detail:detail||'차량 정보 확인',year:val(row,'연식','년식','연형')||((val(row,'라인업','세부모델').match(/20\d{2}년형/)||[])[0]||''),fuel,color:val(row,'외장컬러','외장색상','외장색','색상'),interior:val(row,'내장컬러','내장색상','내장색'),distance:val(row,'주행거리','주행거리km')||(kind==='newlease'?'신차':''),options:val(row,'옵션','옵션내용','주요옵션'),vehiclePrice:fmtMoney(val(row,'가격','차량가격','차량가액')),terms,stock:val(row,'잔여대수','재고')});
  }
  return out;
 }
