@@ -204,7 +204,12 @@ function matchesVehicleSearch(c,q){
  const modelQuery=knownModels.find(m=>m.toLowerCase()===query);
  if(modelQuery){
   const detail=String(c.detail||'').toLowerCase();
-  const escaped=query.replace(/[.*+?^${}()|[\]\\]/g,'\\function draw(){
+  const words=detail.split(/[^가-힣a-z0-9]+/u).filter(Boolean);
+  return words.includes(query);
+ }
+ return [c.model,c.detail,c.plate,c.year,c.options,c.brand,c.fuel].join(' ').toLowerCase().includes(query);
+}
+function draw(){
  const q=');
   const modelToken=new RegExp('(^|[^\\p{L}\\p{N}])'+escaped+'(?=$|[^\\p{L}\\p{N}])','u');
   return modelToken.test(detail);
