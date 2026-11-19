@@ -692,21 +692,44 @@ if(new URLSearchParams(location.search).has('admin')){
 <label>혜택 문구 (수정 가능)<br><input id="hPromoBenefit" style="padding:10px;min-width:250px" maxlength="100" value="수수료 90만원 지급" placeholder="예: 수수료 60만원 지급"></label>
 </div><p style="font-size:13px;color:#64748b">차종·연식은 현재 게시된 신차렌트 목록에서 가져옵니다. 새 프로모션은 차종·연식별로 추가됩니다. 기존 프로모션을 선택하면 혜택 문구도 수정할 수 있습니다.</p>
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin:12px 0"><button type="button" id="hPromoLoad" style="padding:11px 16px">선택한 차종 조회</button><button type="button" id="hPromoSave" style="padding:11px 16px;background:#166534;color:#fff">선택한 차량 게시</button><button type="button" id="hPromoEdit" style="padding:11px 16px;background:#1d4ed8;color:#fff">혜택 문구 수정 저장</button><button type="button" id="hPromoDelete" style="padding:11px 16px;background:#b91c1c;color:#fff">선택한 프로모션 삭제</button></div>
-<div id="hBannerAdmin" style="border:1px solid #b7d9c1;border-radius:12px;padding:16px;margin:18px 0;background:#f5fff8"><h3>신차렌트 상단 프로모션 배너 관리</h3><p>초록색 특별 프로모션 배너의 내용을 수정하거나 숨길 수 있습니다. 차량별 PROMO 표시는 유지됩니다.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px"><label>배너 제목<input id="hBannerTitle" maxlength="100" style="width:100%;padding:9px"></label><label>대상·기간 안내<input id="hBannerSubtitle" maxlength="150" style="width:100%;padding:9px"></label><label>강조 혜택 문구<input id="hBannerBenefit" maxlength="150" style="width:100%;padding:9px"></label><label>하단 안내 문구<input id="hBannerNote" maxlength="250" style="width:100%;padding:9px"></label></div><div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><button type="button" id="hBannerSave" style="background:#166534;color:white;padding:10px">배너 등록·수정 저장</button><button type="button" id="hBannerHide" style="background:#b91c1c;color:white;padding:10px">배너 숨기기·삭제</button><button type="button" id="hBannerShow" style="background:#1d4ed8;color:white;padding:10px">배너 다시 게시</button></div><p id="hBannerStatus" aria-live="polite">관리자 로그인을 확인하고 있습니다.</p></div><div id="hPromoState" aria-live="polite" style="margin:10px 0;color:#475569">관리자 로그인 후 차량 조회를 눌러주세요.</div><div id="hPromoChoices" style="max-height:420px;overflow:auto"></div>
+<div id="hBannerAdmin" style="border:1px solid #b7d9c1;border-radius:12px;padding:16px;margin:18px 0;background:#f5fff8">
+<h3>신차렌트 세로형 프로모션 배너 관리</h3><p>배너를 여러 개 등록하고 각각 수정·삭제·숨김·순서 변경할 수 있습니다. 차량별 PROMO는 별도로 유지됩니다.</p>
+<label>등록된 배너 선택 <select id="hBannerSelect" style="padding:10px;min-width:260px"></select></label>
+<button type="button" id="hBannerNew">+ 새 배너</button>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px">
+<label>배너 제목<input id="hBannerTitle" maxlength="100" style="width:100%;padding:9px"></label>
+<label>대상·기간 안내<input id="hBannerSubtitle" maxlength="150" style="width:100%;padding:9px"></label>
+<label>강조 혜택 문구<input id="hBannerBenefit" maxlength="150" style="width:100%;padding:9px"></label>
+<label>하단 안내 문구<input id="hBannerNote" maxlength="250" style="width:100%;padding:9px"></label>
+<label>연결할 차종 <input id="hBannerModel" placeholder="예: 아반떼" maxlength="60" style="width:100%;padding:9px"></label>
+</div>
+<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px">
+<button type="button" id="hBannerSave" style="background:#166534;color:white;padding:10px">배너 등록·수정 저장</button>
+<button type="button" id="hBannerHide" style="padding:10px">숨기기 / 다시 게시</button>
+<button type="button" id="hBannerUp" style="padding:10px">위로 이동</button><button type="button" id="hBannerDown" style="padding:10px">아래로 이동</button>
+<button type="button" id="hBannerDelete" style="background:#b91c1c;color:white;padding:10px">선택 배너 삭제</button>
+</div><p id="hBannerStatus" aria-live="polite">관리자 로그인 확인 중…</p></div>
+<div id="hPromoState" aria-live="polite" style="margin:10px 0;color:#475569">관리자 로그인 후 차량 조회를 눌러주세요.</div><div id="hPromoChoices" style="max-height:420px;overflow:auto"></div>
 </section>
 <script type="module" id="hBannerAdminScript">
 (async()=>{
 const $=id=>document.getElementById(id),U='https://gaygechqnvehajmsnvfb.supabase.co',K='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO',B='gallery',PATH='inventory/promo-banner.json';
-const defaults={visible:true,title:'아반떼 2026년형 특별 프로모션',subtitle:'아반떼 2026년형 · 재고 소진 시까지',benefit:'수수료 90만원 지급',note:'※ 2026년형 아반떼 해당 재고에만 적용 · 클릭하면 신차렌트의 아반떼를 먼저 보여드립니다 ›'};
-let client=null;const status=$('hBannerStatus');
+const initial={id:'avante2026',visible:true,title:'아반떼 2026년형 특별 프로모션',subtitle:'아반떼 2026년형 · 재고 소진 시까지',benefit:'수수료 90만원 지급',note:'※ 2026년형 아반떼 해당 재고에만 적용 · 클릭하면 신차렌트의 아반떼를 먼저 보여드립니다 ›',model:'아반떼'};
+let client=null,items=[],selected='',creating=false;const status=$('hBannerStatus');
 async function auth(){if(!client){const mod=await import('https://esm.sh/@supabase/supabase-js@2');client=window.__harmonySharedClient(mod,U,K)}const {data,error}=await client.auth.getSession();if(error)throw error;if(!data.session)throw Error('관리자 로그인이 필요합니다.');return client}
-async function read(){const c=await auth();const {data,error}=await c.storage.from(B).download(PATH);if(error){if(/not found|404|does not exist/i.test(error.message||''))return {...defaults};throw error}return {...defaults,...JSON.parse(await data.text())}}
-function fill(d){for(const field of ['title','subtitle','benefit','note'])$('hBanner'+field[0].toUpperCase()+field.slice(1)).value=d[field]||'';status.textContent=d.visible===false?'현재 배너는 숨김 상태입니다.':'현재 배너는 게시 중입니다.'}
-async function save(visible){status.textContent='저장 중…';try{const c=await auth();const d={visible,title:$('hBannerTitle').value.trim(),subtitle:$('hBannerSubtitle').value.trim(),benefit:$('hBannerBenefit').value.trim(),note:$('hBannerNote').value.trim(),updatedAt:new Date().toISOString()};if(visible&&!d.title)throw Error('배너 제목을 입력하세요.');const {error}=await c.storage.from(B).upload(PATH,new Blob([JSON.stringify(d)],{type:'application/json'}),{upsert:true,contentType:'application/json',cacheControl:'0'});if(error)throw error;fill(d);status.textContent='저장 완료 · 신차렌트 페이지를 새로고침해 확인하세요.'}catch(e){status.textContent='저장 실패: '+e.message}}
-$('hBannerSave').onclick=()=>save(true);
-$('hBannerHide').onclick=()=>{if(confirm('상단 프로모션 배너를 숨기시겠습니까? 차량별 프로모션은 삭제되지 않습니다.'))save(false)};
-$('hBannerShow').onclick=()=>save(true);
-try{fill(await read())}catch(e){status.textContent='불러오기 실패: '+e.message}
+async function read(){const c=await auth();const {data,error}=await c.storage.from(B).download(PATH);if(error){if(/not found|404|does not exist/i.test(error.message||''))return [initial];throw error}const d=JSON.parse(await data.text());return Array.isArray(d.banners)?d.banners:Array.isArray(d)?d:[{...initial,...d}]}
+const fields=['title','subtitle','benefit','note','model'];
+function fill(b={}){for(const f of fields)$('hBanner'+f[0].toUpperCase()+f.slice(1)).value=b[f]||'';status.textContent=creating?'새 배너 입력 중':(b.visible===false?'선택 배너: 숨김':'선택 배너: 게시 중')}
+function refresh(){const select=$('hBannerSelect');select.replaceChildren();for(const b of items){const o=document.createElement('option');o.value=b.id;o.textContent=b.title+(b.visible===false?' (숨김)':'');select.append(o)}if(items.some(b=>b.id===selected)){select.value=selected;fill(items.find(b=>b.id===selected))}else if(items.length){selected=items[0].id;select.value=selected;fill(items[0])}else{selected='';creating=true;fill({})}}
+async function persist(next){const c=await auth();const payload={version:2,banners:next,updatedAt:new Date().toISOString()};const {error}=await c.storage.from(B).upload(PATH,new Blob([JSON.stringify(payload)],{type:'application/json'}),{upsert:true,contentType:'application/json',cacheControl:'0'});if(error)throw error;items=next;creating=false;refresh();status.textContent='저장 완료 · 신차렌트 페이지를 새로고침해 확인하세요.'}
+async function act(fn){status.textContent='저장 중…';try{await auth();await fn()}catch(e){status.textContent='처리 실패: '+e.message}}
+$('hBannerSelect').onchange=()=>{creating=false;selected=$('hBannerSelect').value;refresh()};
+$('hBannerNew').onclick=()=>{creating=true;selected='';$('hBannerSelect').selectedIndex=-1;fill({})};
+$('hBannerSave').onclick=()=>act(async()=>{const data={};for(const f of fields)data[f]=$('hBanner'+f[0].toUpperCase()+f.slice(1)).value.trim();if(!data.title)throw Error('제목을 입력하세요');const old=items.find(b=>b.id===selected);const id=creating||!old?'banner-'+Date.now().toString(36):old.id;const b={...old,...data,id,visible:old?old.visible:true};selected=id;await persist(old?items.map(x=>x.id===id?b:x):[...items,b])});
+$('hBannerHide').onclick=()=>act(async()=>{const b=items.find(x=>x.id===selected);if(!b)throw Error('배너를 선택하세요');await persist(items.map(x=>x.id===b.id?{...x,visible:b.visible===false}:x))});
+$('hBannerDelete').onclick=()=>{const b=items.find(x=>x.id===selected);if(!b)return alert('삭제할 배너를 선택하세요');if(!confirm('「'+b.title+'」 배너를 삭제하시겠습니까?'))return;act(async()=>{selected='';await persist(items.filter(x=>x.id!==b.id))})};
+for(const [button,delta] of [['hBannerUp',-1],['hBannerDown',1]])$(button).onclick=()=>act(async()=>{const idx=items.findIndex(x=>x.id===selected),j=idx+delta;if(idx<0||j<0||j>=items.length){status.textContent='더 이동할 수 없습니다.';return}const next=[...items];[next[idx],next[j]]=[next[j],next[idx]];await persist(next)});
+try{items=await read();refresh()}catch(e){status.textContent='불러오기 실패: '+e.message}
 })();
 </script>
 <script type="module" id="hPromoSelectorScript">
