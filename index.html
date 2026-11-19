@@ -126,7 +126,7 @@ document.querySelector('#share').onclick=async()=>{
  const todayParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
  const todayPart=type=>todayParts.find(p=>p.type===type)?.value||'';
  const kstDay=todayPart('year')+todayPart('month')+todayPart('day');
- url.searchParams.set('kakao',version+'-'+kstDay+'-dated-v3');
+ url.searchParams.set('kakao',version+'-'+kstDay+'-footer-v5');
  try{await navigator.clipboard.writeText(url.toString());alert('최신 카카오톡 대표 이미지용 고객 링크가 복사되었습니다.')}
  catch{prompt('아래 주소를 복사하세요.',url.toString())}
 };
