@@ -35,6 +35,39 @@ window.__harmonySyncLogin = function(isLoggedIn){
 .harmony-price-short{display:block;margin-top:11px;text-align:center;background:#e0eaf5;border-radius:10px;color:#365879!important;text-decoration:none;font-weight:700;padding:12px}
 @media(max-width:650px){.harmony-price-panel{padding:20px 15px}.harmony-price-links{grid-template-columns:repeat(2,minmax(0,1fr))}.harmony-price-primary{font-size:17px}}
 </style>
+<style id="hHomeBannerStyle">
+#hHomePromoBanners{max-width:1080px;margin:18px auto 24px;padding:0 16px;box-sizing:border-box}
+#hHomePromoBanners .h-home-banner{display:block;background:#effcf3;border:1px solid #86efac;border-radius:13px;padding:15px 19px;text-decoration:none;color:#14532d;box-shadow:0 5px 14px #14532d12}
+#hHomePromoBanners .h-home-banner+.h-home-banner{margin-top:12px}
+#hHomePromoBanners .h-home-new{display:inline-block;background:#16a34a;color:white;font-weight:900;font-size:12px;padding:5px 9px;border-radius:6px;margin-right:8px}
+#hHomePromoBanners .h-home-title{font-weight:850;font-size:18px}
+#hHomePromoBanners .h-home-subtitle{display:block;margin-top:8px;font-size:14px}
+#hHomePromoBanners .h-home-benefit{display:block;color:#c62828;font-weight:900;font-size:22px;margin:8px 0 3px}
+#hHomePromoBanners .h-home-note{display:block;font-size:12px;color:#475569;margin-top:5px}
+</style>
+<section id="hHomePromoBanners" aria-label="신차렌트 특별 프로모션 배너" hidden></section>
+<script id="hHomeBannerScript">
+(async()=>{
+const holder=document.getElementById('hHomePromoBanners');if(!holder)return;
+try{
+ const url='https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/promo-banner.json?v='+Date.now();
+ const res=await fetch(url,{cache:'no-store'});if(!res.ok)return;
+ const data=await res.json();const banners=Array.isArray(data.banners)?data.banners:Array.isArray(data)?data:[data];
+ for(const b of banners){
+  if(!b||b.visible===false)continue;
+  const a=document.createElement('a');a.className='h-home-banner';
+  const model=String(b.model||'').trim();a.href=model?'newcars/?promo='+encodeURIComponent(model):'newcars/';
+  const tag=document.createElement('span');tag.className='h-home-new';tag.textContent='NEW';
+  const title=document.createElement('span');title.className='h-home-title';title.textContent=b.title||'특별 프로모션';
+  const sub=document.createElement('span');sub.className='h-home-subtitle';sub.textContent=b.subtitle||'';
+  const benefit=document.createElement('span');benefit.className='h-home-benefit';benefit.textContent=b.benefit||'';
+  const note=document.createElement('span');note.className='h-home-note';note.textContent=b.note||'';
+  a.append(tag,title,sub,benefit,note);holder.append(a);
+ }
+ if(holder.children.length)holder.hidden=false;
+}catch(e){console.warn('메인 프로모션 배너 조회 실패',e)}
+})();
+</script>
 <section class="harmony-price-hero" aria-label="하모니렌트카 렌트 리스 최저가 안내"><div class="harmony-price-panel">
 <div class="harmony-price-kicker">01 · 하모니렌트카 차량 가격표</div>
 <h2 class="harmony-price-title">하모니렌트카에서 드릴 수 있는<br>렌트·리스 최저가!</h2>
