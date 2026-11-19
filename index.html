@@ -826,27 +826,14 @@ $('hPromoSave').onclick=async()=>{if(!options.length)return alert('먼저 선택
    if(!checkResponse.ok)throw Error('이미지는 저장됐지만 대표 이미지 설정 확인에 실패했습니다.');
    const confirmed=await checkResponse.json();
    if(confirmed.image!==imagePath)throw Error('이미지는 저장됐지만 공개된 대표 이미지 설정이 아직 이전 버전입니다. 잠시 후 다시 확인하세요.');
-   // Verify the HTML that a link-preview crawler receives, not just the Supabase JSON.
-   // A successful storage write does not guarantee that Netlify's OG edge function is active.
-   const expectedOg=client.storage.from('gallery').getPublicUrl(imagePath).data.publicUrl;
-   let actualOg='', ogVerified=false, verifyIssue='';
-   for(let attempt=0;attempt<3;attempt++){
-    try{
-     const ogResponse=await fetch('/?harmony_og_check='+stamp+'_'+attempt,{cache:'no-store',headers:{'cache-control':'no-cache'}});
-     if(!ogResponse.ok)throw Error('홈페이지 응답 '+ogResponse.status);
-     const ogHtml=await ogResponse.text();
-     const ogMatch=ogHtml.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i);
-     actualOg=ogMatch?ogMatch[1]:'';
-     if(actualOg===expectedOg){ogVerified=true;break;}
-     verifyIssue=actualOg?'홈페이지가 이전 이미지 주소를 제공하고 있습니다.':'홈페이지에서 og:image 태그를 찾지 못했습니다.';
-    }catch(verifyError){verifyIssue=verifyError.message||String(verifyError)}
-    if(attempt<2)await new Promise(resolve=>setTimeout(resolve,900));
-   }
-   if(ogVerified){
-    $('hKakaoMsg').textContent='게시 완료 · Supabase 설정 및 홈페이지 OG 주소 확인 성공! 현재 게시 이미지: '+imagePath+' · 카카오톡에 이전 이미지가 보이면 카카오톡 캐시 때문일 수 있습니다.';
-   }else{
-    $('hKakaoMsg').textContent='이미지와 Supabase 설정은 저장됐지만 홈페이지 OG 주소 확인 실패! '+verifyIssue+' 현재 홈페이지 OG: '+(actualOg||'확인 불가')+' · 새 이미지: '+imagePath+' · 카카오톡 캐시 초기화 전에 Netlify Edge Function 배포 상태를 확인하세요.';
-   }
+   // The public OG image is the dated GitHub Actions output, not the raw Supabase artwork.
+   // The admin upload changes the SOURCE for the next daily image generation.
+   // Do not compare these distinct URLs or incorrectly report a publication failure.
+   const currentDayParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+   const dayPart=type=>currentDayParts.find(p=>p.type===type)?.value||'';
+   const dailyImage='/kakao-daily/'+dayPart('year')+'-'+dayPart('month')+'-'+dayPart('day')+'.jpg';
+   $('hKakaoMsg').textContent='색상 이미지 저장 완료 · Supabase 공개 설정 확인 성공! 저장 이미지: '+imagePath+' · 카카오톡에 표시되는 날짜 포함 이미지는 별도 자동 생성되므로, 현재 게시 이미지에는 새 색상이 즉시 반영되지 않을 수 있습니다. 다음 날짜 이미지 생성 작업이 성공한 뒤 홈페이지 링크를 새로 복사해 확인하세요. 날짜 위치는 기존 디자인을 유지합니다.';
+
   }catch(e){$('hKakaoMsg').textContent='게시 실패: '+e.message+' · 관리자 로그인 및 Supabase Storage INSERT/UPDATE 권한을 확인하세요.'}
   finally{kakaoPublish.disabled=false}
  };
