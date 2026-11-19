@@ -27,23 +27,25 @@ export default async (_request: Request, context: any) => {
   let html = await response.text();
   let imageUrl = '';
 
-  // GitHub Actions runs at 00:15 KST. Before publication, use yesterday's image.
-  for (const day of [kstDate(), kstDate(-1)]) {
-    const candidate = `${SITE}/kakao-daily/${day}.jpg`;
-    if (await imageExists(candidate)) { imageUrl = `${candidate}?design=large-date-v2`; break; }
-  }
-
-  // If the daily workflow fails, retain the admin-selected promotional image.
-  if (!imageUrl) {
-    try {
-      const r = await fetch(`${META}?refresh=${Date.now()}`, { cache: 'no-store' });
-      if (r.ok) {
-        const doc = await r.json();
-        if (typeof doc.image === 'string' && /^inventory\/kakao-preview\/[0-9]+\.jpg$/.test(doc.image)) {
-          imageUrl = BASE + doc.image;
-        }
+  // An explicitly published admin image takes precedence over the daily artwork.
+  // Its unique timestamped filename also prevents stale OG image caching.
+  try {
+    const r = await fetch(`${META}?refresh=${Date.now()}`, { cache: 'no-store' });
+    if (r.ok) {
+      const doc = await r.json();
+      if (typeof doc.image === 'string' && /^inventory\\/kakao-preview\\/[0-9]+\\.jpg$/.test(doc.image)) {
+        const selected = BASE + doc.image;
+        if (await imageExists(selected)) imageUrl = selected;
       }
-    } catch (_) { /* Keep the HTML's original OG image. */ }
+    }
+  } catch (_) { /* Use the daily image as fallback. */ }
+
+  // Use today's dated artwork only if no admin-selected image is available.
+  if (!imageUrl) {
+    for (const day of [kstDate(), kstDate(-1)]) {
+      const candidate = `${SITE}/kakao-daily/${day}.jpg`;
+      if (await imageExists(candidate)) { imageUrl = `${candidate}?design=large-date-v2`; break; }
+    }
   }
 
   if (imageUrl) {
