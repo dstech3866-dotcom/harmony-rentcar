@@ -104,7 +104,29 @@ document.querySelector('#upload').onclick=async()=>{
  }
  status.textContent=`${done}장 업로드 완료`;document.querySelector('#files').value='';titleInput.value='';await refresh();
 };
-document.querySelector('#share').onclick=async()=>{const url=new URL(location.origin+'/');const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());const date=type=>parts.find(p=>p.type===type)?.value||'';url.searchParams.set('kakao',`${date('year')}${date('month')}${date('day')}-large-date-v2`);try{await navigator.clipboard.writeText(url.toString());alert('최신 카카오톡 미리보기 고객용 링크가 복사되었습니다.')}catch{prompt('아래 주소를 복사하세요.',url.toString())}};
+document.querySelector('#share').onclick=async()=>{
+ const url=new URL(location.origin+'/');
+ // Use the currently published Kakao image revision, not a fixed daily URL.
+ // A new image produces a new share URL so Kakao does not reuse the old preview.
+ let version='';
+ try{
+  const metaUrl='https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/kakao-preview.json?refresh='+Date.now();
+  const response=await fetch(metaUrl,{cache:'no-store'});
+  if(response.ok){
+   const meta=await response.json();
+   const match=typeof meta.image==='string'&&meta.image.match(/^inventory\/kakao-preview\/([0-9]+)\.jpg$/);
+   if(match)version='image-'+match[1];
+  }
+ }catch(e){}
+ if(!version){
+  const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const date=type=>parts.find(p=>p.type===type)?.value||'';
+  version='daily-'+date('year')+date('month')+date('day');
+ }
+ url.searchParams.set('kakao',version);
+ try{await navigator.clipboard.writeText(url.toString());alert('최신 카카오톡 대표 이미지용 고객 링크가 복사되었습니다.')}
+ catch{prompt('아래 주소를 복사하세요.',url.toString())}
+};
 document.querySelector('#close').onclick=()=>document.querySelector('#viewer').close();
 refresh();if(adminMode)authState();
 
