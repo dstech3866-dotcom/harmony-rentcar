@@ -97,8 +97,8 @@ function render(){
    for(const [fuel,years] of fuels){
     const fuelCount=[...years.values()].reduce((n,cars)=>n+cars.length,0);
     html+=head('group-fuel','연료 · '+fuel+' · '+fuelCount+'대');
-    for(const [year,cars] of years){
-     html+=head('group-year','연식 · '+year+' · '+cars.length+'대');
+    html+='<tr class="group-column-head"><th>차량번호</th><th>연식</th><th>연료</th><th>차종 / 세부모델</th><th>외장 색상</th><th>내장 색상</th><th>주행거리</th><th>차량가격</th><th>보증금</th><th>계약기간</th><th>월 렌트료</th><th>만기 인수가</th><th>옵션내용</th></tr>';
+    for(const [year,cars] of [...years].sort((a,b)=>String(a[0]).localeCompare(String(b[0]),'ko'))){
      for(const c of cars){
       const t=bestTerm(c),vehiclePrice=c.vehiclePrice||c.price||'';
       html+='<tr><td>'+safe(c.plate||'등록예정')+'</td><td>'+safe(c.year)+'</td><td>'+safe(c.fuel)+'</td><td>'+safe(c.detail||c.model)+'<div class="hint">'+safe(c.category)+'</div></td><td>'+safe(c.color||c.exterior)+'</td><td>'+safe(c.interior)+'</td><td>'+safe(c.distance||c.mileage)+'</td><td>'+safe(fmt(vehiclePrice))+'</td><td>'+safe(fmt(t.deposit))+'</td><td><span>'+safe(t.months?t.months+'개월':'-')+'</span></td><td class="price">'+safe(ageRent(c,t))+'</td><td>'+safe(fmt(t.buyout))+'</td><td>'+safe(c.options||'무옵션')+'</td></tr>';
