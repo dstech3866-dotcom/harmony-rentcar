@@ -13,28 +13,51 @@ day = now.strftime("%Y-%m-%d")
 weekday = "월화수목금토일"[now.weekday()]
 label = f"{now.year}년 {now.month}월 {now.day}일 {weekday}요일"
 
-# Prefer the admin-published design. Fall back to the original artwork offline.
+# The admin-published artwork is authoritative. Never silently replace a selected
+# color with the bundled purple artwork on a transient Supabase failure.
+# Cache-bust both metadata and image requests and retry temporary network errors.
+from time import sleep
+from urllib.parse import quote
+from urllib.error import HTTPError
+
 base = "https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/"
 im = None
-try:
-    request = Request(base + "inventory/kakao-preview.json", headers={"Cache-Control": "no-cache"})
-    with urlopen(request, timeout=12) as response:
-        metadata = json.load(response)
-    image_path = metadata.get("image", "")
-    if isinstance(image_path, str) and image_path.startswith("inventory/kakao-preview/") and image_path.endswith(".jpg"):
-        with urlopen(Request(base + image_path, headers={"Cache-Control": "no-cache"}), timeout=15) as response:
-            im = Image.open(BytesIO(response.read())).convert("RGB")
-        print(f"Using admin-selected Kakao design: {image_path}")
-except Exception as exc:
-    print(f"Admin Kakao image unavailable, using bundled original: {exc}")
+last_error = None
+for attempt in range(1, 4):
+    try:
+        stamp = str(int(datetime.now(ZoneInfo("UTC")).timestamp() * 1000))
+        request = Request(
+            base + "inventory/kakao-preview.json?v=" + stamp,
+            headers={"Cache-Control": "no-cache, no-store", "Pragma": "no-cache"},
+        )
+        with urlopen(request, timeout=20) as response:
+            metadata = json.load(response)
+        image_path = metadata.get("image", "")
+        if not isinstance(image_path, str) or not image_path.startswith("inventory/kakao-preview/") or not image_path.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+            raise ValueError(f"Invalid admin-selected Kakao image path: {image_path!r}")
+        image_request = Request(
+            base + quote(image_path, safe="/") + "?v=" + stamp,
+            headers={"Cache-Control": "no-cache, no-store", "Pragma": "no-cache"},
+        )
+        with urlopen(image_request, timeout=25) as response:
+            image_bytes = response.read()
+        with Image.open(BytesIO(image_bytes)) as loaded:
+            loaded.verify()
+        im = Image.open(BytesIO(image_bytes)).convert("RGB")
+        print(f"Using admin-selected Kakao design: {image_path} ({len(image_bytes)} bytes)")
+        break
+    except Exception as exc:
+        last_error = exc
+        print(f"::warning::Admin Kakao artwork retrieval attempt {attempt}/3 failed: {exc}")
+        if attempt < 3:
+            sleep(4 * attempt)
 
 if im is None:
-    source = ROOT / "harmony_kakao_selected_design.jpg"
-    if not source.is_file():
-        source = ROOT / "kakao-preview-large-base.jpg"
-    if not source.is_file():
-        raise FileNotFoundError(f"Original Kakao artwork missing: {source}")
-    im = Image.open(source).convert("RGB")
+    raise RuntimeError(
+        "Admin-selected Kakao image could not be verified. "
+        "Keeping the last published daily image instead of publishing the wrong color."
+    ) from last_error
+
 # Preserve the whole original design (including its bottom CTA) without covering it.
 # Reserve a separate 96-pixel footer for the daily date inside 1200x630.
 canvas = Image.new("RGB", (1200, 630), "white")
