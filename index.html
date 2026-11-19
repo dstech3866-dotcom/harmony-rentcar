@@ -68,10 +68,10 @@ window.__harmonySyncLogin = function(isLoggedIn){
 #hHomePromoBanners .h-home-benefit{color:#b33d22;font-size:clamp(20px,2.3vw,25px)}
 #hHomePromoBanners .h-home-new{background:#b77927}
 #hHomePromoBanners .h-home-banner::after{background:#235c89!important;box-shadow:0 3px 0 #17415f}
-#hHomePromoBanners .h-home-banner:hover,#hHomePromoBanners .h-home-banner:focus-visible{background:linear-gradient(115deg,#fff1d5,#fff9eb)!important;border-color:#c9963e!important;box-shadow:0 9px 24px rgba(121,84,27,.17)!important;outline:2px solid #d4a552;outline-offset:2px}
+#hHomePromoBanners .h-home-banner:hover,#hHomePromoBanners .h-home-banner:focus-visible{background:var(--h-promo-hover,#fff9ed)!important;border-color:var(--h-promo-border,#c9963e)!important;box-shadow:0 9px 24px rgba(121,84,27,.17)!important;outline:2px solid #d4a552;outline-offset:2px}
 #hHomePromoBanners .h-home-banner:active::after{box-shadow:none}
 #hHomePromoBanners .h-home-banner{position:relative;padding-right:145px;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease}
-#hHomePromoBanners .h-home-banner::after{content:"차량 보기  →";position:absolute;right:18px;top:50%;transform:translateY(-50%);background:#15803d;color:white;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:800;white-space:nowrap}
+#hHomePromoBanners .h-home-banner::after{background:var(--h-promo-action,#235c89)!important;content:"차량 보기  →";position:absolute;right:18px;top:50%;transform:translateY(-50%);background:#15803d;color:white;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:800;white-space:nowrap}
 #hHomePromoBanners .h-home-banner:hover,#hHomePromoBanners .h-home-banner:focus-visible{background:#dcfce7;border-color:#16a34a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(22,101,52,.16);outline:2px solid #4ade80;outline-offset:2px}
 #hHomePromoBanners .h-home-banner:active{transform:translateY(1px)}
 @media(max-width:620px){#hHomePromoBanners .h-home-banner{padding-right:19px;padding-bottom:54px}#hHomePromoBanners .h-home-banner::after{top:auto;bottom:12px;right:16px;transform:none}}
@@ -86,6 +86,7 @@ try{
  const res=await fetch(url,{cache:'no-store'});if(!res.ok)return;
  const data=await res.json();const banners=Array.isArray(data.banners)?data.banners:Array.isArray(data)?data:[data];
  const fragment=document.createDocumentFragment();
+ const palettes={"gold":["#fff9ed","#e4b96e","#173b60","#b33d22","#b77927","#235c89"],"blue":["#eef5ff","#8db7e5","#173e69","#b33d22","#2866a0","#205783"],"green":["#effbf3","#86d4a3","#14532d","#b33d22","#16804b","#176b4a"],"rose":["#fff2f4","#e9a7b3","#783348","#b33d22","#a54c68","#86465a"],"gray":["#f5f7fa","#bac6d4","#273b55","#ad402d","#586c85","#344f70"]};
  for(const b of banners){
   if(!b||b.visible===false)continue;
   const a=document.createElement('a');a.className='h-home-banner';
@@ -95,6 +96,7 @@ try{
   const sub=document.createElement('span');sub.className='h-home-subtitle';sub.textContent=b.subtitle||'';
   const benefit=document.createElement('span');benefit.className='h-home-benefit';benefit.textContent=b.benefit||'';
   const note=document.createElement('span');note.className='h-home-note';note.textContent=b.note||'';
+  const p=palettes[b.theme]||palettes.gold;a.style.setProperty('background',p[0],'important');a.style.setProperty('border-color',p[1],'important');title.style.color=p[2];benefit.style.color=p[3];tag.style.background=p[4];a.style.setProperty('--h-promo-action',p[5]);a.style.setProperty('--h-promo-hover',p[0]);a.style.setProperty('--h-promo-border',p[1]);
   a.append(tag,title,sub,benefit,note);fragment.append(a);
  }
  holder.replaceChildren(fragment);holder.hidden=holder.children.length===0;
@@ -721,7 +723,7 @@ if(new URLSearchParams(location.search).has('admin')){
 <label>대상·기간 안내<input id="hBannerSubtitle" maxlength="150" style="width:100%;padding:9px"></label>
 <label>강조 혜택 문구<input id="hBannerBenefit" maxlength="150" style="width:100%;padding:9px"></label>
 <label>하단 안내 문구<input id="hBannerNote" maxlength="250" style="width:100%;padding:9px"></label>
-<label>연결할 차종 <input id="hBannerModel" placeholder="예: 아반떼" maxlength="60" style="width:100%;padding:9px"></label>
+<label>연결할 차종 <input id="hBannerModel" placeholder="예: 아반떼" maxlength="60" style="width:100%;padding:9px"></label><label>배너 색상<select id="hBannerTheme" style="width:100%;padding:9px"><option value="gold">골드 · 아이보리 (기본)</option><option value="blue">블루 · 밝은 파랑</option><option value="green">그린 · 연초록</option><option value="rose">로즈 · 연분홍</option><option value="gray">그레이 · 차분한 회색</option></select></label>
 </div>
 <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px">
 <button type="button" id="hBannerSave" style="background:#166534;color:white;padding:10px">배너 등록·수정 저장</button>
@@ -738,8 +740,8 @@ const initial={id:'avante2026',visible:true,title:'아반떼 2026년형 특별 �
 let client=null,items=[],selected='',creating=false;const status=$('hBannerStatus');
 async function auth(){if(!client){const mod=await import('https://esm.sh/@supabase/supabase-js@2');client=window.__harmonySharedClient(mod,U,K)}const {data,error}=await client.auth.getSession();if(error)throw error;if(!data.session)throw Error('관리자 로그인이 필요합니다.');return client}
 async function read(){const c=await auth();const {data,error}=await c.storage.from(B).download(PATH);if(error){if(/not found|404|does not exist/i.test(error.message||''))return [initial];throw error}const d=JSON.parse(await data.text());return Array.isArray(d.banners)?d.banners:Array.isArray(d)?d:[{...initial,...d}]}
-const fields=['title','subtitle','benefit','note','model'];
-function fill(b={}){for(const f of fields)$('hBanner'+f[0].toUpperCase()+f.slice(1)).value=b[f]||'';status.textContent=creating?'새 배너 입력 중':(b.visible===false?'선택 배너: 숨김':'선택 배너: 게시 중')}
+const fields=['title','subtitle','benefit','note','model','theme'];
+function fill(b={}){for(const f of fields)$('hBanner'+f[0].toUpperCase()+f.slice(1)).value=b[f]||(f==='theme'?'gold':'');status.textContent=creating?'새 배너 입력 중':(b.visible===false?'선택 배너: 숨김':'선택 배너: 게시 중')}
 function refresh(){const select=$('hBannerSelect');select.replaceChildren();for(const b of items){const o=document.createElement('option');o.value=b.id;o.textContent=b.title+(b.visible===false?' (숨김)':'');select.append(o)}if(items.some(b=>b.id===selected)){select.value=selected;fill(items.find(b=>b.id===selected))}else if(items.length){selected=items[0].id;select.value=selected;fill(items[0])}else{selected='';creating=true;fill({})}}
 async function persist(next){const c=await auth();const payload={version:2,banners:next,updatedAt:new Date().toISOString()};const {error}=await c.storage.from(B).upload(PATH,new Blob([JSON.stringify(payload)],{type:'application/json'}),{upsert:true,contentType:'application/json',cacheControl:'0'});if(error)throw error;items=next;creating=false;refresh();status.textContent='저장 완료 · 신차렌트 페이지를 새로고침해 확인하세요.'}
 async function act(fn){status.textContent='저장 중…';try{await auth();await fn()}catch(e){status.textContent='처리 실패: '+e.message}}
