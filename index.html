@@ -151,7 +151,7 @@ try{
   const benefit=document.createElement('span');benefit.className='h-home-benefit';benefit.textContent=b.benefit||'';
   const note=document.createElement('span');note.className='h-home-note';note.textContent=b.note||'';
   const p=palettes[b.theme]||palettes.gold;a.style.setProperty('background',hMix(p[0],b.intensity),'important');a.style.setProperty('border-width',Math.max(0,Math.min(15,Number(b.borderWidth??2)))+'px','important');a.style.setProperty('border-color',p[1],'important');title.style.color=p[2];benefit.style.color=p[3];tag.style.background=p[4];a.style.setProperty('--h-promo-action',p[5]);a.style.setProperty('--h-promo-hover',hMix(p[0],b.intensity));a.style.setProperty('--h-promo-border',p[1]);
-  a.append(tag,title,sub,benefit,note);if(b.image&&/^data:image\/jpeg;base64,/.test(b.image)){const img=document.createElement('img');img.src=b.image;img.alt=(b.title||'프로모션')+' 홍보 이미지';img.loading='lazy';img.style.cssText='display:block;max-width:100%;max-height:440px;object-fit:contain;margin:12px auto;border-radius:9px';a.append(img)}if(b.extra){const extra=document.createElement('div');extra.textContent=b.extra;extra.style.cssText='white-space:pre-wrap;margin-top:8px;font-size:14px';a.append(extra)}fragment.append(a);
+  a.append(tag,title,sub,benefit,note);/* Compact public banners display text only; uploaded image remains in Supabase. */if(b.extra){const extra=document.createElement('div');extra.textContent=b.extra;extra.style.cssText='white-space:pre-wrap;margin-top:8px;font-size:14px';a.append(extra)}fragment.append(a);
  }
  holder.replaceChildren(fragment);holder.hidden=holder.children.length===0;
 }catch(e){console.warn('메인 프로모션 배너 조회 실패',e);holder.dataset.loadError='true'}
