@@ -148,6 +148,7 @@ try{
  node.querySelector('[style*="display:block"]').textContent=b.subtitle||'';
  node.querySelector('.h-promo-benefit').textContent=b.benefit||'';
  node.querySelector('.h-promo-note').textContent=b.note||'';
+ const palettes={"gold":["#fff9ed","#e4b96e","#173b60","#b33d22","#b77927","#235c89"],"blue":["#eef5ff","#8db7e5","#173e69","#b33d22","#2866a0","#205783"],"green":["#effbf3","#86d4a3","#14532d","#b33d22","#16804b","#176b4a"],"rose":["#fff2f4","#e9a7b3","#783348","#b33d22","#a54c68","#86465a"],"gray":["#f5f7fa","#bac6d4","#273b55","#ad402d","#586c85","#344f70"]};const p=palettes[b.theme]||palettes.green;node.style.background=p[0];node.style.borderColor=p[1];node.style.color=p[2];node.querySelector('.h-promo-new').style.background=p[4];node.querySelector('.h-promo-benefit').style.color=p[3];
  const model=String(b.model||'').trim();node.href=model?'/newcars/?promo='+encodeURIComponent(model):'/newcars/';
  node.setAttribute('aria-label',(b.title||'프로모션')+' 자세히 보기');wrap.append(node);
  }
