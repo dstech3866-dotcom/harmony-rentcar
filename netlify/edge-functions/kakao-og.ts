@@ -30,7 +30,7 @@ export default async (_request: Request, context: any) => {
   // The daily JPEG is committed to this site by GitHub Actions.
   // Do not rely on a HEAD request to the same site from the Edge Function:
   // a failed/blocked HEAD incorrectly caused fallback to the undated image.
-  imageUrl = `${SITE}/kakao-daily/${kstDate()}.jpg?design=admin-dated-v4`;
+  imageUrl = `${SITE}/kakao-daily/${kstDate()}.jpg?design=admin-footer-v5`;
 
   if (imageUrl) {
     const escaped = imageUrl.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
