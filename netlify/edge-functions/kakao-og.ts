@@ -27,26 +27,10 @@ export default async (_request: Request, context: any) => {
   let html = await response.text();
   let imageUrl = '';
 
-  // Daily image is generated from the latest admin-selected color design,
-  // with a Korean date stamp. Prefer it over the undated source image.
-  for (const day of [kstDate(), kstDate(-1)]) {
-    const candidate = `${SITE}/kakao-daily/${day}.jpg`;
-    if (await imageExists(candidate)) { imageUrl = `${candidate}?design=admin-dated-v3`; break; }
-  }
-
-  // Fallback: show the admin image if the dated image is not yet available.
-  if (!imageUrl) {
-    try {
-      const r = await fetch(`${META}?refresh=${Date.now()}`, { cache: 'no-store' });
-      if (r.ok) {
-        const doc = await r.json();
-        if (typeof doc.image === 'string' && /^inventory\\/kakao-preview\\/[0-9]+\\.jpg$/.test(doc.image)) {
-          const selected = BASE + doc.image;
-          if (await imageExists(selected)) imageUrl = selected;
-        }
-      }
-    } catch (_) { /* Keep original HTML OG metadata. */ }
-  }
+  // The daily JPEG is committed to this site by GitHub Actions.
+  // Do not rely on a HEAD request to the same site from the Edge Function:
+  // a failed/blocked HEAD incorrectly caused fallback to the undated image.
+  imageUrl = `${SITE}/kakao-daily/${kstDate()}.jpg?design=admin-dated-v4`;
 
   if (imageUrl) {
     const escaped = imageUrl.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
