@@ -44,5 +44,18 @@ jobs:
           git add kakao-daily/ kakao-vertical-daily/
           if ! git diff --cached --quiet; then
             git commit -m "Update Kakao date preview (KST)"
-            git push
+            # Other site updates can land while artwork is being generated.
+            # Rebase the generated-image commit on the latest main before pushing.
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo "Daily dated images published successfully."
+                exit 0
+              fi
+              echo "Concurrent update detected; retrying push ($attempt/5)."
+              sleep 3
+            done
+            echo "::error::Could not publish dated images after five retries."
+            exit 1
           fi
