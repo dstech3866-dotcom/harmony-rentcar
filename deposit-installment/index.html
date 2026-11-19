@@ -64,7 +64,7 @@ function getModel(c){return String(c.model||'').trim()||String(c.detail||'').tri
 function match(c,m){const model=clean(getModel(c)),name=clean(m);if(model===name)return true;const detail=clean(c.detail);return detail.startsWith(name)&&!/[0-9a-z가-힣]/i.test(detail.slice(name.length,name.length+1))}
 function fmt(v){const n=Number(String(v??'').replace(/[^\d.]/g,''));return n>0?n.toLocaleString('ko-KR')+'원':String(v||'-')}
 function ageRent(c,t){return fmt(t.rent)}
-function bestTerm(c){const t=(c.terms||[]).filter(x=>Number(x.months)>12);return t.sort((a,b)=>Number(String(a.rent||'').replace(/[^\d]/g,''))-Number(String(b.rent||'').replace(/[^\d]/g,'')))[0]||{}}
+function bestTerm(c){const terms=(c.terms||[]).filter(x=>Number(x.months)>12);const preferred=terms.filter(x=>Number(x.months)===48);const pool=preferred.length?preferred:terms;return [...pool].sort((a,b)=>Number(String(a.rent||'').replace(/[^\d]/g,''))-Number(String(b.rent||'').replace(/[^\d]/g,'')))[0]||{}}
 async function readJson(url){try{const r=await fetch(url+'?v='+Date.now(),{cache:'no-store'});if(r.ok)return await r.json()}catch(e){}return null}
 function render(){
  const q=clean($('search').value);
