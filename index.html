@@ -34,6 +34,15 @@ window.__harmonySyncLogin = function(isLoggedIn){
 .harmony-price-links a:hover,.harmony-price-links a:focus-visible{background:#0e365e;outline:2px solid #7fb6f4}
 .harmony-price-short{display:block;margin-top:11px;text-align:center;background:#e0eaf5;border-radius:10px;color:#365879!important;text-decoration:none;font-weight:700;padding:12px}
 @media(max-width:650px){.harmony-price-panel{padding:20px 15px}.harmony-price-links{grid-template-columns:repeat(2,minmax(0,1fr))}.harmony-price-primary{font-size:17px}}
+/* Clear click affordances for homepage price and promotion links */
+.harmony-price-primary{background:linear-gradient(115deg,#f97316,#dc4308);box-shadow:0 5px 0 #a93509,0 10px 20px rgba(194,65,12,.2);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.harmony-price-primary:hover,.harmony-price-primary:focus-visible{background:linear-gradient(115deg,#ff8b24,#e7500b);transform:translateY(-3px);box-shadow:0 8px 0 #a93509,0 13px 24px rgba(194,65,12,.25);outline:3px solid #ffcf70;outline-offset:3px}
+.harmony-price-primary:active{transform:translateY(3px);box-shadow:0 1px 0 #a93509}
+.harmony-price-links a,.harmony-price-short{transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
+.harmony-price-links a:hover,.harmony-price-links a:focus-visible{background:#256fc0;transform:translateY(-3px);box-shadow:0 6px 14px rgba(14,54,94,.2)}
+.harmony-price-links a:active,.harmony-price-short:active{transform:translateY(2px)}
+.harmony-price-short:hover,.harmony-price-short:focus-visible{background:#c9dffa;transform:translateY(-2px);outline:2px solid #397ac1;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.harmony-price-primary,.harmony-price-links a,.harmony-price-short{transition:none!important;transform:none!important}}
 </style>
 <section class="harmony-price-hero" aria-label="하모니렌트카 렌트 리스 최저가 안내"><div class="harmony-price-panel">
 <div class="harmony-price-kicker">01 · 하모니렌트카 차량 가격표</div>
@@ -52,6 +61,12 @@ window.__harmonySyncLogin = function(isLoggedIn){
 #hHomePromoBanners .h-home-subtitle{display:block;margin-top:8px;font-size:14px}
 #hHomePromoBanners .h-home-benefit{display:block;color:#c62828;font-weight:900;font-size:22px;margin:8px 0 3px}
 #hHomePromoBanners .h-home-note{display:block;font-size:12px;color:#475569;margin-top:5px}
+#hHomePromoBanners .h-home-banner{position:relative;padding-right:145px;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease}
+#hHomePromoBanners .h-home-banner::after{content:"차량 보기  →";position:absolute;right:18px;top:50%;transform:translateY(-50%);background:#15803d;color:white;border-radius:9px;padding:9px 12px;font-size:13px;font-weight:800;white-space:nowrap}
+#hHomePromoBanners .h-home-banner:hover,#hHomePromoBanners .h-home-banner:focus-visible{background:#dcfce7;border-color:#16a34a;transform:translateY(-2px);box-shadow:0 8px 22px rgba(22,101,52,.16);outline:2px solid #4ade80;outline-offset:2px}
+#hHomePromoBanners .h-home-banner:active{transform:translateY(1px)}
+@media(max-width:620px){#hHomePromoBanners .h-home-banner{padding-right:19px;padding-bottom:54px}#hHomePromoBanners .h-home-banner::after{top:auto;bottom:12px;right:16px;transform:none}}
+@media(prefers-reduced-motion:reduce){#hHomePromoBanners .h-home-banner{transition:none!important;transform:none!important}}
 </style>
 <section id="hHomePromoBanners" aria-label="신차렌트 특별 프로모션 배너"><a class="h-home-banner" href="newcars/"><span class="h-home-new">EVENT</span><span class="h-home-title">신차렌트 특별 프로모션 확인하기</span><span class="h-home-subtitle">현재 진행 중인 프로모션을 확인하세요.</span></a></section>
 <script id="hHomeBannerScript">
