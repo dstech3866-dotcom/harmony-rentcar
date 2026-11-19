@@ -832,7 +832,7 @@ $('hPromoSave').onclick=async()=>{if(!options.length)return alert('먼저 선택
    const currentDayParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
    const dayPart=type=>currentDayParts.find(p=>p.type===type)?.value||'';
    const dailyImage='/kakao-daily/'+dayPart('year')+'-'+dayPart('month')+'-'+dayPart('day')+'.jpg';
-   $('hKakaoMsg').textContent='색상 이미지 저장 완료 · Supabase 공개 설정 확인 성공! 저장 이미지: '+imagePath+' · 카카오톡에 표시되는 날짜 포함 이미지는 별도 자동 생성되므로, 현재 게시 이미지에는 새 색상이 즉시 반영되지 않을 수 있습니다. 다음 날짜 이미지 생성 작업이 성공한 뒤 홈페이지 링크를 새로 복사해 확인하세요. 날짜 위치는 기존 디자인을 유지합니다.';
+   $('hKakaoMsg').textContent='색상 이미지 저장 완료 · Supabase 공개 설정 확인 성공! 저장 이미지: '+imagePath+' · 카카오톡에 표시되는 날짜 포함 이미지는 별도 자동 생성되므로, 현재 게시 이미지에는 새 색상이 즉시 반영되지 않을 수 있습니다. 자동 생성 작업이 약 5분 간격으로 새 색상을 확인합니다. GitHub Actions 실행 및 Netlify 배포가 완료된 뒤 홈페이지 링크를 새로 복사해 확인하세요(실제 반영은 지연될 수 있습니다). 날짜 위치는 기존 디자인을 유지합니다.';
 
   }catch(e){$('hKakaoMsg').textContent='게시 실패: '+e.message+' · 관리자 로그인 및 Supabase Storage INSERT/UPDATE 권한을 확인하세요.'}
   finally{kakaoPublish.disabled=false}
