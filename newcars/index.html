@@ -142,7 +142,7 @@ try{
  const r=await fetch(url,{cache:'no-store'});if(!r.ok)return;
  const data=await r.json();const banners=Array.isArray(data.banners)?data.banners:Array.isArray(data)?data:[data];
  const wrap=document.createElement('div');wrap.id='hPromoBannerList';wrap.style.display='flex';wrap.style.flexDirection='column';wrap.style.gap='12px';
- for(const b of banners){if(b.visible===false)continue;
+ for(const b of banners){if(b.visible===false||(b.category||'newcars')!=='newcars')continue;
  const node=template.cloneNode(true);node.removeAttribute('id');
  node.querySelector('.h-promo-title').textContent=b.title||'특별 프로모션';
  node.querySelector('[style*="display:block"]').textContent=b.subtitle||'';
