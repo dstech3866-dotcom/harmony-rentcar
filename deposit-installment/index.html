@@ -69,7 +69,7 @@ async function readJson(url){try{const r=await fetch(url+'?v='+Date.now(),{cache
 function render(){
  const q=clean($('search').value);
  const ageEligible=all.filter(c=>depositAmount(c)!=null&&(!currentModel||match(c,currentModel)));
- const conditionOf=c=>String(c.category||'').startsWith('신차')?'신차':'중고차';
+ const conditionOf=c=>({'신차렌트':'신차렌트','중고렌트':'중고차렌트','신차리스':'신차리스','중고리스':'중고차리스'}[c.category]||c.category);
  const eligible=ageEligible.filter(c=>conditionFilter==='전체'||conditionOf(c)===conditionFilter);
  const brands=[...new Set(eligible.map(c=>String(c.brand||'제조사 미확인').trim()))].sort((a,b)=>a.localeCompare(b,'ko'));
  if(brandFilter!=='전체'&&!brands.includes(brandFilter))brandFilter='전체';
@@ -77,22 +77,25 @@ function render(){
  const types=[...new Set(byBrand.map(c=>String(c.type||'기타').trim()))].sort((a,b)=>a.localeCompare(b,'ko'));
  if(typeFilter!=='전체'&&!types.includes(typeFilter))typeFilter='전체';
  function makeFilters(id,items,active,change){const box=$(id);box.replaceChildren();for(const item of items){const btn=document.createElement('button');btn.type='button';btn.textContent=item;btn.className=item===active?'active':'';btn.onclick=()=>change(item);box.append(btn)}}
- makeFilters('conditionFilters',['전체','신차','중고차'],conditionFilter,v=>{conditionFilter=v;brandFilter='전체';typeFilter='전체';render()});
+ makeFilters('conditionFilters',['전체','신차렌트','신차리스','중고차렌트','중고차리스'],conditionFilter,v=>{conditionFilter=v;brandFilter='전체';typeFilter='전체';render()});
  makeFilters('brandFilters',['전체',...brands],brandFilter,v=>{brandFilter=v;typeFilter='전체';render()});
  makeFilters('typeFilters',['전체',...types],typeFilter,v=>{typeFilter=v;render()});
  const list=byBrand.filter(c=>(typeFilter==='전체'||String(c.type||'기타').trim()===typeFilter)&&(!q||clean([c.model,c.detail,c.plate,c.assetCode,c.fuel,c.options].join(' ')).includes(q)));
  $('status').textContent='등록 차량 '+all.filter(c=>depositAmount(c)!=null).length+'대 · 표시 차량 '+list.length+'대';
  const grouped=new Map();
  for(const c of list.slice(0,1500)){
+  const section=conditionOf(c);if(!grouped.has(section))grouped.set(section,new Map());const sectionModels=grouped.get(section);
   const brand=String(c.brand||'제조사 미확인').trim(),model=getModel(c),fuel=String(c.fuel||'연료 미확인').trim(),year=String(c.year||'연식 미확인').trim();
-  if(!grouped.has(brand))grouped.set(brand,new Map());const models=grouped.get(brand);
+  if(!sectionModels.has(brand))sectionModels.set(brand,new Map());const models=sectionModels.get(brand);
   if(!models.has(model))models.set(model,new Map());const fuels=models.get(model);
   if(!fuels.has(fuel))fuels.set(fuel,new Map());const years=fuels.get(fuel);
   if(!years.has(year))years.set(year,[]);years.get(year).push(c);
  }
  const head=(cls,title)=>'<tr class="group-header '+cls+'"><td colspan="13">'+safe(title)+'</td></tr>';
  let html='';
- for(const [brand,models] of grouped){
+ for(const [section,sectionBrands] of grouped){
+  html+=head('group-brand',section);
+ for(const [brand,models] of sectionBrands){
   const brandCount=[...models.values()].reduce((n,fuels)=>n+[...fuels.values()].reduce((m,years)=>m+[...years.values()].reduce((k,cars)=>k+cars.length,0),0),0);
   html+=head('group-brand',brand);
   for(const [model,fuels] of models){
@@ -110,6 +113,7 @@ function render(){
     }
    }
   }
+ }
  }
  $('rows').innerHTML=html||'<tr><td colspan="13">선택된 차종의 차량이 없습니다.</td></tr>';
  const holder=$('publicModels');holder.replaceChildren();
