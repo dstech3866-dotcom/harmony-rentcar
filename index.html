@@ -716,9 +716,11 @@ for(const [id,values] of [['hPromoModel',['아반떼','셀토스']],['hPromoYear
  try{
   state.textContent='현재 신차렌트 차종 목록 불러오는 중…';
   inventoryCache=await loadPublishedNewCars();
+  const live=await getJSON(PATH);
+  savedData=live||{};
   const keepCampaign=campaign(),keepBenefit=$('hPromoBenefit').value;
   populate();
-  $('hPromoCampaign').value=keepCampaign;
+  if([...$('hPromoCampaign').options].some(o=>o.value===keepCampaign))$('hPromoCampaign').value=keepCampaign;
   updateFields();
   if(keepCampaign==='__new')$('hPromoBenefit').value=keepBenefit;
   state.textContent='전체 차종 '+new Set(inventoryCache.map(c=>c.model).filter(Boolean)).size+'종 불러오기 완료 · 차종과 연식을 선택하고 조회하세요.';
