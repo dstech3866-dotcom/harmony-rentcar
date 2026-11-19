@@ -11,7 +11,7 @@
 .scroll td:nth-child(10) span{background:#a12a3e;color:#fff;border-radius:5px;padding:5px;font-weight:900}
 .scroll tbody tr:nth-child(even){background:#edf5ff}
 .scroll th:nth-child(4){width:220px}.scroll th:nth-child(13){width:290px}
-</style><style id="hInstallmentDepositStyle">.scroll td.installment-deposit{color:#073b80;font-weight:900;white-space:nowrap}.scroll th.installment-deposit-head{color:#fff}</style><style id="hAge23ZoomStyle">
+</style><style id="hInstallmentDepositStyle">.scroll td.installment-deposit{color:#073b80;font-weight:900;white-space:nowrap}.scroll th.installment-deposit-head{color:#fff;white-space:normal!important;line-height:1.25;overflow-wrap:keep-all;word-break:keep-all}.scroll th:nth-child(9),.scroll td:nth-child(9){width:calc(125px * var(--table-zoom));min-width:calc(125px * var(--table-zoom))}.scroll td.installment-deposit{white-space:nowrap!important;font-variant-numeric:tabular-nums}.scroll td.term-60 span{background:#087b8c!important;color:#fff!important}.scroll td.term-48 span{background:#a12a3e!important;color:#fff!important}</style><style id="hAge23ZoomStyle">
 .zoom-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 10px}.zoom-controls button{font-size:16px;min-width:44px;min-height:42px;background:#fff;color:#13365a;border:1px solid #b9cbda}.zoom-controls output{min-width:55px;text-align:center;font-weight:800}.zoom-controls button:disabled{opacity:.4;cursor:not-allowed}
 .scroll{--table-zoom:1}
 .scroll table{min-width:calc(1540px * var(--table-zoom))!important;width:calc(100% * var(--table-zoom));font-size:calc(12px * var(--table-zoom))!important}
@@ -112,7 +112,7 @@ function render(){
       const displayTerms=leaseTerms.length?leaseTerms:[bestTerm(c)];
       for(const t of displayTerms){
       const originalDeposit=Number(String(t.deposit??'').replace(/[^\d]/g,''));const perInstallment=originalDeposit>0?originalDeposit/2:0;
-      html+='<tr><td>'+safe(c.plate||'등록예정')+'</td><td>'+safe(c.year)+'</td><td>'+safe(c.fuel)+'</td><td>'+safe(c.detail||c.model)+'<div class="hint">'+safe(c.category)+'</div></td><td>'+safe(c.color||c.exterior)+'</td><td>'+safe(c.interior)+'</td><td>'+safe(c.distance||c.mileage)+'</td><td>'+safe(fmt(vehiclePrice))+'</td><td class="installment-deposit">'+safe(perInstallment?fmt(perInstallment):'-')+'</td><td><span>'+safe(t.months?t.months+'개월':'-')+'</span></td><td class="price">'+safe(ageRent(c,t))+'</td><td>'+safe(fmt(t.buyout))+'</td><td>'+safe(c.options||'무옵션')+'</td></tr>';
+      html+='<tr><td>'+safe(c.plate||'등록예정')+'</td><td>'+safe(c.year)+'</td><td>'+safe(c.fuel)+'</td><td>'+safe(c.detail||c.model)+'<div class="hint">'+safe(c.category)+'</div></td><td>'+safe(c.color||c.exterior)+'</td><td>'+safe(c.interior)+'</td><td>'+safe(c.distance||c.mileage)+'</td><td>'+safe(fmt(vehiclePrice))+'</td><td class="installment-deposit">'+safe(perInstallment?fmt(perInstallment):'-')+'</td><td class="'+(Number(t.months)===60?'term-60':Number(t.months)===48?'term-48':'')+'"><span>'+safe(t.months?t.months+'개월':'-')+'</span></td><td class="price">'+safe(ageRent(c,t))+'</td><td>'+safe(fmt(t.buyout))+'</td><td>'+safe(c.options||'무옵션')+'</td></tr>';
       }
      }
     }
