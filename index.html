@@ -74,6 +74,15 @@ window.__harmonySyncLogin = function(isLoggedIn){
 #hHomePromoBanners .h-home-banner:has(img){padding:16px 16px 65px!important;min-height:160px!important}
 #hHomePromoBanners .h-home-banner::after{right:16px!important;top:auto!important;bottom:12px!important;transform:none!important}
 }
+</style><style id="hAdminLoginFirstStyle">
+body.h-admin-login-first{overflow:hidden}
+body.h-admin-login-first #admin{display:block!important;position:fixed!important;inset:0!important;z-index:2147483000!important;overflow-y:auto!important;margin:0!important;padding:clamp(24px,8vh,90px) 20px!important;background:#edf4fb!important;box-sizing:border-box!important;text-align:center!important;border:0!important;border-radius:0!important}
+body.h-admin-login-first #admin>h2,body.h-admin-login-first #admin>p,body.h-admin-login-first #admin>#loginrow{max-width:520px;margin-left:auto!important;margin-right:auto!important}
+body.h-admin-login-first #admin>h2{font-size:28px;color:#12345b;margin-top:25px!important}
+body.h-admin-login-first #admin>#loginrow{display:flex!important;flex-direction:column!important;gap:12px!important;padding:24px!important;background:#fff;border:1px solid #cbdcf0;border-radius:16px;box-shadow:0 12px 36px #1c3d6422;box-sizing:border-box}
+body.h-admin-login-first #admin>#loginrow input,body.h-admin-login-first #admin>#loginrow button{width:100%!important;min-height:48px;box-sizing:border-box}
+body.h-admin-login-first #admin>#loginrow button{font-weight:800}
+body.h-admin-login-first #admin>#loginrow~*{display:none!important}
 </style></head><body><header><h1>하모니렌트카 신차 및 중고차 재고현황</h1><p>신차 · 중고차 · 재고현황</p><p class="today-date" id="todayDate" aria-live="off">오늘 날짜 확인 중...</p><a href="/admin/" style="display:inline-block;margin:10px 0 0;padding:10px 18px;background:#fff;color:#134f77;border-radius:9px;text-decoration:none;font-weight:800;border:1px solid #c6e0f0">🔐 관리자 로그인</a></header><style>
 .harmony-price-hero{max-width:1080px;margin:20px auto 24px;padding:0 16px;box-sizing:border-box}
 .harmony-price-panel{background:linear-gradient(120deg,#eaf3ff 0%,#fff 100%);border:2px solid #b7d4f4;border-radius:22px;padding:26px 28px;box-shadow:0 12px 28px rgba(19,64,116,.12)}
@@ -163,7 +172,7 @@ const SUPABASE_URL='https://gaygechqnvehajmsnvfb.supabase.co';
 const SUPABASE_ANON_KEY='sb_publishable_OFGuCgOffh-ofXnDu80eAA_9Z1wQclO';
 const BUCKET='gallery';
 const grid=document.querySelector('#grid'),admin=document.querySelector('#admin'),uploader=document.querySelector('#uploader'),loginrow=document.querySelector('#loginrow'),status=document.querySelector('#status');
-const adminMode=new URLSearchParams(location.search).has('admin');if(adminMode){admin.style.display='block';document.getElementById('campaignManager').style.display='block';}
+const adminMode=new URLSearchParams(location.search).has('admin');if(adminMode){admin.style.display='block';document.getElementById('campaignManager').style.display='block';}if(adminMode)document.body.classList.add('h-admin-login-first');
 let signedIn=false,supabase=null;
 function message(msg){grid.style.display='';grid.innerHTML='';const div=document.createElement('div');div.className='empty';div.textContent=msg;grid.append(div)}
 // 사진 제목은 안전한 영문 파일명에 UTF-8 16진수로 보관합니다. 별도 DB 설정이 필요 없습니다.
@@ -202,7 +211,7 @@ const imgs=(Array.isArray(payload)?payload:[]).filter(x=>isGalleryPhoto(x.name))
  await refresh();
  }catch(e){alert('이름 변경 실패: '+e.message);edit.disabled=false;edit.textContent='이름 수정'}
  };card.append(edit);const del=document.createElement('button');del.className='delete';del.textContent='삭제';del.onclick=async()=>{if(!confirm('이 이미지를 삭제할까요?'))return;try{const {error}=await supabase.storage.from(BUCKET).remove([f.name]);if(error)alert(error.message);else await refresh()}catch(e){alert(e.message)}};card.append(del)}grid.append(card)}}catch(e){message('사진 연결 실패: '+(e.name==='AbortError'?'연결 시간이 초과되었습니다.':e.message))}}
-async function authState(){if(!configured||!adminMode)return;try{if(!supabase){const mod=await import('https://esm.sh/@supabase/supabase-js@2');supabase=window.__harmonySharedClient(mod,SUPABASE_URL,SUPABASE_ANON_KEY)}const {data,error}=await supabase.auth.getSession();if(error)throw error;signedIn=!!data.session;loginrow.hidden=signedIn;uploader.hidden=!signedIn;document.querySelector('#loginFeedback').textContent=signedIn?'관리자 로그인 성공 · 사진·엑셀·게시 내용 관리 가능':'로그아웃 상태 · 관리자 이메일과 비밀번호로 로그인하세요.';syncAdminLoginUI();window.__harmonySyncLogin(signedIn);await refresh()}catch(e){status.textContent='관리자 로그인 상태 확인 오류: '+e.message;document.querySelector('#loginFeedback').textContent=status.textContent}}
+async function authState(){if(!configured||!adminMode)return;try{if(!supabase){const mod=await import('https://esm.sh/@supabase/supabase-js@2');supabase=window.__harmonySharedClient(mod,SUPABASE_URL,SUPABASE_ANON_KEY)}const {data,error}=await supabase.auth.getSession();if(error)throw error;signedIn=!!data.session;document.body.classList.toggle('h-admin-login-first',!signedIn);loginrow.hidden=signedIn;uploader.hidden=!signedIn;document.querySelector('#loginFeedback').textContent=signedIn?'관리자 로그인 성공 · 사진·엑셀·게시 내용 관리 가능':'로그아웃 상태 · 관리자 이메일과 비밀번호로 로그인하세요.';syncAdminLoginUI();window.__harmonySyncLogin(signedIn);await refresh()}catch(e){status.textContent='관리자 로그인 상태 확인 오류: '+e.message;document.querySelector('#loginFeedback').textContent=status.textContent}}
 document.querySelector('#login').onclick=async()=>{if(!configured)return alert('Supabase 공개 API 키를 입력하세요.');try{if(!supabase){const mod=await import('https://esm.sh/@supabase/supabase-js@2');supabase=window.__harmonySharedClient(mod,SUPABASE_URL,SUPABASE_ANON_KEY)}const {error}=await supabase.auth.signInWithPassword({email:document.querySelector('#email').value,password:document.querySelector('#password').value});if(error){document.querySelector('#loginFeedback').textContent='로그인 실패: '+error.message;alert(error.message)}else await authState()}catch(e){alert(e.message)}};
 document.querySelector('#logout').onclick=async()=>{await supabase.auth.signOut();await authState()};
 document.querySelector('#upload').onclick=async()=>{
