@@ -21,7 +21,33 @@ window.__harmonySyncLogin = function(isLoggedIn){
   });
 };
 </script>
-<style id="campaignCarLinksStyle">.campaign-car-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:12px 0}.campaign-car-box{border:1px solid #e7c5aa;background:#fff;border-radius:12px;padding:16px}.campaign-car-box strong{display:block;font-size:17px;color:#1c314b;margin-bottom:7px}.campaign-car-box .campaign-car-note{color:#c34b0b;font-weight:700;margin:0 0 12px}.campaign-car-box a{display:inline-block;background:#bf4a0b;color:white;text-decoration:none;border-radius:8px;padding:10px 14px;font-weight:700}.campaign-car-box a:hover{background:#923806}</style></head><body><header><h1>하모니렌트카 신차 및 중고차 재고현황</h1><p>신차 · 중고차 · 재고현황</p><p class="today-date" id="todayDate" aria-live="off">오늘 날짜 확인 중...</p></header><style>
+<style id="campaignCarLinksStyle">.campaign-car-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:12px 0}.campaign-car-box{border:1px solid #e7c5aa;background:#fff;border-radius:12px;padding:16px}.campaign-car-box strong{display:block;font-size:17px;color:#1c314b;margin-bottom:7px}.campaign-car-box .campaign-car-note{color:#c34b0b;font-weight:700;margin:0 0 12px}.campaign-car-box a{display:inline-block;background:#bf4a0b;color:white;text-decoration:none;border-radius:8px;padding:10px 14px;font-weight:700}.campaign-car-box a:hover{background:#923806}</style><style id="hBannerImageLayout20261119">
+/* Compact, responsive image + text presentation in both admin preview and public cards. */
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden])){display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,42%);column-gap:22px;align-content:center;align-items:start}
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>div:first-child,
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>#hBannerPreviewSubtitle,
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>#hBannerPreviewBenefit,
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>#hBannerPreviewNote,
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>#hBannerPreviewExtra{grid-column:1}
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>#hBannerPreviewImage{grid-column:2;grid-row:1 / span 5;width:100%;max-height:480px!important;max-width:100%;margin:0 auto!important;object-fit:contain}
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>div:last-child{grid-column:1;align-self:end;margin-top:16px}
+#hHomePromoBanners .h-home-banner:has(img){display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,40%);column-gap:22px;align-content:center;align-items:start;min-height:245px;padding-right:155px}
+#hHomePromoBanners .h-home-banner:has(img)>.h-home-new,
+#hHomePromoBanners .h-home-banner:has(img)>.h-home-title,
+#hHomePromoBanners .h-home-banner:has(img)>.h-home-subtitle,
+#hHomePromoBanners .h-home-banner:has(img)>.h-home-benefit,
+#hHomePromoBanners .h-home-banner:has(img)>.h-home-note,
+#hHomePromoBanners .h-home-banner:has(img)>div{grid-column:1}
+#hHomePromoBanners .h-home-banner:has(img)>img{grid-column:2;grid-row:1 / span 6;width:100%;max-height:410px!important;max-width:100%;margin:0 auto!important;object-fit:contain}
+#hHomePromoBanners .h-home-banner:has(img)>.h-home-new{justify-self:start}
+@media(max-width:760px){
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden])),
+#hHomePromoBanners .h-home-banner:has(img){display:block}
+#hBannerPreview:has(#hBannerPreviewImage:not([hidden]))>#hBannerPreviewImage{width:auto;max-height:360px!important;margin:14px auto!important}
+#hHomePromoBanners .h-home-banner:has(img)>img{width:auto;max-height:340px!important;margin:12px auto!important}
+#hHomePromoBanners .h-home-banner:has(img){padding-right:19px;padding-bottom:60px}
+}
+</style></head><body><header><h1>하모니렌트카 신차 및 중고차 재고현황</h1><p>신차 · 중고차 · 재고현황</p><p class="today-date" id="todayDate" aria-live="off">오늘 날짜 확인 중...</p></header><style>
 .harmony-price-hero{max-width:1080px;margin:20px auto 24px;padding:0 16px;box-sizing:border-box}
 .harmony-price-panel{background:linear-gradient(120deg,#eaf3ff 0%,#fff 100%);border:2px solid #b7d4f4;border-radius:22px;padding:26px 28px;box-shadow:0 12px 28px rgba(19,64,116,.12)}
 .harmony-price-kicker{color:#34639a;font-size:15px;font-weight:800;letter-spacing:.03em}
