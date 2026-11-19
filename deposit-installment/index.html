@@ -131,7 +131,6 @@ function render(){
  }
  }
  $('rows').innerHTML=html||'<tr><td colspan="13">선택된 차종의 차량이 없습니다.</td></tr>';
- const holder=$('publicModels');holder.replaceChildren();
 }
 function originalAmount(c){const n=Number(String(bestTerm(c).deposit??'').replace(/[^\d]/g,''));return Number.isFinite(n)&&n>0?n:0}
 function inAdminGroup(c){const g=$('adminGroup').value;return g==='전체'?true:g==='신차'?c.category==='신차렌트':g==='중고차'?c.category==='중고렌트':g==='리스'?c.category.includes('리스'):false}
