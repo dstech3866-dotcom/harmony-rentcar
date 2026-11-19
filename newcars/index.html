@@ -75,7 +75,7 @@
 @keyframes hPromoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 @media(prefers-reduced-motion:reduce){.h-common-promo .h-promo-new{animation:none}}
 </style>
-<a class="h-common-promo" href="/newcars/?promo=avante2026" aria-label="아반떼 2026년형 프로모션 차량 먼저 보기">
+<a class="h-common-promo" id="hDynamicPromoBanner" href="/newcars/?promo=avante2026" aria-label="아반떼 2026년형 프로모션 차량 먼저 보기">
 <span class="h-promo-new">NEW</span><span class="h-promo-title">아반떼 2026년형 특별 프로모션</span>
 <span style="display:block;margin-top:7px;font-size:14px">아반떼 2026년형 · 재고 소진 시까지</span>
 <span class="h-promo-benefit">수수료 90만원 지급</span>
@@ -134,4 +134,16 @@ function decorate(){if(!ready)return;const rows=list.querySelectorAll('tbody tr'
 const observer=new MutationObserver(()=>decorate());observer.observe(list,{childList:true,subtree:true});
 fetch(url,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{keys=new Set(Array.isArray(d?.keys)?d.keys.map(String):[]);ready=true;window.__hPromoCampaigns={...(d?.campaigns||{})};for(const id of d?.deletedCampaigns||[])delete window.__hPromoCampaigns[id];window.__hPromoSortKeys=new Set(Object.values(window.__hPromoCampaigns).flatMap(p=>p.keys||[]).map(String));try{render()}catch(e){console.warn(e)}decorate()}).catch(()=>{});
 })();</script>
-</body></html>
+<script>
+(async()=>{
+const banner=document.getElementById('hDynamicPromoBanner');if(!banner)return;
+const url='https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/promo-banner.json?v='+Date.now();
+try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(d.visible===false){banner.style.display='none';return}
+const title=banner.querySelector('.h-promo-title'),subtitle=banner.querySelector('[style*="display:block"]'),benefit=banner.querySelector('.h-promo-benefit'),note=banner.querySelector('.h-promo-note');
+if(typeof d.title==='string')title.textContent=d.title;
+if(typeof d.subtitle==='string')subtitle.textContent=d.subtitle;
+if(typeof d.benefit==='string')benefit.textContent=d.benefit;
+if(typeof d.note==='string')note.textContent=d.note;
+}catch(e){console.warn('프로모션 배너 설정 조회 실패',e)}
+})();
+</script></body></html>
