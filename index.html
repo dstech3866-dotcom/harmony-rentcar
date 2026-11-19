@@ -45,7 +45,7 @@ window.__harmonySyncLogin = function(isLoggedIn){
 #hHomePromoBanners .h-home-benefit{display:block;color:#c62828;font-weight:900;font-size:22px;margin:8px 0 3px}
 #hHomePromoBanners .h-home-note{display:block;font-size:12px;color:#475569;margin-top:5px}
 </style>
-<section id="hHomePromoBanners" aria-label="신차렌트 특별 프로모션 배너" hidden></section>
+<section id="hHomePromoBanners" aria-label="신차렌트 특별 프로모션 배너"><a class="h-home-banner" href="newcars/"><span class="h-home-new">EVENT</span><span class="h-home-title">신차렌트 특별 프로모션 확인하기</span><span class="h-home-subtitle">현재 진행 중인 프로모션을 확인하세요.</span></a></section>
 <script id="hHomeBannerScript">
 (async()=>{
 const holder=document.getElementById('hHomePromoBanners');if(!holder)return;
@@ -53,6 +53,7 @@ try{
  const url='https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/promo-banner.json?v='+Date.now();
  const res=await fetch(url,{cache:'no-store'});if(!res.ok)return;
  const data=await res.json();const banners=Array.isArray(data.banners)?data.banners:Array.isArray(data)?data:[data];
+ const fragment=document.createDocumentFragment();
  for(const b of banners){
   if(!b||b.visible===false)continue;
   const a=document.createElement('a');a.className='h-home-banner';
@@ -62,10 +63,10 @@ try{
   const sub=document.createElement('span');sub.className='h-home-subtitle';sub.textContent=b.subtitle||'';
   const benefit=document.createElement('span');benefit.className='h-home-benefit';benefit.textContent=b.benefit||'';
   const note=document.createElement('span');note.className='h-home-note';note.textContent=b.note||'';
-  a.append(tag,title,sub,benefit,note);holder.append(a);
+  a.append(tag,title,sub,benefit,note);fragment.append(a);
  }
- if(holder.children.length)holder.hidden=false;
-}catch(e){console.warn('메인 프로모션 배너 조회 실패',e)}
+ holder.replaceChildren(fragment);holder.hidden=holder.children.length===0;
+}catch(e){console.warn('메인 프로모션 배너 조회 실패',e);holder.dataset.loadError='true'}
 })();
 </script>
 <section class="harmony-price-hero" aria-label="하모니렌트카 렌트 리스 최저가 안내"><div class="harmony-price-panel">
