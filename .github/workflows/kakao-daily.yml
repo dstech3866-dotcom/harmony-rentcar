@@ -1,7 +1,7 @@
 name: Update Kakao preview date (KST)
 on:
   schedule:
-    - cron: '15 15 * * *' # 00:15 in Korea (UTC+9)
+    - cron: '*/5 * * * *' # Check admin-selected Kakao design every 5 minutes (UTC); also updates KST date
   workflow_dispatch:
   push:
     branches: [main]
@@ -10,6 +10,9 @@ on:
       - 'harmony_kakao_selected_design.jpg'
       - 'scripts/make_kakao_vertical_daily.py'
       - 'harmony_kakao_promo_1200x1600.jpg'
+concurrency:
+  group: kakao-daily-image-generation
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
