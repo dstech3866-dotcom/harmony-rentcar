@@ -826,13 +826,20 @@ $('hPromoSave').onclick=async()=>{if(!options.length)return alert('먼저 선택
    if(!checkResponse.ok)throw Error('이미지는 저장됐지만 대표 이미지 설정 확인에 실패했습니다.');
    const confirmed=await checkResponse.json();
    if(confirmed.image!==imagePath)throw Error('이미지는 저장됐지만 공개된 대표 이미지 설정이 아직 이전 버전입니다. 잠시 후 다시 확인하세요.');
-   // The public OG image is the dated GitHub Actions output, not the raw Supabase artwork.
-   // The admin upload changes the SOURCE for the next daily image generation.
-   // Do not compare these distinct URLs or incorrectly report a publication failure.
-   const currentDayParts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
-   const dayPart=type=>currentDayParts.find(p=>p.type===type)?.value||'';
-   const dailyImage='/kakao-daily/'+dayPart('year')+'-'+dayPart('month')+'-'+dayPart('day')+'.jpg';
-   $('hKakaoMsg').textContent='색상 이미지 저장 완료 · Supabase 공개 설정 확인 성공! 저장 이미지: '+imagePath+' · 카카오톡에 표시되는 날짜 포함 이미지는 별도 자동 생성되므로, 현재 게시 이미지에는 새 색상이 즉시 반영되지 않을 수 있습니다. 자동 생성 작업이 약 5분 간격으로 새 색상을 확인합니다. GitHub Actions 실행 및 Netlify 배포가 완료된 뒤 홈페이지 링크를 새로 복사해 확인하세요(실제 반영은 지연될 수 있습니다). 날짜 위치는 기존 디자인을 유지합니다.';
+   // Start image generation immediately after the authenticated Supabase publish.
+   // This request never contains a GitHub credential; the Netlify function owns it.
+   $('hKakaoMsg').textContent='색상 이미지 저장 및 공개 설정 확인 성공 · 날짜 포함 이미지 자동 생성 요청 중…';
+   try{
+    const trigger=await fetch('/.netlify/functions/trigger-kakao-publish',{
+     method:'POST',headers:{'content-type':'application/json',Authorization:'Bearer '+session.access_token},
+     body:JSON.stringify({imagePath})
+    });
+    const result=await trigger.json().catch(()=>({}));
+    if(!trigger.ok)throw Error(result.error||('HTTP '+trigger.status));
+    $('hKakaoMsg').textContent='색상 이미지 저장 완료 · 자동 생성 요청 성공! GitHub 이미지 생성 및 Netlify 배포가 끝난 뒤 새 링크로 카카오톡에서 확인하세요. (배포까지 시간이 걸릴 수 있습니다.)';
+   }catch(triggerError){
+    $('hKakaoMsg').textContent='색상 이미지 저장 완료 · 자동 생성 요청 실패: '+triggerError.message+' · GitHub Actions 수동 실행 또는 기존 예약 실행으로 반영할 수 있습니다.';
+   }
 
   }catch(e){$('hKakaoMsg').textContent='게시 실패: '+e.message+' · 관리자 로그인 및 Supabase Storage INSERT/UPDATE 권한을 확인하세요.'}
   finally{kakaoPublish.disabled=false}
