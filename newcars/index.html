@@ -136,14 +136,22 @@ fetch(url,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{keys=new Set(
 })();</script>
 <script>
 (async()=>{
-const banner=document.getElementById('hDynamicPromoBanner');if(!banner)return;
+const template=document.getElementById('hDynamicPromoBanner');if(!template)return;
 const url='https://gaygechqnvehajmsnvfb.supabase.co/storage/v1/object/public/gallery/inventory/promo-banner.json?v='+Date.now();
-try{const r=await fetch(url,{cache:'no-store'});if(!r.ok)return;const d=await r.json();if(d.visible===false){banner.style.display='none';return}
-const title=banner.querySelector('.h-promo-title'),subtitle=banner.querySelector('[style*="display:block"]'),benefit=banner.querySelector('.h-promo-benefit'),note=banner.querySelector('.h-promo-note');
-if(typeof d.title==='string')title.textContent=d.title;
-if(typeof d.subtitle==='string')subtitle.textContent=d.subtitle;
-if(typeof d.benefit==='string')benefit.textContent=d.benefit;
-if(typeof d.note==='string')note.textContent=d.note;
-}catch(e){console.warn('프로모션 배너 설정 조회 실패',e)}
+try{
+ const r=await fetch(url,{cache:'no-store'});if(!r.ok)return;
+ const data=await r.json();const banners=Array.isArray(data.banners)?data.banners:Array.isArray(data)?data:[data];
+ const wrap=document.createElement('div');wrap.id='hPromoBannerList';wrap.style.display='flex';wrap.style.flexDirection='column';wrap.style.gap='12px';
+ for(const b of banners){if(b.visible===false)continue;
+ const node=template.cloneNode(true);node.removeAttribute('id');
+ node.querySelector('.h-promo-title').textContent=b.title||'특별 프로모션';
+ node.querySelector('[style*="display:block"]').textContent=b.subtitle||'';
+ node.querySelector('.h-promo-benefit').textContent=b.benefit||'';
+ node.querySelector('.h-promo-note').textContent=b.note||'';
+ const model=String(b.model||'').trim();node.href=model?'/newcars/?promo='+encodeURIComponent(model):'/newcars/';
+ node.setAttribute('aria-label',(b.title||'프로모션')+' 자세히 보기');wrap.append(node);
+ }
+ template.replaceWith(wrap);
+}catch(e){console.warn('프로모션 배너 목록 조회 실패',e)}
 })();
 </script></body></html>
