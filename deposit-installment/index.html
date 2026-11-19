@@ -69,7 +69,7 @@ async function readJson(url){try{const r=await fetch(url+'?v='+Date.now(),{cache
 function render(){
  const q=clean($('search').value);
  const modelOrder=['레이','모닝','베뉴','셀토스','스포티지','쏘나타','쏘렌토','아반떼','캐스퍼','코나','투싼','Dolphin','K3','K5','XM3'];
- const availableModels=[...new Set(all.filter(c=>depositAmount(c)!=null).map(getModel))].filter(Boolean).sort((a,b)=>{const ai=modelOrder.findIndex(x=>clean(x)===clean(a)),bi=modelOrder.findIndex(x=>clean(x)===clean(b));return (ai<0?999:ai)-(bi<0?999:bi)||a.localeCompare(b,'ko')});
+ const availableModels=[...new Set([...modelOrder,...all.filter(c=>depositAmount(c)!=null).map(getModel)])].filter(Boolean).sort((a,b)=>{const ai=modelOrder.findIndex(x=>clean(x)===clean(a)),bi=modelOrder.findIndex(x=>clean(x)===clean(b));return (ai<0?999:ai)-(bi<0?999:bi)||a.localeCompare(b,'ko')});
  if(currentModel&&!availableModels.includes(currentModel))currentModel='';
  const modelBox=$('publicModels');modelBox.replaceChildren();
  for(const model of availableModels){
