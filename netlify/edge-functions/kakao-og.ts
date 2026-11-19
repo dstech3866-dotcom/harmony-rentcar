@@ -30,7 +30,14 @@ export default async (_request: Request, context: any) => {
   // The daily JPEG is committed to this site by GitHub Actions.
   // Do not rely on a HEAD request to the same site from the Edge Function:
   // a failed/blocked HEAD incorrectly caused fallback to the undated image.
-  imageUrl = `${SITE}/kakao-daily/${kstDate()}.jpg?design=admin-footer-v5`;
+  // The share link includes the selected image revision. Preserve that revision
+  // in the OG image URL so Kakao does not reuse a preview from an older design.
+  // This changes the cache key only; the dated JPEG must still be regenerated/deployed.
+  const shareUrl = new URL(_request.url);
+  const shareRevision = shareUrl.searchParams.get('kakao') || '';
+  const safeRevision = /^[a-zA-Z0-9_-]{1,100}$/.test(shareRevision) ? shareRevision : '';
+  const imageVersion = safeRevision || ('daily-' + kstDate());
+  imageUrl = `${SITE}/kakao-daily/${kstDate()}.jpg?design=admin-footer-v5&revision=${encodeURIComponent(imageVersion)}`;
 
   if (imageUrl) {
     const escaped = imageUrl.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
