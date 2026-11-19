@@ -64,7 +64,7 @@ function bestTerm(c){const t=(c.terms||[]).filter(x=>Number(x.months)>12);return
 async function readJson(url){try{const r=await fetch(url+'?v='+Date.now(),{cache:'no-store'});if(r.ok)return await r.json()}catch(e){}return null}
 function render(){
  const q=clean($('search').value);
- const eligible=all.filter(c=>selected.some(m=>match(c,m))&&(!currentModel||match(c,currentModel)));
+ const eligible=all.filter(c=>selected.some(m=>match(c,m))&&(!currentModel||match(c,currentModel))&&/[하허호]/.test(String(c.plate||'')));
  const brands=[...new Set(eligible.map(c=>String(c.brand||'제조사 미확인').trim()))].sort((a,b)=>a.localeCompare(b,'ko'));
  if(brandFilter!=='전체'&&!brands.includes(brandFilter))brandFilter='전체';
  const byBrand=eligible.filter(c=>brandFilter==='전체'||String(c.brand||'제조사 미확인').trim()===brandFilter);
