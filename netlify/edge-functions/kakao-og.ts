@@ -33,7 +33,7 @@ export default async (_request: Request, context: any) => {
     const r = await fetch(`${META}?refresh=${Date.now()}`, { cache: 'no-store' });
     if (r.ok) {
       const doc = await r.json();
-      if (typeof doc.image === 'string' && /^inventory\\/kakao-preview\\/[0-9]+\\.jpg$/.test(doc.image)) {
+      if (typeof doc.image === 'string' && /^inventory\/kakao-preview\/[0-9]+\.jpg$/.test(doc.image)) {
         const selected = BASE + doc.image;
         if (await imageExists(selected)) imageUrl = selected;
       }
