@@ -115,7 +115,7 @@ function render(){
  const holder=$('publicModels');holder.replaceChildren();
  for(const m of [...new Set(ageEligible.map(getModel))]){const b=document.createElement('button');b.className=m===currentModel?'':'secondary';b.textContent=m;b.onclick=()=>{currentModel=currentModel===m?'':m;render()};holder.append(b)}
 }
-function originalAmount(c){const n=Number(String(bestTerm(c).deposit??'').replace(/[^\\d]/g,''));return Number.isFinite(n)&&n>0?n:0}
+function originalAmount(c){const n=Number(String(bestTerm(c).deposit??'').replace(/[^\d]/g,''));return Number.isFinite(n)&&n>0?n:0}
 function inAdminGroup(c){const g=$('adminGroup').value;return g==='신차'?c.category==='신차렌트':g==='중고차'?c.category==='중고렌트':g==='리스'?c.category.includes('리스'):false}
 function adminMatches(){const d=$('originalDeposit').value;if(!d||!$('adminGroup').value)return [];return all.filter(c=>inAdminGroup(c)&&originalAmount(c)===Number(d))}
 function updateBulkCount(){const list=adminMatches();const active=list.filter(c=>depositAmount(c)!=null).length;$('bulkCount').textContent=list.length?'해당 조건 '+list.length+'대 · 등록된 차량 '+active+'대 · 전체 등록 '+Object.keys(vehicleDeposits).length+'대':'해당 조건의 차량을 선택해 주세요.'}
