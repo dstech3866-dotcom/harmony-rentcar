@@ -5,7 +5,7 @@ const fields=['intro','due','example','payment','fee','alert','percent','penalty
 function setText(sel,value){if(typeof value!=='string')return;const el=document.querySelector(sel);if(el)el.textContent=value}
 function applyBanner(link,data){if(!link||!data||typeof data!=='object')return;
 if(data.visible===false){link.style.setProperty('display','none','important');return}
-if(typeof data.title==='string'){let text=link.querySelector('[data-h-banner-label]');if(!text){text=document.createElement('span');text.dataset.hBannerLabel='1';link.replaceChildren(text)}text.textContent=data.title}
+if(typeof data.title==='string'){let text=[...link.childNodes].find(n=>n.nodeType===3&&n.textContent.trim());if(text){text.textContent=data.title+' ';}else{let label=link.querySelector('[data-h-banner-label]');if(!label){label=document.createElement('span');label.dataset.hBannerLabel='1';link.prepend(label)}label.textContent=data.title}}
 const safeColor=x=>/^#[0-9a-fA-F]{6}$/.test(x||'')?x:null;
 if(safeColor(data.background)){link.style.setProperty('background',data.background,'important');link.style.setProperty('background-image','none','important')}
 if(safeColor(data.color))link.style.setProperty('color',data.color,'important');
