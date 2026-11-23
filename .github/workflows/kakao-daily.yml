@@ -14,7 +14,7 @@ concurrency:
   group: kakao-daily-image-generation
   cancel-in-progress: false
 permissions:
-  contents: write
+  contents: read
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -40,25 +40,12 @@ jobs:
             echo "::warning::Daily image generation/validation failed. Retrying once with original source artwork."
             generate_and_validate
           fi
-      - name: Commit new daily image (triggers Netlify deploy)
+      - name: Publish generated images directly to Supabase Storage (no Git commit)
+        env:
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add kakao-daily/ kakao-vertical-daily/
-          if ! git diff --cached --quiet; then
-            git commit -m "Update Kakao date preview (KST)"
-            # Other site updates can land while artwork is being generated.
-            # Rebase the generated-image commit on the latest main before pushing.
-            for attempt in 1 2 3 4 5; do
-              git fetch origin main
-              git rebase origin/main
-              if git push origin HEAD:main; then
-                echo "Daily dated images published successfully."
-                exit 0
-              fi
-              echo "Concurrent update detected; retrying push ($attempt/5)."
-              sleep 3
-            done
-            echo "::error::Could not publish dated images after five retries."
+          if [ -z "$SUPABASE_SERVICE_ROLE_KEY" ]; then
+            echo "::error::Set SUPABASE_SERVICE_ROLE_KEY as a GitHub Actions repository secret before enabling this workflow."
             exit 1
           fi
+          python scripts/publish_kakao_to_supabase.py
