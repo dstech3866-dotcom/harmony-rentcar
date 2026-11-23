@@ -37,7 +37,7 @@ export default async (_request: Request, context: any) => {
   const shareRevision = shareUrl.searchParams.get('kakao') || '';
   const safeRevision = /^[a-zA-Z0-9_-]{1,100}$/.test(shareRevision) ? shareRevision : '';
   const imageVersion = safeRevision || ('daily-' + kstDate());
-  imageUrl = `${SITE}/kakao-daily/${kstDate()}.jpg?design=admin-footer-v5&revision=${encodeURIComponent(imageVersion)}`;
+  imageUrl = `${BASE}inventory/kakao-daily/${kstDate()}.jpg?revision=${encodeURIComponent(imageVersion)}`;
 
   if (imageUrl) {
     const escaped = imageUrl.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
