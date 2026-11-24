@@ -118,4 +118,4 @@ function auth(ok){$('loginArea').style.display=ok?'none':'block';$('adminEditor'
 let zoom=100;function setZoom(n){zoom=Math.max(70,Math.min(180,n));document.querySelector('.scroll').style.setProperty('--table-zoom',String(zoom/100));$('zoomValue').textContent=zoom+'%';$('zoomOut').disabled=zoom<=70;$('zoomIn').disabled=zoom>=180}
 $('zoomOut').onclick=()=>setZoom(zoom-10);$('zoomIn').onclick=()=>setZoom(zoom+10);$('zoomReset').onclick=()=>setZoom(100);
 $('search').oninput=render;$('showAll').onclick=()=>{currentModel='';$('search').value='';render()};init();
-</script></body></html>
+</script><script defer src="/site-content-runtime.js"></script></body></html>
