@@ -150,7 +150,7 @@ body:not(.h-admin-mode) .promo-admin {display:none!important}
 </style>
 <style id="hModelBannerActionsStyle">.h-banner-model-actions{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 2px!important}.h-banner-model-actions a{display:inline-block;background:#245d89;color:#fff!important;padding:8px 11px;border-radius:7px;text-decoration:none;font-weight:700;font-size:13px}.h-banner-model-actions a:hover{background:#123e61}#hBannerPreview:has(.h-banner-model-actions a){padding-right:22px!important}#hBannerPreview .h-banner-model-actions{max-width:100%}#hHomePromoBanners .h-home-banner-wrap{position:relative}#hHomePromoBanners .h-home-banner-wrap:has(.h-banner-model-actions a)>.h-home-banner:after{display:none!important}#hHomePromoBanners .h-home-banner-wrap .h-banner-model-actions{position:relative;z-index:2;margin:7px 0 16px!important}@media(max-width:620px){#hHomePromoBanners .h-home-banner-wrap .h-banner-model-actions{padding:0 8px}}</style><style id="hModelButtonsInsideBannerFix">
 /* The banner link and per-model links are siblings; visually unite them in one card. */
-#hHomePromoBanners .h-home-banner-wrap:has(.h-banner-model-actions a){border:2px solid #eab75b;border-radius:15px;background:#fffbf5;overflow:hidden;margin-bottom:14px}
+#hHomePromoBanners .h-home-banner-wrap:has(.h-banner-model-actions a){border:var(--h-promo-width,2px) solid var(--h-promo-border,#eab75b);border-radius:15px;background:var(--h-promo-background,#fffbf5);overflow:hidden;margin-bottom:14px}
 #hHomePromoBanners .h-home-banner-wrap:has(.h-banner-model-actions a)>.h-home-banner{border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;margin:0!important;min-height:120px!important;padding-bottom:4px!important;transform:none!important;outline:none!important}
 #hHomePromoBanners .h-home-banner-wrap:has(.h-banner-model-actions a)>.h-banner-model-actions{margin:0!important;padding:8px 20px 18px!important;position:relative;z-index:2}
 #hHomePromoBanners .h-home-banner-wrap:has(.h-banner-model-actions a):hover{box-shadow:0 6px 18px #102c4b15}
@@ -175,8 +175,12 @@ try{
   const sub=document.createElement('span');sub.className='h-home-subtitle';sub.textContent=b.subtitle||'';
   const benefit=document.createElement('span');benefit.className='h-home-benefit';benefit.textContent=b.benefit||'';
   const note=document.createElement('span');note.className='h-home-note';note.textContent=b.note||'';
-  const p=palettes[b.theme]||palettes.gold;a.style.setProperty('background',hMix(p[0],b.intensity),'important');a.style.setProperty('border-width',Math.max(0,Math.min(15,Number(b.borderWidth??2)))+'px','important');a.style.setProperty('border-color',p[1],'important');title.style.color=p[2];benefit.style.color=p[3];tag.style.background=p[4];a.style.setProperty('--h-promo-action',p[5]);a.style.setProperty('--h-promo-hover',hMix(p[0],b.intensity));a.style.setProperty('--h-promo-border',p[1]);
-  a.append(tag,title,sub,benefit,note);/* Compact public banners display text only; uploaded image remains in Supabase. */if(b.extra){const extra=document.createElement('div');extra.textContent=b.extra;extra.style.cssText='white-space:pre-wrap;margin-top:8px;font-size:14px';a.append(extra)}const models=Array.isArray(b.models)?[...new Set(b.models.map(x=>String(x).trim()).filter(Boolean))].slice(0,12):[];if(models.length){const wrap=document.createElement('div');wrap.className='h-home-banner-wrap';wrap.append(a);const links=document.createElement('div');links.className='h-banner-model-actions';for(const m of models){const link=document.createElement('a');link.textContent=m+' 보기 →';link.href='/'+category+'/?promo='+encodeURIComponent(m);links.append(link)}wrap.append(links);fragment.append(wrap)}else fragment.append(a);
+  const p=palettes[b.theme]||palettes.gold;
+  const background=hMix(p[0],b.intensity),borderWidth=Math.max(0,Math.min(15,Number(b.borderWidth??2)))+'px';
+  a.style.setProperty('background',background,'important');a.style.setProperty('border-width',borderWidth,'important');a.style.setProperty('border-color',p[1],'important');title.style.color=p[2];benefit.style.color=p[3];tag.style.background=p[4];a.style.setProperty('--h-promo-action',p[5]);a.style.setProperty('--h-promo-hover',background);a.style.setProperty('--h-promo-border',p[1]);
+  a.append(tag,title,sub,benefit,note);/* Compact public banners display text only; uploaded image remains in Supabase. */if(b.extra){const extra=document.createElement('div');extra.textContent=b.extra;extra.style.cssText='white-space:pre-wrap;margin-top:8px;font-size:14px';a.append(extra)}const models=Array.isArray(b.models)?[...new Set(b.models.map(x=>String(x).trim()).filter(Boolean))].slice(0,12):[];if(models.length){const wrap=document.createElement('div');wrap.className='h-home-banner-wrap';
+  wrap.style.setProperty('--h-promo-background',background);wrap.style.setProperty('--h-promo-border',p[1]);wrap.style.setProperty('--h-promo-width',borderWidth);
+  wrap.append(a);const links=document.createElement('div');links.className='h-banner-model-actions';for(const m of models){const link=document.createElement('a');link.textContent=m+' 보기 →';link.href='/'+category+'/?promo='+encodeURIComponent(m);links.append(link)}wrap.append(links);fragment.append(wrap)}else fragment.append(a);
  }
  holder.replaceChildren(fragment);holder.hidden=holder.children.length===0;
 }catch(e){console.warn('메인 프로모션 배너 조회 실패',e);holder.dataset.loadError='true'}
@@ -427,39 +431,50 @@ document.querySelector('#inventoryPreview').onclick=async()=>{
 };
 publishBtn.onclick=async()=>{
  if(!signedIn||!supabase||!inventoryCars?.length||previewKind!==kindEl.value||previewFile!==excelEl.files[0])return alert('먼저 정상 미리보기를 완료하세요.');
- const kind=previewKind,amount=inventoryCars.length;
- if(!confirm((kind==='newlease'?'신차리스 '+document.querySelector('#leaseDuration').value+'개월':({used:'중고렌트',new:'신차렌트',usedlease:'중고리스'}[kind]||kind))+' '+amount+'대를 게시할까요? 신차리스의 다른 계약기간은 유지됩니다.'))return;
+ const kind=previewKind,sourceCars=inventoryCars,amount=sourceCars.length;
+ const duration=kind==='newlease'?Number(document.querySelector('#leaseDuration').value):null;
+ if(!confirm((kind==='newlease'?'신차리스 '+duration+'개월':({used:'중고렌트',new:'신차렌트',usedlease:'중고리스'}[kind]||kind))+' '+amount+'대를 게시할까요? 신차리스의 다른 계약기간은 유지됩니다.'))return;
  publishBtn.disabled=true;inventoryStatus.textContent='게시 중…';
  try{
- let finalCars=inventoryCars;
+ let finalCars=sourceCars;
  if(kind==='newlease'){
-  const duration=Number(document.querySelector('#leaseDuration').value);
   const path='inventory/newlease.json';
   let existing=[];
-  const {data:existingBlob,error:readError}=await supabase.storage.from('gallery').download(path);
+  const {data:existingBlob,error:readError}=await supabase.storage.from('gallery').download(path,{}, {cache:'no-store'});
   if(readError){if(!/not found|not exist|404/i.test(readError.message||''))throw Error('기존 신차리스 목록 조회 실패: '+readError.message)}
   else {const obj=JSON.parse(await existingBlob.text());if(!Array.isArray(obj.cars))throw Error('기존 목록 형식 오류');existing=obj.cars;}
   // 최초 60개월 갱신 이전에는 V2.4.9에 포함된 60개월 자료도 보존한다.
   const bundled60=JSON.parse(document.getElementById('initialLease60').textContent);
   if(!existing.some(c=>(c.terms||[]).some(t=>Number(t.months)===60)))existing=mergeLeaseCars(existing,bundled60,60);
-  finalCars=mergeLeaseCars(existing,inventoryCars,duration);
+  finalCars=mergeLeaseCars(existing,sourceCars,duration);
  }
  const payload={version:2,category:kind,updatedAt:new Date().toISOString(),cars:finalCars};const blob=new Blob([JSON.stringify(payload)],{type:'application/json'});
  const path=({new:'inventory/new.json',used:'inventory/used.json',newlease:'inventory/newlease.json',usedlease:'inventory/usedlease.json'})[kind];
  const {error}=await supabase.storage.from('gallery').upload(path,blob,{contentType:'application/json',upsert:true,cacheControl:'0'});
  if(error)throw Error(error.message);
- // 업로드 성공과 사후 검증을 구분합니다. CDN/Storage 캐시가 오래된 데이터를 반환할 수 있습니다.
+ // Recheck the same public URL used by the customer page, bypassing stale cached objects.
  let verifyProblem='';
+ let verifiedCars;
  for(let attempt=0;attempt<3;attempt++){
-  const check=await supabase.storage.from('gallery').download(path);
-  if(check.error){verifyProblem='저장 데이터 재조회 오류: '+check.error.message;continue;}
-  try{const saved=JSON.parse(await check.data.text());verifyProblem=comparePublishedPrices(finalCars,saved.cars);}
-  catch(e){verifyProblem='저장 데이터 확인 오류: '+e.message;}
-  if(!verifyProblem)break;
-  await new Promise(resolve=>setTimeout(resolve,500*(attempt+1)));
+  if(attempt)await new Promise(resolve=>setTimeout(resolve,500*attempt));
+  try{
+   const url=SUPABASE_URL+'/storage/v1/object/public/'+BUCKET+'/'+path+'?v='+Date.now();
+   const check=await fetch(url,{cache:'no-store'});
+   if(!check.ok)throw Error('HTTP '+check.status);
+   const saved=await check.json();
+   if(saved.updatedAt!==payload.updatedAt){
+    verifyProblem='고객용 목록에 아직 이번 게시본이 반영되지 않았습니다';
+    continue;
+   }
+   if(!Array.isArray(saved.cars))throw Error('차량 목록 형식 오류');
+   verifyProblem=comparePublishedPrices(finalCars,saved.cars);
+   if(!verifyProblem){verifiedCars=saved.cars;break;}
+  }catch(e){verifyProblem='저장 데이터 재조회 오류: '+e.message;}
  }
- if(verifyProblem){inventoryStatus.textContent=amount+'대 업로드 요청은 성공했지만 저장 데이터 재확인이 일치하지 않습니다 ('+verifyProblem+'). 기존 48·60개월 목록을 확인한 뒤 다시 시도하세요. 이 메시지는 게시 실패를 의미하지 않습니다.';return;}
- inventoryStatus.replaceChildren(document.createTextNode(amount+'대 게시 성공 · 차량가격 '+finalCars.filter(c=>c.vehiclePrice).length+'대 저장 확인. '));const a=document.createElement('a');a.href=({new:'/newcars/',used:'/cars/',newlease:'/newlease/',usedlease:'/usedlease/'})[kind];a.target='_blank';a.rel='noopener';a.textContent='고객 화면 확인';inventoryStatus.append(a);
+ if(verifyProblem){inventoryStatus.textContent=amount+'대 업로드 요청은 성공했지만 저장 데이터 재확인이 일치하지 않습니다 ('+verifyProblem+'). 잠시 후 고객 화면을 확인하세요.';return;}
+ const publishedCars=duration?verifiedCars.filter(c=>c.terms.some(t=>Number(t.months)===duration)):verifiedCars;
+ const label=duration?duration+'개월 ':'';
+ inventoryStatus.replaceChildren(document.createTextNode(label+publishedCars.length+'대 게시 성공 · 차량가격 '+publishedCars.filter(c=>c.vehiclePrice).length+'대 저장 확인. '));const a=document.createElement('a');a.href=({new:'/newcars/',used:'/cars/',newlease:'/newlease/',usedlease:'/usedlease/'})[kind];a.target='_blank';a.rel='noopener';a.textContent='고객 화면 확인';inventoryStatus.append(a);
  }catch(e){inventoryStatus.textContent='게시 실패: '+e.message+' (Supabase Storage 권한 설정 확인 필요)';}
  finally{inventoryState();}
 };
@@ -871,13 +886,25 @@ if(Array.isArray(d.models))$('hBannerModels').value=bannerModels(d.models).join(
 finally{button.disabled=false}
 };
 function refresh(){const select=$('hBannerSelect');select.replaceChildren();for(const b of items){const o=document.createElement('option');o.value=b.id;o.textContent=b.title+(b.visible===false?' (숨김)':'');select.append(o)}if(items.some(b=>b.id===selected)){select.value=selected;fill(items.find(b=>b.id===selected))}else if(items.length){selected=items[0].id;select.value=selected;fill(items[0])}else{selected='';creating=true;fill({})}}
-async function persist(next){const c=await auth();const payload={version:2,banners:next,updatedAt:new Date().toISOString()};const {error}=await c.storage.from(B).upload(PATH,new Blob([JSON.stringify(payload)],{type:'application/json'}),{upsert:true,contentType:'application/json',cacheControl:'0'});if(error)throw error;items=next;creating=false;refresh();status.textContent='저장 완료 · 신차렌트 페이지를 새로고침해 확인하세요.'}
+async function persist(next,category){
+ const c=await auth();
+ const {data,error:readError}=await c.storage.from(B).download(PATH,{}, {cache:'no-store'});
+ if(readError&&!/not found|404|does not exist/i.test(readError.message||''))throw readError;
+ const previous=data?JSON.parse(await data.text()):null;
+ const metadata=previous&&Array.isArray(previous.banners)?previous:{};
+ const payload={...metadata,version:2,banners:next,updatedAt:new Date().toISOString()};
+ const {error}=await c.storage.from(B).upload(PATH,new Blob([JSON.stringify(payload)],{type:'application/json'}),{upsert:true,contentType:'application/json',cacheControl:'0'});
+ if(error)throw error;
+ items=next;creating=false;refresh();
+ const page={newcars:'신차렌트',cars:'중고렌트',newlease:'신차리스',usedlease:'중고리스'}[category];
+ status.textContent=page?'저장 완료 · 고객용 메인과 '+page+' 페이지를 새로고침해 확인하세요.':'저장 완료 · 고객용 메인 페이지를 새로고침해 확인하세요.';
+}
 async function act(fn){status.textContent='저장 중…';try{await auth();await fn()}catch(e){status.textContent='처리 실패: '+e.message}}
 $('hBannerSelect').onchange=()=>{creating=false;selected=$('hBannerSelect').value;refresh()};
 $('hBannerNew').onclick=()=>{creating=true;selected='';$('hBannerSelect').selectedIndex=-1;fill({})};
-$('hBannerSave').onclick=()=>act(async()=>{const data={};for(const f of fields)data[f]=$('hBanner'+f[0].toUpperCase()+f.slice(1)).value.trim();data.intensity=Number($('hBannerIntensity').value);data.borderWidth=Number(data.borderWidth);data.image=bannerImage;data.models=bannerModels($('hBannerModels').value);const promoText=[data.title,data.subtitle,data.benefit,data.note,data.extra].join(' ');if(data.category==='newcars'&&/중고\s*(차|렌트|장기렌트|차량)/i.test(promoText)&&!/중고\s*리스/i.test(promoText)){data.category='cars';$('hBannerCategory').value='cars';preview()}if(!data.title)throw Error('제목을 입력하세요');const old=items.find(b=>b.id===selected);const id=creating||!old?'banner-'+Date.now().toString(36):old.id;const b={...old,...data,id,visible:old?old.visible:true};selected=id;await persist(old?items.map(x=>x.id===id?b:x):[...items,b])});
-$('hBannerHide').onclick=()=>act(async()=>{const b=items.find(x=>x.id===selected);if(!b)throw Error('배너를 선택하세요');await persist(items.map(x=>x.id===b.id?{...x,visible:b.visible===false}:x))});
-$('hBannerDelete').onclick=()=>{const b=items.find(x=>x.id===selected);if(!b)return alert('삭제할 배너를 선택하세요');if(!confirm('「'+b.title+'」 배너를 삭제하시겠습니까?'))return;act(async()=>{selected='';await persist(items.filter(x=>x.id!==b.id))})};
+$('hBannerSave').onclick=()=>act(async()=>{const data={};for(const f of fields)data[f]=$('hBanner'+f[0].toUpperCase()+f.slice(1)).value.trim();data.intensity=Number($('hBannerIntensity').value);data.borderWidth=Number(data.borderWidth);data.image=bannerImage;data.models=bannerModels($('hBannerModels').value);const promoText=[data.title,data.subtitle,data.benefit,data.note,data.extra].join(' ');if(data.category==='newcars'&&/중고\s*(차|렌트|장기렌트|차량)/i.test(promoText)&&!/중고\s*리스/i.test(promoText)){data.category='cars';$('hBannerCategory').value='cars';preview()}if(!data.title)throw Error('제목을 입력하세요');const old=items.find(b=>b.id===selected);const id=creating||!old?'banner-'+Date.now().toString(36):old.id;const b={...old,...data,id,visible:old?old.visible:true};selected=id;await persist(old?items.map(x=>x.id===id?b:x):[...items,b],b.category||'newcars')});
+$('hBannerHide').onclick=()=>act(async()=>{const b=items.find(x=>x.id===selected);if(!b)throw Error('배너를 선택하세요');await persist(items.map(x=>x.id===b.id?{...x,visible:b.visible===false}:x),b.category||'newcars')});
+$('hBannerDelete').onclick=()=>{const b=items.find(x=>x.id===selected);if(!b)return alert('삭제할 배너를 선택하세요');if(!confirm('「'+b.title+'」 배너를 삭제하시겠습니까?'))return;act(async()=>{selected='';await persist(items.filter(x=>x.id!==b.id),b.category||'newcars')})};
 for(const [button,delta] of [['hBannerUp',-1],['hBannerDown',1]])$(button).onclick=()=>act(async()=>{const idx=items.findIndex(x=>x.id===selected),j=idx+delta;if(idx<0||j<0||j>=items.length){status.textContent='더 이동할 수 없습니다.';return}const next=[...items];[next[idx],next[j]]=[next[j],next[idx]];await persist(next)});
 try{items=await read();refresh()}catch(e){status.textContent='불러오기 실패: '+e.message}
 })();
