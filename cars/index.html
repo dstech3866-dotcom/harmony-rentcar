@@ -96,7 +96,7 @@ badge.className='h-used-new';badge.style.background=p[4];badge.textContent='NEW'
 a.append(badge,title,sub,benefit,note);/* Artwork retained in stored data; display compact text-first promo card. */if(b.extra){const extra=document.createElement('div');extra.textContent=b.extra;extra.style.cssText='white-space:pre-wrap;margin-top:8px;font-size:14px';a.append(extra)}a.append(action);
 const models=Array.isArray(b.models)?[...new Set(b.models.map(x=>String(x).trim()).filter(Boolean))].slice(0,12):[];
 if(models.length){
- const wrap=document.createElement('div');wrap.className='h-used-promo-wrap';wrap.style.borderColor=p[1];wrap.style.background=mix(p[0],b.intensity);
+ const wrap=document.createElement('div');wrap.className='h-used-promo-wrap';wrap.style.borderColor=a.style.borderColor;wrap.style.borderWidth=a.style.borderWidth;wrap.style.background=a.style.background;
  wrap.append(a);const links=document.createElement('div');links.className='h-used-model-links';
  for(const m of models){const link=document.createElement('a');link.textContent=m+' 보기 →';link.href='/cars/?promo='+encodeURIComponent(m);links.append(link)}
  wrap.append(links);holder.append(wrap);
