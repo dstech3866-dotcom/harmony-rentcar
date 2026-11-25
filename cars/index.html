@@ -81,8 +81,8 @@
 #hUsedPromoList .h-used-promo-wrap{border:2px solid #e4b96e;border-radius:13px;overflow:hidden;background:#fff9ed;box-shadow:0 4px 14px rgba(24,54,88,.09)}
 #hUsedPromoList .h-used-promo-wrap>a{border:0!important;border-radius:0!important;box-shadow:none!important;margin:0!important;padding-bottom:8px}
 #hUsedPromoList .h-used-promo-wrap .h-used-model-links{display:flex;flex-wrap:wrap;gap:8px;padding:4px 18px 16px}
-#hUsedPromoList .h-used-promo-wrap .h-used-model-links a{display:inline-block;position:static;background:#245d89;color:#fff;text-decoration:none;font-size:13px;font-weight:750;border-radius:7px;padding:9px 12px;box-shadow:none;transition:background .15s}
-#hUsedPromoList .h-used-promo-wrap .h-used-model-links a:hover{background:#123e61}
+#hUsedPromoList .h-used-promo-wrap .h-used-model-links a{display:inline-block;position:static;background:var(--h-promo-action,#245d89);color:#fff;text-decoration:none;font-size:13px;font-weight:750;border-radius:7px;padding:9px 12px;box-shadow:none;transition:background .15s}
+#hUsedPromoList .h-used-promo-wrap .h-used-model-links a:hover{filter:brightness(.85)}
 @media(max-width:620px){#hUsedPromoList .h-used-promo-wrap .h-used-model-links{padding:4px 14px 14px}}
 </style><script id="hUsedPromoScript">
 (async()=>{
@@ -96,7 +96,7 @@ badge.className='h-used-new';badge.style.background=p[4];badge.textContent='NEW'
 a.append(badge,title,sub,benefit,note);/* Artwork retained in stored data; display compact text-first promo card. */if(b.extra){const extra=document.createElement('div');extra.textContent=b.extra;extra.style.cssText='white-space:pre-wrap;margin-top:8px;font-size:14px';a.append(extra)}a.append(action);
 const models=Array.isArray(b.models)?[...new Set(b.models.map(x=>String(x).trim()).filter(Boolean))].slice(0,12):[];
 if(models.length){
- const wrap=document.createElement('div');wrap.className='h-used-promo-wrap';wrap.style.borderColor=a.style.borderColor;wrap.style.borderWidth=a.style.borderWidth;wrap.style.background=a.style.background;
+ const wrap=document.createElement('div');wrap.className='h-used-promo-wrap';wrap.style.borderColor=a.style.borderColor;wrap.style.borderWidth=a.style.borderWidth;wrap.style.background=a.style.background;wrap.style.setProperty('--h-promo-action',p[5]);
  wrap.append(a);const links=document.createElement('div');links.className='h-used-model-links';
  for(const m of models){const link=document.createElement('a');link.textContent=m+' 보기 →';link.href='/cars/?promo='+encodeURIComponent(m);links.append(link)}
  wrap.append(links);holder.append(wrap);
