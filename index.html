@@ -327,7 +327,7 @@ function parseLeaseSheet(raw,kind){
   }
   if(!terms.length)continue;
   const fuel=fuelOf(val(row,'유종','연료'));
-  out.push({plate:plate||'차량번호 미등록',brand:brandOf(val(row,'브랜드','제조사','메이커'),detail),type:typeOf(detail,fuel),model:modelOf(detail),detail:detail||'차량 정보 확인',year:val(row,'연식','년식','연형')||((val(row,'라인업','세부모델').match(/20\d{2}년형/)||[])[0]||''),fuel,color:val(row,'외장컬러','외장색상','외장색','색상'),interior:val(row,'내장컬러','내장색상','내장색'),distance:val(row,'주행거리','주행거리km')||(kind==='newlease'?'신차':''),options:val(row,'옵션','옵션내용','주요옵션'),vehiclePrice:fmtMoney(val(row,'가격','차량가격','차량가액')),terms,stock:val(row,'잔여대수','재고')});
+  out.push({...(kind==='newlease'?{assetCode:val(row,'assetCode','차량고유코드','자산코드')}:{}),plate:plate||'차량번호 미등록',brand:brandOf(val(row,'브랜드','제조사','메이커'),detail),type:typeOf(detail,fuel),model:modelOf(detail),detail:detail||'차량 정보 확인',year:val(row,'연식','년식','연형')||((val(row,'라인업','세부모델').match(/20\d{2}년형/)||[])[0]||''),fuel,color:val(row,'외장컬러','외장색상','외장색','색상'),interior:val(row,'내장컬러','내장색상','내장색'),distance:val(row,'주행거리','주행거리km')||(kind==='newlease'?'신차':''),options:val(row,'옵션','옵션내용','주요옵션'),vehiclePrice:fmtMoney(val(row,'가격','차량가격','차량가액')),terms,stock:val(row,'잔여대수','재고')});
  }
  return out;
 }
@@ -372,6 +372,7 @@ function parseSheet(raw,kind){
 }
 
 function leaseKey(c){
+ const asset=String(c.assetCode||'').trim();if(asset)return 'asset:'+asset;
  const plate=String(c.plate||'').trim();
  // 미등록 차량은 번호판 문자열이 동일하므로 모델·색상·세부모델로 구분한다.
  const unregistered=!plate||/미등록|등록예정|입고예정/.test(plate);
@@ -419,6 +420,8 @@ document.querySelector('#inventoryPreview').onclick=async()=>{
   if(kind==='newlease'){
     const duration=Number(document.querySelector('#leaseDuration').value);
     best=best.map(c=>({...c,terms:(c.terms||[]).filter(t=>Number(t.months)===duration)})).filter(c=>c.terms.length);
+    const ids=best.map(c=>String(c.assetCode||'').trim());
+    if(ids.some(id=>!id)||new Set(ids).size!==ids.length)throw Error('신차리스 차량 고유코드 누락 또는 중복: 원본 엑셀을 확인하세요.');
     notes.push(duration+'개월 조건 '+best.length+'대');
    }
   inventoryCars=best.length?best:null;previewKind=kind;previewFile=f;inventoryState();
@@ -443,10 +446,9 @@ publishBtn.onclick=async()=>{
   const {data:existingBlob,error:readError}=await supabase.storage.from('gallery').download(path,{}, {cache:'no-store'});
   if(readError){if(!/not found|not exist|404/i.test(readError.message||''))throw Error('기존 신차리스 목록 조회 실패: '+readError.message)}
   else {const obj=JSON.parse(await existingBlob.text());if(!Array.isArray(obj.cars))throw Error('기존 목록 형식 오류');existing=obj.cars;}
-  // 최초 60개월 갱신 이전에는 V2.4.9에 포함된 60개월 자료도 보존한다.
-  const bundled60=JSON.parse(document.getElementById('initialLease60').textContent);
-  if(!existing.some(c=>(c.terms||[]).some(t=>Number(t.months)===60)))existing=mergeLeaseCars(existing,bundled60,60);
+  // Never restore obsolete bundled stock. Legacy rows without IDs are retained only for the other term until it is refreshed.
   finalCars=mergeLeaseCars(existing,sourceCars,duration);
+  if(finalCars.filter(c=>(c.terms||[]).some(t=>Number(t.months)===duration)).length!==amount)throw Error('신차리스 계약기간별 차량 수 불일치');
  }
  const payload={version:2,category:kind,updatedAt:new Date().toISOString(),cars:finalCars};const blob=new Blob([JSON.stringify(payload)],{type:'application/json'});
  const path=({new:'inventory/new.json',used:'inventory/used.json',newlease:'inventory/newlease.json',usedlease:'inventory/usedlease.json'})[kind];
